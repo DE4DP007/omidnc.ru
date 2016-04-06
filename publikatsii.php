@@ -4,36 +4,10 @@ $APPLICATION->SetTitle("Публикации");
 ?><br>
  <br>
  <br>
- <br>
- <?$APPLICATION->IncludeComponent(
-	"bitrix:catalog.smart.filter",
-	".default",
-	Array(
-		"CACHE_GROUPS" => "Y",
-		"CACHE_TIME" => "36000000",
-		"CACHE_TYPE" => "A",
-		"COMPONENT_TEMPLATE" => ".default",
-		"DISPLAY_ELEMENT_COUNT" => "Y",
-		"FILTER_NAME" => "arrFilter",
-		"FILTER_VIEW_MODE" => "horizontal",
-		"IBLOCK_ID" => "9",
-		"IBLOCK_TYPE" => "biblio",
-		"INSTANT_RELOAD" => "N",
-		"PAGER_PARAMS_NAME" => "arrPager",
-		"POPUP_POSITION" => "left",
-		"SAVE_IN_SESSION" => "N",
-		"SECTION_CODE" => "",
-		"SECTION_DESCRIPTION" => "-",
-		"SECTION_ID" => $_REQUEST["SECTION_ID"],
-		"SECTION_TITLE" => "-",
-		"SEF_MODE" => "N",
-		"TEMPLATE_THEME" => "blue",
-		"XML_EXPORT" => "N"
-	)
-);?><br>
+<br>
  <?$APPLICATION->IncludeComponent(
 	"bitrix:news", 
-	".default", 
+	"test", 
 	array(
 		"ADD_ELEMENT_CHAIN" => "N",
 		"ADD_SECTIONS_CHAIN" => "Y",
@@ -48,7 +22,9 @@ $APPLICATION->SetTitle("Публикации");
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
 		"CHECK_DATES" => "Y",
-		"COMPONENT_TEMPLATE" => ".default",
+		"COLOR_NEW" => "3E74E6",
+		"COLOR_OLD" => "C0C0C0",
+		"COMPONENT_TEMPLATE" => "test",
 		"DETAIL_ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",
 		"DETAIL_DISPLAY_TOP_PAGER" => "N",
@@ -77,8 +53,12 @@ $APPLICATION->SetTitle("Публикации");
 			14 => "",
 		),
 		"DETAIL_SET_CANONICAL_URL" => "N",
+		"DISPLAY_AS_RATING" => "rating",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
+		"DISPLAY_DATE" => "Y",
 		"DISPLAY_NAME" => "Y",
+		"DISPLAY_PICTURE" => "Y",
+		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
 		"FILTER_FIELD_CODE" => array(
 			0 => "",
@@ -91,6 +71,8 @@ $APPLICATION->SetTitle("Публикации");
 			2 => "JOURNAL",
 			3 => "",
 		),
+		"FONT_MAX" => "50",
+		"FONT_MIN" => "10",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_ID" => "9",
 		"IBLOCK_TYPE" => "biblio",
@@ -122,6 +104,7 @@ $APPLICATION->SetTitle("Публикации");
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Новости",
+		"PERIOD_NEW_TAGS" => "",
 		"PREVIEW_TRUNCATE_LEN" => "",
 		"SEF_FOLDER" => "/publications/",
 		"SEF_MODE" => "Y",
@@ -133,12 +116,15 @@ $APPLICATION->SetTitle("Публикации");
 		"SORT_BY2" => "SORT",
 		"SORT_ORDER1" => "DESC",
 		"SORT_ORDER2" => "ASC",
+		"TAGS_CLOUD_ELEMENTS" => "150",
+		"TAGS_CLOUD_WIDTH" => "100%",
 		"USE_CATEGORIES" => "N",
-		"USE_FILTER" => "N",
+		"USE_FILTER" => "Y",
 		"USE_PERMISSIONS" => "N",
 		"USE_RATING" => "N",
 		"USE_RSS" => "N",
 		"USE_SEARCH" => "N",
+		"USE_SHARE" => "N",
 		"SEF_URL_TEMPLATES" => array(
 			"news" => "",
 			"section" => "",
@@ -146,5 +132,4 @@ $APPLICATION->SetTitle("Публикации");
 		)
 	),
 	false
-);?>
-<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

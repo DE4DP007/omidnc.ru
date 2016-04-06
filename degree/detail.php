@@ -1,10 +1,9 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Ученая степень детально");
-?>
-<br>
-<br>
-<br>
+?><br>
+ <br>
+ <br>
  <?$APPLICATION->IncludeComponent(
 	"bitrix:news.detail",
 	"",
@@ -56,10 +55,9 @@ $APPLICATION->SetTitle("Ученая степень детально");
 		"USE_PERMISSIONS" => "N",
 		"USE_SHARE" => "N"
 	)
-);?>
-	<br>
-	<h4>Список сотрудников</h4>
-<?
+);?> <br>
+<h4>Список сотрудников</h4>
+ <?
 $arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
 $arFilter = Array("IBLOCK_ID"=>5, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "PROPERTY_DEGREE" => getCurrentID(6, $_REQUEST["ELEMENT_CODE"]));
 $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);
@@ -72,11 +70,10 @@ while($ob = $res->GetNextElement())
 	echo "<br>";
 }
 echo $res->NavPrint("Степени");
-?>
-	<br>
-	<p>
-		<a href="/degree/">&larr; К ученым степеням</a>
-	</p>
+?> <br>
+<p>
+ <a href="/degree/">← К ученым степеням</a>
+</p>
 <?
 function getCurrentID($iblock_id, $code)
 {
@@ -89,5 +86,4 @@ function getCurrentID($iblock_id, $code)
 		else return $element['ID'];
 	}
 }
-?>
-<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
