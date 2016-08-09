@@ -6,7 +6,7 @@ IncludeTemplateLangFile(__FILE__);?>
 
 
 
-    <?if ($APPLICATION->GetCurPage(false) != "/contacts/"):?>
+    <?if ($APPLICATION->GetCurPage(false) != GetMessage("CONTACT_URL")):?>
         <!-- Call to Action Section -->
         <div class="well">
             <div class="row">
@@ -20,7 +20,7 @@ IncludeTemplateLangFile(__FILE__);?>
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <a class="btn btn-lg btn-default btn-block" href="<?SITE_DIR?>/contacts#contactform">Связаться с нами</a>
+                    <a class="btn btn-lg btn-default btn-block" href="<?echo SITE_DIR;?>contacts#contactform"><?echo GetMessage("CALL_US");?></a>
                 </div>
             </div>
         </div>
@@ -38,6 +38,19 @@ IncludeTemplateLangFile(__FILE__);?>
                         Array(),
                         Array("MODE"=>"html")
                     );?>
+                </p>
+                <p>
+                    <?
+                    if(SITE_ID == "s1") {
+                        echo "RU";
+                        echo " | ";
+                        echo "<a href='/en/", substr($APPLICATION->GetCurPage(false), 1), "' style=\"color: black\">EN</a>";
+                    } else {
+                        echo "<a href='", substr($APPLICATION->GetCurPage(false), 3), "' style=\"color: black\">RU</a>";
+                        echo " | ";
+                        echo "EN";
+                    }
+                    ?>
                 </p>
             </div>
         </div>

@@ -2,79 +2,74 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Журналы");
 ?>
-<br>
-<br>
-<br>
-<br>
- <?$APPLICATION->IncludeComponent(
-	"bitrix:news.list", 
-	".default", 
-	array(
-		"ACTIVE_DATE_FORMAT" => "d.m.Y",
-		"ADD_SECTIONS_CHAIN" => "Y",
-		"AJAX_MODE" => "N",
-		"AJAX_OPTION_ADDITIONAL" => "",
-		"AJAX_OPTION_HISTORY" => "N",
-		"AJAX_OPTION_JUMP" => "N",
-		"AJAX_OPTION_STYLE" => "Y",
-		"CACHE_FILTER" => "N",
-		"CACHE_GROUPS" => "Y",
-		"CACHE_TIME" => "36000000",
-		"CACHE_TYPE" => "A",
-		"CHECK_DATES" => "Y",
-		"COMPONENT_TEMPLATE" => ".default",
-		"DETAIL_URL" => "",
-		"DISPLAY_BOTTOM_PAGER" => "Y",
-		"DISPLAY_DATE" => "Y",
-		"DISPLAY_NAME" => "Y",
-		"DISPLAY_PICTURE" => "Y",
-		"DISPLAY_PREVIEW_TEXT" => "Y",
-		"DISPLAY_TOP_PAGER" => "N",
-		"FIELD_CODE" => array(
-			0 => "",
-			1 => "",
-		),
-		"FILTER_NAME" => "",
-		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
-		"IBLOCK_ID" => "11",
-		"IBLOCK_TYPE" => "biblio",
-		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
-		"INCLUDE_SUBSECTIONS" => "Y",
-		"MESSAGE_404" => "",
-		"NEWS_COUNT" => "20",
-		"PAGER_BASE_LINK_ENABLE" => "N",
-		"PAGER_DESC_NUMBERING" => "N",
-		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-		"PAGER_SHOW_ALL" => "N",
-		"PAGER_SHOW_ALWAYS" => "N",
-		"PAGER_TEMPLATE" => ".default",
-		"PAGER_TITLE" => "Новости",
-		"PARENT_SECTION" => "",
-		"PARENT_SECTION_CODE" => "",
-		"PREVIEW_TRUNCATE_LEN" => "",
-		"PROPERTY_CODE" => array(
-			0 => "ENTitle",
-			1 => "Title",
-			2 => "ENDescription",
-			3 => "Description",
-			4 => "",
-		),
-		"SET_BROWSER_TITLE" => "Y",
-		"SET_LAST_MODIFIED" => "N",
-		"SET_META_DESCRIPTION" => "Y",
-		"SET_META_KEYWORDS" => "Y",
-		"SET_STATUS_404" => "N",
-		"SET_TITLE" => "Y",
-		"SHOW_404" => "N",
-		"SORT_BY1" => "ACTIVE_FROM",
-		"SORT_BY2" => "SORT",
-		"SORT_ORDER1" => "DESC",
-		"SORT_ORDER2" => "ASC"
-	),
-	false
-);?> <br>
-<?CModule::IncludeModule('iblock');
+<?
+if(SITE_ID == s1) {
+	$prop['HEAD'] = "Список";
+	$prop['HEAD_SMALL'] = "изданий";
+	$prop['MAIN'] = "Главная";
+	$prop['JOURNALS'] = "Издания";
+	$prop['TITLE'] = "TITLE";
+	$prop['DESCRIPTION'] = "DESCRIPTION";
+	$prop['PUBL_STR'] = "Статьи";
+} else {
+	$prop['HEAD'] = "List";
+	$prop['HEAD_SMALL'] = "of journals";
+	$prop['MAIN'] = "Main";
+	$prop['JOURNALS'] = "Journals";
+	$prop['TITLE'] = "TITLE_EN";
+	$prop['DESCRIPTION'] = "DESCRIPTION_EN";
+	$prop['PUBL_STR'] = "Publications";
+}
+?>
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">
+			<?echo $prop['HEAD'];?>
+			<small><?echo $prop['HEAD_SMALL'];?></small>
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href=<?echo SITE_DIR;?>><?echo $prop['MAIN'];?></a></li>
+			<li class="active"><?echo $prop['JOURNALS'];?></li>
+		</ol>
+	</div>
+</div>
+<?
+CModule::IncludeModule("iblock");
+$arSelect = Array("ID", "NAME", "DETAIL_PAGE_URL", "PREVIEW_PICTURE");
+$arFilter = Array("IBLOCK_ID"=>11);
+$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);
+while ($ob = $res->GetNextElement()) {
+	$arFields = $ob->GetFields();
+	$arProp = $ob->GetProperties();
+	echo "<p><b>", "<a href='", $arFields["DETAIL_PAGE_URL"], "'>", $arProp[$prop['TITLE']]['VALUE'], "</a></b><br>";
+	if(CFile::GetPath($arFields['PREVIEW_PICTURE']) != null) {
+		echo "<img src=", CFile::GetPath($arFields['PREVIEW_PICTURE']), "><br>";
+	}
+	if($arProp[$prop["DESCRIPTION"]]["VALUE"] != null){
+		echo $arProp[$prop['DESCRIPTION']]['NAME'], ": ", $arProp[$prop['DESCRIPTION']]['VALUE'], "<br>";
+	}
+	if(getSize(9, "PROPERTY_JOURNAL", $arFields['ID']) != 0) {
+		$arFilter1 = Array("IBLOCK_ID"=>9, "PROPERTY_JOURNAL"=>$arFields['ID']);
+		$res1 = CIBlockElement::GetList(Array(), $arFilter1, false, Array("nPageSize"=>10), $arSelect);
+		echo $prop['PUBL_STR'], ":<br>";
+		while ($ob1 = $res1->GetNextElement()) {
+			$arFields1 = $ob1->GetFields();
+			$arProp1 = $ob1->GetProperties();
+			echo "<a href='", $arFields1["DETAIL_PAGE_URL"], "'>", $arProp1[$prop['TITLE']]['VALUE'], "<br>";
+		}
+	}
+	echo "</p>";
+}
+?>
+<?
+function getSize($block, $property, $id)
+{
+	return CIBlockElement::GetList(array(), array('IBLOCK_ID' => $block, $property => $id), array(), false, array('ID', 'NAME'));
+}
+?>
+<?
 $arFilter = array('IBLOCK_ID' => 11);
 $res = CIBlockElement::GetList(false, $arFilter, array('IBLOCK_ID'));
 if ($el = $res->Fetch())
-	echo 'Количество изданий: '.$el['CNT'];?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+	echo 'Количество изданий: '.$el['CNT'];?>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

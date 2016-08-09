@@ -61,11 +61,23 @@
 
     <!--Custom OMI Tools -->
     <script type="text/javascript" src="<?=SITE_TEMPLATE_PATH?>/js/omiTools.js"></script>
+	
+	<!--Google Analytics-->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-81114331-2', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
 </head>
 
 <body>
 <!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="z-index: 100">
     <!-- Bitrix Panel -->
     <div id="panel"><?$APPLICATION->ShowPanel();?></div>
 
@@ -78,29 +90,36 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" id="omilogo" href="<?SITE_DIR?>/">
+            <a class="navbar-brand" id="omilogo" href="<?echo GetMessage("TEXT_HEADER_URL")?>">
                 <img class="img-responsive" id="omi-logo" src="<?=SITE_TEMPLATE_PATH?>/images/omi-logo.png" alt="Отдел Математики и Информатики" />
-                Отдел Математики и Информатики
-                <br><small>Дагестанского научного центра РАН</small>
+                <?echo GetMessage("TEXT_HEADER_TOP");?>
+                <br><small><?echo GetMessage("TEXT_HEADER_BOTTOM");?></small>
             </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <?$APPLICATION->IncludeComponent("bitrix:menu", "omidnc", array(
-                "ROOT_MENU_TYPE" => "top",
-                "MAX_LEVEL" => "2",
-                "CHILD_MENU_TYPE" => "left",
-                "USE_EXT" => "Y",
-                "MENU_CACHE_TYPE" => "A",
-                "MENU_CACHE_TIME" => "36000000",
-                "MENU_CACHE_USE_GROUPS" => "Y",
-                "MENU_CACHE_GET_VARS" => ""
-            ),
-                false,
-                array(
-                    "ACTIVE_COMPONENT" => "Y"
-                )
-            );?>
+            <?$APPLICATION->IncludeComponent(
+	"bitrix:menu", 
+	"omidnc", 
+	array(
+		"ROOT_MENU_TYPE" => "top",
+		"MAX_LEVEL" => "2",
+		"CHILD_MENU_TYPE" => "left",
+		"USE_EXT" => "Y",
+		"MENU_CACHE_TYPE" => "A",
+		"MENU_CACHE_TIME" => "36000000",
+		"MENU_CACHE_USE_GROUPS" => "Y",
+		"MENU_CACHE_GET_VARS" => array(
+		),
+		"COMPONENT_TEMPLATE" => "omidnc",
+		"DELAY" => "N",
+		"ALLOW_MULTI_SELECT" => "N"
+	),
+	false,
+	array(
+		"ACTIVE_COMPONENT" => "Y"
+	)
+);?>
         </div>
         <!-- /.navbar-collapse -->
     </div>
@@ -108,7 +127,7 @@
 </nav>
 
 <!-- ========== MAKE IT ON MAIN PAGE ONLY! =========== -->
-<?if ($APPLICATION->GetCurPage(false) == "/"):?>
+<?if ($APPLICATION->GetCurPage(false) == GetMessage("TEXT_HEADER_URL")):?>
 <!-- Header Carousel -->
     <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
@@ -130,7 +149,7 @@
                     <img src="<?=SITE_TEMPLATE_PATH?>/images/seminavr.jpg" alt="Заседание семинара Отдела">
                 </div>
                 <div class="carousel-caption">
-                    <h2>Заседание Отдела Математики и Информатики</h2>
+                    <h2><?echo GetMessage("ZASEDANIE");?></h2>
                 </div>
             </div>
             <div class="item">
@@ -138,7 +157,7 @@
                     <img src="<?=SITE_TEMPLATE_PATH?>/images/70year.jpg" alt="70 лет Дагестанскому научному центру РАН">
                 </div>
                 <div class="carousel-caption">
-                    <h2>70 лет Дагестанскому научному центру РАН</h2>
+                    <h2><?echo GetMessage("70_YEARS");?></h2>
                 </div>
                 <!--<div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>-->
             </div>

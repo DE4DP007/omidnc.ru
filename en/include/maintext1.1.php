@@ -1,0 +1,1 @@
+Functional classes and their approach, and the ranks of the Radon transform and Fourier transform their appeal, the theory and applications of orthogonal polynomials of one and several variables, extreme properties of polynomials.

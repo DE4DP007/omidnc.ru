@@ -1,0 +1,1 @@
+Spectral theory of linear differential operators beams, boundary value problems for equations of mathematical physics, optimization methods for solving the transport equations, statistical modeling in physics of fractals, modeling of the erosion of the Caspian Sea.

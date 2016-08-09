@@ -1,0 +1,1 @@
+<i class="fa fa-fw fa-bar-chart"></i>&nbsp;&nbsp;Differential equations and modeling techniques

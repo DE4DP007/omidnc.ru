@@ -1,0 +1,39 @@
+<?
+$aMenuLinks = Array(
+	Array(
+		"About Department", 
+		"about/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Scientists", 
+		"scientist/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Scientific work", 
+		"scientific-work/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Publications", 
+		"publications/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Contacts", 
+		"contacts/", 
+		Array(), 
+		Array(), 
+		"" 
+	)
+);
+?>

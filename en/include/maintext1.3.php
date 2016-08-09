@@ -1,0 +1,1 @@
+Optimize schedules, questions the complexity of algorithms, optimization program based on the Component Object technology, the creation of a package of handling and compression of digital information programs.

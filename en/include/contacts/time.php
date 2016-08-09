@@ -1,0 +1,1 @@
+Monday - Friday <br> from 9:00 to 18:00

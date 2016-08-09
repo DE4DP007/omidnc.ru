@@ -1,49 +1,21 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Типы публикаций детально");
+$APPLICATION->SetTitle("Должность детально");
 ?>
 <?
-if(SITE_ID == s1) {
-	$prop['TITLE'] = "TITLE";
-	$prop['HEAD'] = "Тип";
-	$prop['HEAD_SMALL'] = "публикации";
-	$prop['PUB_LIST'] = "Список публикаций";
-	$prop['MAIN'] = "Главная";
-	$prop['TYPE'] = "Типы публикаций";
+if(SITE_ID == s1){
+	title("Автор", "Авторы", "Главная", "FULL_NAME");
+	$prop[0] = "NAME";
+	$prop[1] = "SURNAME";
+	$prop[2] = "PATRONIM";
 } else {
-	$prop['TITLE'] = "TITLE_EN";
-	$prop['HEAD'] = "Type";
-	$prop['HEAD_SMALL'] = "of publication";
-	$prop['PUB_LIST'] = "Publication list";
-	$prop['MAIN'] = "Main";
-	$prop['TYPE'] = "Type of publications";
+	title("Author", "Authors", "Main", "FULL_NAME_EN");
+	$prop[0] = "ENNAME";
+	$prop[1] = "ENSURNAME";
+	$prop[2] = "ENPATRONIM";
 }
 ?>
-<?
-$arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
-$arFilter = Array("IBLOCK_ID"=>10, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "ID" => getCurrentID(10, $_REQUEST["ELEMENT_CODE"]));
-$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);
-while($ob = $res->GetNextElement())
-{
-	$arProp = $ob->GetProperties();
-	$detail = $arProp[$prop['TITLE']]['VALUE'];
-}
-?>
-	<div class="row">
-		<div class="col-lg-12">
-			<h1 class="page-header">
-				<?echo $prop['HEAD'];?>
-				<small><?echo $prop['HEAD_SMALL']?></small>
-			</h1>
-			<ol class="breadcrumb">
-				<li><a href=<?echo SITE_DIR;?>><?echo $prop['MAIN']?></a></li>
-				<li class="active"><a href="<?echo SITE_DIR;?>publtype/"><?echo $prop['TYPE']?></a></li>
-				<li class="active"><?echo $detail;?></li>
-			</ol>
-
-		</div>
-	</div>
-<?$APPLICATION->IncludeComponent(
+ <?$APPLICATION->IncludeComponent(
 	"bitrix:news.detail", 
 	".default", 
 	array(
@@ -74,7 +46,7 @@ while($ob = $res->GetNextElement())
 			0 => "",
 			1 => "",
 		),
-		"IBLOCK_ID" => "10",
+		"IBLOCK_ID" => "12",
 		"IBLOCK_TYPE" => "biblio",
 		"IBLOCK_URL" => "",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
@@ -86,8 +58,9 @@ while($ob = $res->GetNextElement())
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Страница",
 		"PROPERTY_CODE" => array(
-			0 => $prop["TITLE"],
-			1 => "",
+			0 => $prop[1],
+			1 => $prop[0],
+			2 => $prop[2],
 		),
 		"SET_BROWSER_TITLE" => "Y",
 		"SET_CANONICAL_URL" => "N",
@@ -103,20 +76,29 @@ while($ob = $res->GetNextElement())
 	false
 );?>
 <?
-if (getSize(9, "PROPERTY_PUBLTYPE", getCurrentID(10, $_REQUEST["ELEMENT_CODE"])) != 0) {
-	echo "<h4>", $prop['PUB_LIST'], "</h4>";
+if(SITE_ID == s1) {
+	getPublication("Список публикаций", "Публикации", "TITLE");
+} else {
+	getPublication("Publication list", "Publications", "TITLE_EN");
+}
+?>
+<?
+function getPublication($publStr, $navStr, $titleStr) {
+	echo "<br>
+	<h4>", $publStr, "</h4>";
 	$arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
-	$arFilter = Array("IBLOCK_ID"=>9, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "PROPERTY_PUBLTYPE" => getCurrentID(10, $_REQUEST["ELEMENT_CODE"]));
+	$arFilter = Array("IBLOCK_ID"=>9, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "PROPERTY_AUTHORS" => getCurrentID(12, $_REQUEST["ELEMENT_CODE"]));
 	$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);
 	$res->NavStart(10);
+	echo $res->NavPrint($navStr), "<br>";
 	while($ob = $res->GetNextElement())
 	{
 		$arFields = $ob->GetFields();
 		$arProp = $ob->GetProperties();
-		echo "<a href='",$arFields['DETAIL_PAGE_URL'], "'>", $arProp[$prop['TITLE']]['VALUE'], "</a>";
+		echo "<a href='",$arFields['DETAIL_PAGE_URL'], "'>", $arProp[$titleStr]['VALUE'], "</a>";
 		echo "<br>";
 	}
-	echo $res->NavPrint($prop['PUB_LIST']);
+	echo $res->NavPrint($navStr);
 }
 ?>
 <?
@@ -133,9 +115,28 @@ function getCurrentID($iblock_id, $code)
 }
 ?>
 <?
-function getSize($block, $property, $id)
-{
-	return CIBlockElement::GetList(array(), array('IBLOCK_ID' => $block, $property => $id), array(), false, array('ID', 'NAME'));
+function title($author, $authors, $main, $full_text) {
+	$arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
+	$arFilter = Array("IBLOCK_ID"=>12, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "ID" => getCurrentID(12, $_REQUEST["ELEMENT_CODE"]));
+	$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);
+	while($ob = $res->GetNextElement())
+	{
+		$arProp = $ob->GetProperties();
+		$detail = $arProp[$full_text]['VALUE'];
+	}
+	echo "<div class=\"row\">
+		<div class=\"col-lg-12\">
+			<h1 class=\"page-header\">",
+				$author,
+			"</h1>
+			<ol class=\"breadcrumb\">
+				<li><a href=", SITE_DIR, ">", $main, "</a></li>
+				<li class=\"active\"><a href=", SITE_DIR, "authors/", ">", $authors, "</a></li>
+				<li class=\"active\">", $detail, "</li>
+			</ol>
+
+		</div>
+	</div>";
 }
 ?>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

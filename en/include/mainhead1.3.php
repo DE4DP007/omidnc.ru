@@ -1,0 +1,1 @@
+<i class="fa fa-fw fa-line-chart"></i>&nbsp;&nbsp;Modern Problems of computer science and discrete mathematics
