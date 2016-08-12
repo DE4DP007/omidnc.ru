@@ -1,0 +1,1 @@
+<img class="img-responsive img-rounded" src="<?=SITE_TEMPLATE_PATH?>/images/zased.jpg" alt="Meeting Seminar of the Department of Mathematics and Informatics">

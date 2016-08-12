@@ -1,10 +1,51 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Ученая степень детально");
-?><br>
- <br>
- <br>
- <?$APPLICATION->IncludeComponent(
+$APPLICATION->SetTitle("Должность детально");
+?>
+<?
+if(SITE_ID == s1) {
+	$prop["MAIN"] = "Главная";
+	$prop["POSITIONS"] = "Ученые степени";
+	$prop['HEAD'] = "Ученая степень";
+	$prop['HEAD_SMALL'] = "сотрудников";
+	$prop["TITLE"] = "TITLE";
+	$prop["SHORT_TITLE"] = "SHORT_TITLE";
+	$prop['SCI_LIST'] = "Список сотрудников";
+	$prop['FULL_NAME'] = "FULL_NAME";
+} else {
+	$prop["MAIN"] = "Main";
+	$prop["POSITIONS"] = "Degrees";
+	$prop['HEAD'] = "Degree";
+	$prop['HEAD_SMALL'] = "of scientists";
+	$prop["TITLE"] = "TITLE_EN";
+	$prop["SHORT_TITLE"] = "SHORT_TITLE_EN";
+	$prop['SCI_LIST'] = "Scientists list";
+	$prop['FULL_NAME'] = "FULL_NAME_EN";
+}
+$arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
+$arFilter = Array("IBLOCK_ID"=>6, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "ID" => getCurrentID(6, $_REQUEST["ELEMENT_CODE"]));
+$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);
+while($ob = $res->GetNextElement())
+{
+	$arProp = $ob->GetProperties();
+	$detail = $arProp[$prop['TITLE']]['VALUE'];
+}
+?>
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">
+				<?echo $prop['HEAD'];?>
+				<small><?echo $prop['HEAD_SMALL'];?></small>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href=<?echo SITE_DIR;?>><?echo $prop['MAIN'];?></a></li>
+				<li class="active"><a href="<?echo SITE_DIR;?>degree/"><?echo $prop['POSITIONS']?></a></li>
+				<li class="active"><?echo $detail;?></li>
+			</ol>
+
+		</div>
+	</div>
+<?$APPLICATION->IncludeComponent(
 	"bitrix:news.detail",
 	"",
 	Array(
@@ -43,7 +84,7 @@ $APPLICATION->SetTitle("Ученая степень детально");
 		"PAGER_SHOW_ALL" => "N",
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Страница",
-		"PROPERTY_CODE" => array("SHORT_TITLE","TITLE",""),
+		"PROPERTY_CODE" => array($prop["TITLE"],$prop["SHORT_TITLE"],""),
 		"SET_BROWSER_TITLE" => "Y",
 		"SET_CANONICAL_URL" => "N",
 		"SET_LAST_MODIFIED" => "N",
@@ -55,25 +96,24 @@ $APPLICATION->SetTitle("Ученая степень детально");
 		"USE_PERMISSIONS" => "N",
 		"USE_SHARE" => "N"
 	)
-);?> <br>
-<h4>Список сотрудников</h4>
- <?
+);?>
+	<br>
+	<h4><?echo $prop['SCI_LIST'];?></h4>
+<?
 $arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
 $arFilter = Array("IBLOCK_ID"=>5, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "PROPERTY_DEGREE" => getCurrentID(6, $_REQUEST["ELEMENT_CODE"]));
 $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);
 $res->NavStart(10);
-echo $res->NavPrint("Степени"), "<br>";
+echo $res->NavPrint("Должности"), "<br>";
 while($ob = $res->GetNextElement())
 {
 	$arFields = $ob->GetFields();
-	echo "<a href='",$arFields['DETAIL_PAGE_URL'], "'>", $arFields['NAME'], "</a>";
+	$arProp = $ob->GetProperties();
+	echo "<a href='",$arFields['DETAIL_PAGE_URL'], "'>", $arProp[$prop['FULL_NAME']]['VALUE'], "</a>";
 	echo "<br>";
 }
-echo $res->NavPrint("Степени");
-?> <br>
-<p>
- <a href="/degree/">← К ученым степеням</a>
-</p>
+echo $res->NavPrint("Должности");
+?>
 <?
 function getCurrentID($iblock_id, $code)
 {
@@ -86,4 +126,5 @@ function getCurrentID($iblock_id, $code)
 		else return $element['ID'];
 	}
 }
-?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+?>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

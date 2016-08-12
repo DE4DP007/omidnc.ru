@@ -2,10 +2,49 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Должность детально");
 ?>
-<br>
-<br>
-<br>
-<br>
+<?
+if(SITE_ID == s1) {
+	$prop["MAIN"] = "Главная";
+	$prop["POSITIONS"] = "Должности";
+	$prop['HEAD'] = "Должность";
+	$prop['HEAD_SMALL'] = "сотрудников";
+	$prop["TITLE"] = "TITLE";
+	$prop["SHORT_TITLE"] = "SHORT_TITLE";
+	$prop['SCI_LIST'] = "Список сотрудников";
+	$prop['FULL_NAME'] = "FULL_NAME";
+} else {
+	$prop["MAIN"] = "Main";
+	$prop["POSITIONS"] = "Positions";
+	$prop['HEAD'] = "Position";
+	$prop['HEAD_SMALL'] = "of scientists";
+	$prop["TITLE"] = "TITLE_EN";
+	$prop["SHORT_TITLE"] = "SHORT_TITLE_EN";
+	$prop['SCI_LIST'] = "Scientists list";
+	$prop['FULL_NAME'] = "FULL_NAME_EN";
+}
+$arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
+$arFilter = Array("IBLOCK_ID"=>7, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "ID" => getCurrentID(7, $_REQUEST["ELEMENT_CODE"]));
+$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);
+while($ob = $res->GetNextElement())
+{
+	$arProp = $ob->GetProperties();
+	$detail = $arProp[$prop['TITLE']]['VALUE'];
+}
+?>
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">
+				<?echo $prop['HEAD'];?>
+				<small><?echo $prop['HEAD_SMALL'];?></small>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href=<?echo SITE_DIR;?>><?echo $prop['MAIN'];?></a></li>
+				<li class="active"><a href="<?echo SITE_DIR;?>position/"><?echo $prop['POSITIONS']?></a></li>
+				<li class="active"><?echo $detail;?></li>
+			</ol>
+
+		</div>
+	</div>
  <?$APPLICATION->IncludeComponent(
 	"bitrix:news.detail",
 	"",
@@ -45,7 +84,7 @@ $APPLICATION->SetTitle("Должность детально");
 		"PAGER_SHOW_ALL" => "N",
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Страница",
-		"PROPERTY_CODE" => array("SHORT_TITLE","TITLE",""),
+		"PROPERTY_CODE" => array($prop["TITLE"],$prop["SHORT_TITLE"],""),
 		"SET_BROWSER_TITLE" => "Y",
 		"SET_CANONICAL_URL" => "N",
 		"SET_LAST_MODIFIED" => "N",
@@ -58,26 +97,25 @@ $APPLICATION->SetTitle("Должность детально");
 		"USE_SHARE" => "N"
 	)
 );?>
-	<br>
-	<h4>Список сотрудников</h4>
 <?
-$arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
-$arFilter = Array("IBLOCK_ID"=>5, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "PROPERTY_RANK" => getCurrentID(7, $_REQUEST["ELEMENT_CODE"]));
-$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>50), $arSelect);
-$res->NavStart(10);
-echo $res->NavPrint("Должности"), "<br>";
-while($ob = $res->GetNextElement())
+if(getSize(5, "PROPERTY_RANK", getCurrentID(7, $_REQUEST["ELEMENT_CODE"])) != 0)
 {
-	$arFields = $ob->GetFields();
-	echo "<a href='",$arFields['DETAIL_PAGE_URL'], "'>", $arFields['NAME'], "</a>";
-	echo "<br>";
+	echo "<br><h4>", $prop['SCI_LIST'], "</h4>";
+	$arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
+	$arFilter = Array("IBLOCK_ID"=>5, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "PROPERTY_RANK" => getCurrentID(7, $_REQUEST["ELEMENT_CODE"]));
+	$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);
+	$res->NavStart(10);
+	echo $res->NavPrint("Должности"), "<br>";
+	while($ob = $res->GetNextElement())
+	{
+		$arFields = $ob->GetFields();
+		$arProp = $ob->GetProperties();
+		echo "<a href='",$arFields['DETAIL_PAGE_URL'], "'>", $arProp[$prop['FULL_NAME']]['VALUE'], "</a>";
+		echo "<br>";
+	}
+	echo $res->NavPrint("Должности");
 }
-echo $res->NavPrint("Должности");
 ?>
-	<br>
-	<p>
-		<a href="/position/">&larr; К должностям</a>
-	</p>
 <?
 function getCurrentID($iblock_id, $code)
 {
@@ -89,6 +127,12 @@ function getCurrentID($iblock_id, $code)
 		if($res->SelectedRowsCount() != 1) return '<p>Элемент не найден</p>';
 		else return $element['ID'];
 	}
+}
+?>
+<?
+function getSize($block, $property, $id)
+{
+	return CIBlockElement::GetList(array(), array('IBLOCK_ID' => $block, $property => $id), array(), false, array('ID', 'NAME'));
 }
 ?>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
