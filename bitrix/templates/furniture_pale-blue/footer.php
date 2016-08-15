@@ -8,7 +8,7 @@ IncludeTemplateLangFile(__FILE__);?>
 
     <?if ($APPLICATION->GetCurPage(false) != GetMessage("CONTACT_URL")):?>
         <!-- Call to Action Section -->
-        <div class="well">
+        <div class="well col-md-12">
             <div class="row">
                 <div class="col-md-8">
                     <p>

@@ -35,27 +35,44 @@ $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10)
 while ($ob = $res->GetNextElement()) {
 	$arFields = $ob->GetFields();
 	$arProp = $ob->GetProperties();
-	echo "<p><b>", "<a href='", $arFields["DETAIL_PAGE_URL"], "'>", $arProp[$prop['FULL_NAME']]['VALUE'], "</a></b><br>";
-	echo "<img src=", CFile::GetPath($arFields['PREVIEW_PICTURE']), "><br>";
-	echo $arProp[$prop['SURNAME']]['NAME'], ": ", $arProp[$prop['SURNAME']]['VALUE'], "<br>";
-	echo $arProp[$prop['NAME']]['NAME'], ": ", $arProp[$prop['NAME']]['VALUE'], "<br>";
-	echo $arProp[$prop['PATRONIM']]['NAME'], ": ", $arProp[$prop['PATRONIM']]['VALUE'], "<br>";
-	echo $arProp[$prop['DESCRIPTION']]['NAME'], ": ", $arProp[$prop['DESCRIPTION']]['VALUE'], "<br>";
+	echo "<div class=\"col-md-6 col-sm-12\">";
+	echo "<div class=\"thumbnail container-fluid\">";
+	echo "<img class=\"thumbnail\" src=", CFile::GetPath($arFields['PREVIEW_PICTURE']), ">";
+	echo "<div class=\"scientist-det-group col-md-12\"><b>", "<a href='", $arFields["DETAIL_PAGE_URL"], "'>", $arProp[$prop['FULL_NAME']]['VALUE'], "</a></b><br>";
 	$arFilterI = Array("IBLOCK_ID"=>7, "ID" => $arProp['RANK']['VALUE']);
 	$resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array("nPageSize"=>10));
 	while($obI = $resI->GetNextElement()) {
 		$arPropI = $obI->GetProperties();
 		$arFieldsI = $obI->GetFields();
-		echo $prop['RANK_STRING'], ": <a href=", $arFieldsI['DETAIL_PAGE_URL'], ">", $arPropI[$prop['RANK']]['VALUE'], "</a><br>";
+		echo "<a href=", $arFieldsI['DETAIL_PAGE_URL'], ">", $arPropI[$prop['RANK']]['VALUE'], "</a><br>";
 	}
 	$arFilterI = Array("IBLOCK_ID"=>6, "ID" => $arProp['DEGREE']['VALUE']);
 	$resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array("nPageSize"=>10));
 	while($obI = $resI->GetNextElement()) {
 		$arPropI = $obI->GetProperties();
 		$arFieldsI = $obI->GetFields();
-		echo $prop['DEGREE_STRING'], ": <a href=", $arFieldsI['DETAIL_PAGE_URL'], ">", $arPropI[$prop['DEGREE']]['VALUE'], "</a><br>";
+		echo "<a href=", $arFieldsI['DETAIL_PAGE_URL'], ">", $arPropI[$prop['DEGREE']]['VALUE'], "</a><br>";
 	}
-	echo "</p>";
+	//echo $arProp[$prop['SURNAME']]['NAME'], ": ", $arProp[$prop['SURNAME']]['VALUE'], "<br>";
+	//echo $arProp[$prop['NAME']]['NAME'], ": ", $arProp[$prop['NAME']]['VALUE'], "<br>";
+	//echo $arProp[$prop['PATRONIM']]['NAME'], ": ", $arProp[$prop['PATRONIM']]['VALUE'], "<br>";
+	//echo $arProp[$prop['DESCRIPTION']]['NAME'], ": ", $arProp[$prop['DESCRIPTION']]['VALUE'], "<br>";
+
+	echo "</div>";
+    echo "<div class=\"col-md-12 text-justify\">";
+    echo mb_strimwidth($arProp[$prop['DESCRIPTION']]['VALUE'],0,500, "...");
+    echo "<div class='caption'><ul class=\"list-inline text-center\">
+                    <li><a href=\"#\"><i class=\"fa fa-2x fa-facebook-square\"></i></a>
+                    </li>
+                    <li><a href=\"#\"><i class=\"fa fa-2x fa-linkedin-square\"></i></a>
+                    </li>
+                    <li><a href=\"#\"><i class=\"fa fa-2x fa-twitter-square\"></i></a>
+                    </li>
+                </ul></div>";
+    echo "<a href=\"",$arFields["DETAIL_PAGE_URL"],"\" class=\"btn btn-primary sci-details\"><span class=\"glyphicon glyphicon-share-alt\"></span> Подробнее</a>";
+    echo "</div>";
+	echo "</div>";
+	echo "</div>";
 }
 ?>
 <?

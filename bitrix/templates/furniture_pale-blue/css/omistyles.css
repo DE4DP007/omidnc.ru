@@ -26,3 +26,15 @@
 .well { background-color: rgba(78, 179, 251, 0.15) !important; }
 
 /*#nirnapr .panel { min-height: 330px !important; }*/
+
+/*=======================================================*/
+
+
+.scientist-det-group
+{text-align:center;padding:0 0 5px 0;font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;height: 60px; }
+.scientist-det-group>a
+{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
+.sci-details
+{display:inline-block; border-radius: 3px; padding: 5px;margin: 5px 0 0 0;float:right;}
+.bt-margin5px
+{margin: 0 0 5px 0;}
