@@ -64,8 +64,8 @@ while($ob = $res->GetNextElement())
 
 <div class="news-detail">
 	<?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arResult["DETAIL_PICTURE"])):?>
-		<img
-			class="detail_picture"
+		<div class="detail_picture"><img
+			class="detail_picture thumbnail"
 			border="0"
 			src="<?=$arResult["DETAIL_PICTURE"]["SRC"]?>"
 			width="<?=$arResult["DETAIL_PICTURE"]["WIDTH"]?>"
@@ -73,6 +73,7 @@ while($ob = $res->GetNextElement())
 			alt="<?=$arResult["DETAIL_PICTURE"]["ALT"]?>"
 			title="<?=$arResult["DETAIL_PICTURE"]["TITLE"]?>"
 			/>
+		</div>
 	<?endif?>
 	<?if($arParams["DISPLAY_DATE"]!="N" && $arResult["DISPLAY_ACTIVE_FROM"]):?>
 		<span class="news-date-time"><?=$arResult["DISPLAY_ACTIVE_FROM"]?></span>
@@ -111,9 +112,10 @@ while($ob = $res->GetNextElement())
 	<?if($arParams["DISPLAY_PREVIEW_TEXT"]!="N" && $arResult["FIELDS"]["PREVIEW_TEXT"]):?>
 		<p><?=$arResult["FIELDS"]["PREVIEW_TEXT"];unset($arResult["FIELDS"]["PREVIEW_TEXT"]);?></p>
 	<?endif;?>
-	<p class="text-justify">Краткое описание Краткое описание Краткое описание
-		Краткое описание Краткое описание Краткое описание Краткое описание Краткое описание Краткое описание Краткое описание
+	<!-- Краткий текст -->
+	<p class="text-justify detail_preview"><?echo $arResult["PREVIEW_TEXT"];?>
 	</p>
+	<!-- Краткий текст -->
 	<div class="col-md-12 text-justify">
 	<?if($arResult["NAV_RESULT"]):?>
 		<?if($arParams["DISPLAY_TOP_PAGER"]):?><?=$arResult["NAV_STRING"]?><br /><?endif;?>
@@ -187,7 +189,7 @@ while($ob = $res->GetNextElement())
         $arFields = $ob->GetFields();
         $arFilter1 = Array("IBLOCK_ID"=>9, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "PROPERTY_AUTHORS" => $arFields['ID']);
         $res1 = CIBlockElement::GetList(Array(), $arFilter1, false, Array("nPageSize"=>10), $arSelect);
-        echo $prop['PUBL_STR'], ":<br>";
+        echo "<h3 class=\"text-center col-md-12\">", $prop['PUBL_STR'], ":</h3>";
         while ($ob1 = $res1->GetNextElement())
         {
             $arProp1 = $ob1->GetProperties();

@@ -24,6 +24,8 @@ $this->setFrameMode(true);?>
 
 
 	<div class="col-md-4 text-center" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
+        <?//test_dump($arit)?>
+
         <div class="thumbnail">
             <?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arItem["PREVIEW_PICTURE"])):?>
                 <img class="img-responsive img-rounded scientistphoto" src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>" alt="">

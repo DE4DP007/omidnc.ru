@@ -38,3 +38,11 @@
 {display:inline-block; border-radius: 3px; padding: 5px;margin: 5px 0 0 0;float:right;}
 .bt-margin5px
 {margin: 0 0 5px 0;}
+.news-detail
+{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
+.detail_picture
+{padding: 7px; border-radius: 15px;}
+div.detail_picture
+{padding: 0 15px 0 15px;}
+.detail_preview
+{padding: 0 15px 10px 15px;}
