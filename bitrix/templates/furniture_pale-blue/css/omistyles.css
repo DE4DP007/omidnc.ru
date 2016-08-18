@@ -23,7 +23,7 @@
 .btn-default:hover { background-color:#31721b !important; color:#ffffff !important; } /*7cb47c*/
 
 
-.well { background-color: rgba(78, 179, 251, 0.15) !important; }
+.well { background-color: rgba(78, 179, 251, 0.15) !important; margin: 30px 0 0 0; }
 
 /*#nirnapr .panel { min-height: 330px !important; }*/
 
@@ -41,8 +41,10 @@
 .news-detail
 {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
 .detail_picture
-{padding: 7px; border-radius: 15px;}
+{padding: 7px; border-radius: 15px; float: right;}
 div.detail_picture
-{padding: 0 15px 0 15px;}
+{padding: 0 0 0 7px; margin:0;}
 .detail_preview
-{padding: 0 15px 10px 15px;}
+{/*padding: 0 15px 10px 15px;*/}
+.no-padding-l-r
+{padding-left: 0 !important; padding-right: 0 !important;}

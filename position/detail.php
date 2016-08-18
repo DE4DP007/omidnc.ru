@@ -103,9 +103,10 @@ while($ob = $res->GetNextElement())
     <!-- Team Members -->
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="page-header">
+            <!-- <h2 class="page-header"> -->
+            <h3 class="text-center">
                 Список сотрудников на этой должности
-            </h2>
+            </h3>
         </div>
 
         <?function getCurrentID($iblock_id, $code) {

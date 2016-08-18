@@ -116,7 +116,7 @@ while($ob = $res->GetNextElement())
 	<p class="text-justify detail_preview"><?echo $arResult["PREVIEW_TEXT"];?>
 	</p>
 	<!-- Краткий текст -->
-	<div class="col-md-12 text-justify">
+	<div class="col-md-12 text-justify no-padding-l-r">
 	<?if($arResult["NAV_RESULT"]):?>
 		<?if($arParams["DISPLAY_TOP_PAGER"]):?><?=$arResult["NAV_STRING"]?><br /><?endif;?>
 		<?echo $arResult["NAV_TEXT"];?>
