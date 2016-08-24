@@ -36,8 +36,8 @@
 {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
 .sci-details
 {display:inline-block; border-radius: 3px; padding: 5px;margin: 5px 0 0 0;float:right;}
-.bt-margin5px
-{margin: 0 0 5px 0;}
+.bt-margin15px
+{margin: 0 0 15px 0;}
 .news-detail
 {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
 .detail_picture
@@ -48,3 +48,16 @@ div.detail_picture
 {/*padding: 0 15px 10px 15px;*/}
 .no-padding-l-r
 {padding-left: 0 !important; padding-right: 0 !important;}
+.sci-prop
+{line-height: 20px; font-size:16px;}
+.sci-prop-color-green
+{color:#335E2A;}
+.li-publ
+{padding:0 0 10px 0;line-height: 20px;}
+.ul-publ
+{padding:0 0 0 15px;}
+.top-margin10px
+{margin:10px 0 0 0;}
+.fs16px
+{font-size:16px;}
+

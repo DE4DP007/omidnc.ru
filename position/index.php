@@ -39,10 +39,12 @@ CModule::IncludeModule("iblock");
 $arSelect = Array("ID", "NAME", "DETAIL_PAGE_URL");
 $arFilter = Array("IBLOCK_ID"=>7);
 $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);
+echo "<div class=\"container-fluid\">";
+$i = 0;
 while ($ob = $res->GetNextElement()) {
 	$arFields = $ob->GetFields();
 	$arProp = $ob->GetProperties();
-	echo "<p><b>", "<a href='", $arFields["DETAIL_PAGE_URL"], "'>", $arProp[$prop['TITLE']]['VALUE'], "</a></b><br>";
+	echo "<p class=\"col-md-4 col-sm-6\"><b>", "<a href='", $arFields["DETAIL_PAGE_URL"], "'>", $arProp[$prop['TITLE']]['VALUE'], "</a></b><br>";
 	if($arProp[$prop['SHORT_TITLE']]['VALUE'])
 		echo $arProp[$prop['SHORT_TITLE']]['NAME'], ": ", $arProp[$prop['SHORT_TITLE']]['VALUE'], "<br>";
 	$arFilterI = Array("IBLOCK_ID"=>5, "PROPERTY_RANK" => $arFields['ID']);
@@ -57,7 +59,13 @@ while ($ob = $res->GetNextElement()) {
 		}
 	}
 	echo "</p>";
+	$i++;
+	if ($i%3 == 0)
+	{
+		echo "<div class=\"clearfix\"></div>";
+	}
 }
+echo "</div>";
 ?>
 <?
 function getSize($block, $property, $id)

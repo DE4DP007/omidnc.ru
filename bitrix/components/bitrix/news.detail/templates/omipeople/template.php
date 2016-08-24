@@ -26,6 +26,7 @@ if(SITE_ID == s1) {
 	$prop['TITLE'] = "TITLE";
 	$prop['DEGREE_STRING'] = "Ученая степень";
 	$prop['PUBL_STR'] = "Публикации";
+	$prop['BIBLIO'] = "BIBLIODATA";
 } else {
 	$prop['SCI'] = "Scientist";
 	$prop["FULL_NAME"] = "FULL_NAME_EN";
@@ -39,6 +40,7 @@ if(SITE_ID == s1) {
 	$prop['TITLE'] = "TITLE_EN";
 	$prop['DEGREE_STRING'] = "Academic degree";
 	$prop['PUBL_STR'] = "Publications";
+	$prop['BIBLIO'] = "BIBLIODATAEN";
 }
 $arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
 $arFilter = Array("IBLOCK_ID"=>5, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "ID" => getCurrentID(5, $_REQUEST["ELEMENT_CODE"]));
@@ -81,7 +83,7 @@ while($ob = $res->GetNextElement())
 	<?if($arParams["DISPLAY_NAME"]!="N" && $arResult["NAME"]):?>
 		<h3 class="text-center"><?=$arResult["NAME"]?></h3>
 	<?endif;?>
-	<div class="bt-margin5px text-center">
+	<div class="bt-margin15px text-center">
 	<?
 	$arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
 	$arFilter = Array("IBLOCK_ID"=>5, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "ID" => getCurrentID(5, $_REQUEST["ELEMENT_CODE"]));
@@ -109,14 +111,21 @@ while($ob = $res->GetNextElement())
 	}
 	?>
 	</div>
-	<?if($arParams["DISPLAY_PREVIEW_TEXT"]!="N" && $arResult["FIELDS"]["PREVIEW_TEXT"]):?>
+    <div class="sci-prop"><b class="sci-prop-color-green">Специальность ВАК:</b> 01.01.01</div>
+    <div class="sci-prop"><b class="sci-prop-color-green">Дата рождения:</b> 01.01.01</div>
+    <div class="sci-prop"><b class="sci-prop-color-green">E-mail:</b> test@mail.dd</div>
+    <div class="sci-prop"><b class="sci-prop-color-green">Ключевые слова:</b> ортогональные полиномы на сетках, смешанные ряды, функциональные пространства, переменный показатель, базисы, асимптотика, приближение, ряды Фурье.</div>
+    <div class="sci-prop"><b class="sci-prop-color-green">Коды УДК:</b> 513, 517.5, 517.518, 517.518.82, 517.587, 517.518.34, 517.98, 517.51, 519.644, 517.538</div>
+    <div class="sci-prop"><b class="sci-prop-color-green">Коды MSC:</b> 41A10, 33C45, 41A80, 42C10, 33A65, 41A60, 65D30, 65D32</div>
+    <div class="sci-prop"><b class="sci-prop-color-green">Основные темы научной работы:</b> Ортогональные полиномы, функциональные пространства, приближение функций.</div>
+    <?if($arParams["DISPLAY_PREVIEW_TEXT"]!="N" && $arResult["FIELDS"]["PREVIEW_TEXT"]):?>
 		<p><?=$arResult["FIELDS"]["PREVIEW_TEXT"];unset($arResult["FIELDS"]["PREVIEW_TEXT"]);?></p>
 	<?endif;?>
 	<!-- Краткий текст -->
-	<p class="text-justify detail_preview"><?echo $arResult["PREVIEW_TEXT"];?>
-	</p>
+	<!-- <p class="text-justify detail_preview"><?echo $arResult["PREVIEW_TEXT"];?>
+	</p> -->
 	<!-- Краткий текст -->
-	<div class="col-md-12 text-justify no-padding-l-r">
+	<div class="fs16px col-md-12 text-justify no-padding-l-r top-margin10px">
 	<?if($arResult["NAV_RESULT"]):?>
 		<?if($arParams["DISPLAY_TOP_PAGER"]):?><?=$arResult["NAV_STRING"]?><br /><?endif;?>
 		<?echo $arResult["NAV_TEXT"];?>
@@ -190,12 +199,18 @@ while($ob = $res->GetNextElement())
         $arFilter1 = Array("IBLOCK_ID"=>9, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "PROPERTY_AUTHORS" => $arFields['ID']);
         $res1 = CIBlockElement::GetList(Array(), $arFilter1, false, Array("nPageSize"=>10), $arSelect);
         echo "<h3 class=\"text-center col-md-12\">", $prop['PUBL_STR'], ":</h3>";
+		echo "<div class=\"col-md-12 no-padding-l-r\"><ul class=\"ul-publ\">";
+		//$i = 1;
         while ($ob1 = $res1->GetNextElement())
         {
             $arProp1 = $ob1->GetProperties();
             $arFields1 = $ob1->GetFields();
-            echo "<a href=", $arFields1['DETAIL_PAGE_URL'], ">", $arProp1[$prop['TITLE']]['VALUE'], "</a><br>";
+			//echo "<li type =\"circle\">",$i,"</li>";
+			//$i++;
+//			test_dump($arProp1);
+            echo "<li class=\"li-publ\" type =\"circle\"><a href=", $arFields1['DETAIL_PAGE_URL'], ">", $arProp1[$prop['TITLE']]['VALUE'], " // ",$arProp1[$prop["BIBLIO"]]['VALUE'], "</a></li>";
         }
+        echo "</ul></div>";
     }
     ?>
 <?

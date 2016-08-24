@@ -14,6 +14,7 @@ if(SITE_ID == s1) {
 	$prop['RANK'] = "TITLE";
 	$prop['DEGREE_STRING'] = "Ученая степень";
 	$prop['DEGREE'] = "TITLE";
+	$prop['MORE'] = "Подробнее";
 } else {
 	title("Scientists", "Main");
 	$prop['FULL_NAME'] = "FULL_NAME_EN";
@@ -25,6 +26,7 @@ if(SITE_ID == s1) {
 	$prop['RANK'] = "TITLE_EN";
 	$prop['DEGREE_STRING'] = "Academic degree";
 	$prop['DEGREE'] = "TITLE_EN";
+	$prop['MORE'] = "More";
 }
 ?>
 <?
@@ -35,7 +37,7 @@ $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10)
 while ($ob = $res->GetNextElement()) {
 	$arFields = $ob->GetFields();
 	$arProp = $ob->GetProperties();
-	echo "<div class=\"col-md-6 col-sm-12\">";
+	echo "<div class=\"test col-md-6 col-sm-12\">";
 	echo "<div class=\"thumbnail container-fluid\">";
 	echo "<img class=\"thumbnail\" src=", CFile::GetPath($arFields['PREVIEW_PICTURE']), ">";
 	echo "<div class=\"scientist-det-group col-md-12\"><b>", "<a href='", $arFields["DETAIL_PAGE_URL"], "'>", $arProp[$prop['FULL_NAME']]['VALUE'], "</a></b><br>";
@@ -69,7 +71,7 @@ while ($ob = $res->GetNextElement()) {
                     <li><a href=\"#\"><i class=\"fa fa-2x fa-twitter-square\"></i></a>
                     </li>
                 </ul></div>";
-    echo "<a href=\"",$arFields["DETAIL_PAGE_URL"],"\" class=\"btn btn-primary sci-details\"><span class=\"glyphicon glyphicon-share-alt\"></span> Подробнее</a>";
+    echo "<a href=\"",$arFields["DETAIL_PAGE_URL"],"\" class=\"btn btn-primary sci-details\"><span class=\"glyphicon glyphicon-share-alt\"></span>", $prop['MORE'], "</a>";
     echo "</div>";
 	echo "</div>";
 	echo "</div>";
