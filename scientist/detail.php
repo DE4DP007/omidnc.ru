@@ -6,7 +6,7 @@ $APPLICATION->SetTitle("Типы публикаций детально");
 
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.detail", 
-	"omipeople",
+	"omipeople", 
 	array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"ADD_ELEMENT_CHAIN" => "N",
@@ -21,7 +21,7 @@ $APPLICATION->SetTitle("Типы публикаций детально");
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
 		"CHECK_DATES" => "Y",
-		"COMPONENT_TEMPLATE" => ".default",
+		"COMPONENT_TEMPLATE" => "omipeople",
 		"DETAIL_URL" => "",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"DISPLAY_DATE" => "Y",
@@ -47,8 +47,16 @@ $APPLICATION->SetTitle("Типы публикаций детально");
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Страница",
 		"PROPERTY_CODE" => array(
-			0 => "",
-			1 => "",
+			0 => "DATE_OF_BIRTH",
+			1 => "VAK_SPEC_EN",
+			2 => "VAK_SPEC",
+			3 => "KEYWORDS",
+			4 => "KEYWORDS_EN",
+			5 => "UDK",
+			6 => "MSC",
+			7 => "NIR_SUBJECT",
+			8 => "NIR_SUBJECT_EN",
+			9 => "",
 		),
 		"SET_BROWSER_TITLE" => "Y",
 		"SET_CANONICAL_URL" => "N",

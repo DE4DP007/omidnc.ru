@@ -27,6 +27,14 @@ if(SITE_ID == s1) {
 	$prop['DEGREE_STRING'] = "Ученая степень";
 	$prop['PUBL_STR'] = "Публикации";
 	$prop['BIBLIO'] = "BIBLIODATA";
+	$prop['VAK_SPEC']="Специальность ВАК";
+	$prop['DATE_OF_BIRTH']="Дата рождения";
+	$prop['EMAIL']="E-mail";
+	$prop['KEYWORDS']="Ключевые слова";
+	$prop['DATE_OF_BIRTH']="Дата рождения";
+	$prop['UDK']="Коды УДК";
+	$prop['MSC']="Коды MSC";
+	$prop['NIR_SUBJECT']="Основные темы научной работы";
 } else {
 	$prop['SCI'] = "Scientist";
 	$prop["FULL_NAME"] = "FULL_NAME_EN";
@@ -41,6 +49,13 @@ if(SITE_ID == s1) {
 	$prop['DEGREE_STRING'] = "Academic degree";
 	$prop['PUBL_STR'] = "Publications";
 	$prop['BIBLIO'] = "BIBLIODATAEN";
+	$prop['DATE_OF_BIRTH']="Birth date";
+	$prop['VAK_SPEC_EN']="Speciality";
+	$prop['EMAIL']="E-mail";
+	$prop['KEYWORDS_EN']="Keywords";
+	$prop['UDK']="UDC";
+	$prop['MSC']="MSC";
+	$prop['NIR_SUBJECT_EN']="Subject";
 }
 $arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
 $arFilter = Array("IBLOCK_ID"=>5, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "ID" => getCurrentID(5, $_REQUEST["ELEMENT_CODE"]));
@@ -111,18 +126,24 @@ while($ob = $res->GetNextElement())
 	}
 	?>
 	</div>
-    <div class="sci-prop"><b class="sci-prop-color-green">Специальность ВАК:</b> 01.01.01</div>
-    <div class="sci-prop"><b class="sci-prop-color-green">Дата рождения:</b> 01.01.01</div>
-    <div class="sci-prop"><b class="sci-prop-color-green">E-mail:</b> test@mail.dd</div>
-    <div class="sci-prop"><b class="sci-prop-color-green">Ключевые слова:</b> ортогональные полиномы на сетках, смешанные ряды, функциональные пространства, переменный показатель, базисы, асимптотика, приближение, ряды Фурье.</div>
-    <div class="sci-prop"><b class="sci-prop-color-green">Коды УДК:</b> 513, 517.5, 517.518, 517.518.82, 517.587, 517.518.34, 517.98, 517.51, 519.644, 517.538</div>
-    <div class="sci-prop"><b class="sci-prop-color-green">Коды MSC:</b> 41A10, 33C45, 41A80, 42C10, 33A65, 41A60, 65D30, 65D32</div>
-    <div class="sci-prop"><b class="sci-prop-color-green">Основные темы научной работы:</b> Ортогональные полиномы, функциональные пространства, приближение функций.</div>
+	<?//test_dump($arResult["DISPLAY_PROPERTIES"]);?>
+	<?//ВЫВОД СВОЙСТВ?>
+	<?
+	foreach ($arResult["DISPLAY_PROPERTIES"] as $item1)
+	{
+		//echo $item1["CODE"],"<br>";
+		//test_dump($item1);echo $i;$i++;
+		if ($prop[$item1["CODE"]] != null)
+		{
+			echo "<div class=\"sci-prop\"><b class=\"sci-prop-color-green\">",$prop[$item1["CODE"]],":</b> ",$arResult["DISPLAY_PROPERTIES"][$item1["CODE"]]['VALUE'],"</div>";
+		}
+	}
+	?>
     <?if($arParams["DISPLAY_PREVIEW_TEXT"]!="N" && $arResult["FIELDS"]["PREVIEW_TEXT"]):?>
 		<p><?=$arResult["FIELDS"]["PREVIEW_TEXT"];unset($arResult["FIELDS"]["PREVIEW_TEXT"]);?></p>
 	<?endif;?>
 	<!-- Краткий текст -->
-	<!-- <p class="text-justify detail_preview"><?echo $arResult["PREVIEW_TEXT"];?>
+	<!-- <p class="text-justify detail_preview"><?//echo $arResult["PREVIEW_TEXT"];?>
 	</p> -->
 	<!-- Краткий текст -->
 	<div class="fs16px col-md-12 text-justify no-padding-l-r top-margin10px">
@@ -153,16 +174,16 @@ while($ob = $res->GetNextElement())
 		}
 		?><br />
 	<?endforeach;
-	foreach($arResult["DISPLAY_PROPERTIES"] as $pid=>$arProperty):?>
+/*	foreach($arResult["DISPLAY_PROPERTIES"] as $pid=>$arProperty):*/?><!--
 
-		<?=$arProperty["NAME"]?>:&nbsp;
-		<?if(is_array($arProperty["DISPLAY_VALUE"])):?>
-			<?=implode("&nbsp;/&nbsp;", $arProperty["DISPLAY_VALUE"]);?>
-		<?else:?>
-			<?=$arProperty["DISPLAY_VALUE"];?>
-		<?endif?>
+		<?/*=$arProperty["NAME"]*/?>:&nbsp;
+		<?/*if(is_array($arProperty["DISPLAY_VALUE"])):*/?>
+			<?/*=implode("&nbsp;/&nbsp;", $arProperty["DISPLAY_VALUE"]);*/?>
+		<?/*else:*/?>
+			<?/*=$arProperty["DISPLAY_VALUE"];*/?>
+		<?/*endif*/?>
 		<br />
-	<?endforeach;
+	--><?/*endforeach;*/
 	if(array_key_exists("USE_SHARE", $arParams) && $arParams["USE_SHARE"] == "Y")
 	{
 		?>
