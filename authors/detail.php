@@ -16,8 +16,8 @@ if(SITE_ID == s1){
 }
 ?>
  <?$APPLICATION->IncludeComponent(
-	"bitrix:news.detail", 
-	".default", 
+	"bitrix:news.detail",
+	".default",
 	array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"ADD_ELEMENT_CHAIN" => "N",

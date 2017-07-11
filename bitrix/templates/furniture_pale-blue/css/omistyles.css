@@ -77,4 +77,24 @@ div.detail_picture
 {margin-top: 15px;}
 .bt-margin72px
 {margin-bottom:72px;}
+.greeners {
+    color: #335E2A/*#557d3e;/*#3b562b;*/
+}
+.greeners:hover {
+    color:#82bd5f;
+}
+h3.journhead
+{
+    font-size: 12pt;
+    font-weight: 700;
+    color: #4b6d37;
+    /*margin-top: 5px;
+    margin-bottom: 0px;*/
+}
 
+.bx-filter-section{
+    border-radius: 10px;
+}
+.news-list small {font-size:14px;}
+.news-list p {text-align: justify;}
+.propertyname{color: #4b6d37;font-weight: 700;}

@@ -33,7 +33,8 @@ if(SITE_ID == s1) {
 CModule::IncludeModule("iblock");
 $arSelect = Array("ID", "NAME", "DETAIL_PAGE_URL", "PREVIEW_PICTURE");
 $arFilter = Array("IBLOCK_ID"=>5);
-$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);
+$res = CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter, false, Array("nPageSize"=>10), $arSelect);
+$i=0;
 while ($ob = $res->GetNextElement()) {
 	$arFields = $ob->GetFields();
 	$arProp = $ob->GetProperties();
@@ -75,7 +76,12 @@ while ($ob = $res->GetNextElement()) {
     echo "</div>";
 	echo "</div>";
 	echo "</div>";
+	if ($i%2==1){
+	echo "<div class='clearfix'></div>";
+	}
+	$i++;
 }
+echo "<div class='clearfix'></div>";
 ?>
 <?
 function getSize($block, $property, $id)

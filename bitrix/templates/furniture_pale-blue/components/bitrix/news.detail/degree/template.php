@@ -12,24 +12,16 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<?if(SITE_ID == s1) {
-	$prop["TITLE"] = "TITLE";
-} else {
-	$prop["TITLE"] = "TITLE_EN";
-}
-?>
 <div class="news-detail">
-
 	<?if($arParams["DISPLAY_DATE"]!="N" && $arResult["DISPLAY_ACTIVE_FROM"]):?>
 		<span class="news-date-time"><?=$arResult["DISPLAY_ACTIVE_FROM"]?></span>
 	<?endif;?>
 	<?if($arParams["DISPLAY_NAME"]!="N" && $arResult["NAME"]):?>
-		<?//test_dump($arResult)?>
-		<h3 class="bt-margin15px text-center"><?=$arResult["PROPERTIES"][$prop["TITLE"]]["VALUE"]//=$arResult["NAME"];?></h3>
+		<h3 class="bt-margin15px text-center"><?=$arResult["NAME"]?></h3>
 	<?endif;?>
-<!--	<?/*if($arParams["DISPLAY_PREVIEW_TEXT"]!="N" && $arResult["FIELDS"]["PREVIEW_TEXT"]):*/?>
-		<p><?/*=$arResult["FIELDS"]["PREVIEW_TEXT"];unset($arResult["FIELDS"]["PREVIEW_TEXT"]);*/?></p>
-	--><?/*endif;*/?>
+	<?if($arParams["DISPLAY_PREVIEW_TEXT"]!="N" && $arResult["FIELDS"]["PREVIEW_TEXT"]):?>
+		<p><?//=$arResult["FIELDS"]["PREVIEW_TEXT"];unset($arResult["FIELDS"]["PREVIEW_TEXT"]);?></p>
+	<?endif;?>
 	<?if($arResult["NAV_RESULT"]):?>
 		<?if($arParams["DISPLAY_TOP_PAGER"]):?><?=$arResult["NAV_STRING"]?><br /><?endif;?>
 		<?//echo $arResult["NAV_TEXT"];?>
@@ -41,33 +33,32 @@ $this->setFrameMode(true);
 	<?endif?>
 	<div style="clear:both"></div>
 	<br />
-<!--	<?/*foreach($arResult["FIELDS"] as $code=>$value):
+	<?foreach($arResult["FIELDS"] as $code=>$value):
 		if ('PREVIEW_PICTURE' == $code || 'DETAIL_PICTURE' == $code)
 		{
-			*/?><?/*=GetMessage("IBLOCK_FIELD_".$code)*/?>:&nbsp;<?/*
+			?><?=GetMessage("IBLOCK_FIELD_".$code)?>:&nbsp;<?
 			if (!empty($value) && is_array($value))
 			{
-				*/?><img border="0" src="<?/*=$value["SRC"]*/?>" width="<?/*=$value["WIDTH"]*/?>" height="<?/*=$value["HEIGHT"]*/?>"><?/*
+				?><img border="0" src="<?=$value["SRC"]?>" width="<?=$value["WIDTH"]?>" height="<?=$value["HEIGHT"]?>"><?
 			}
 		}
 		else
 		{
-			*/?><?/*=GetMessage("IBLOCK_FIELD_".$code)*/?>:&nbsp;<?/*=$value;*/?><?/*
+			?><?=GetMessage("IBLOCK_FIELD_".$code)?>:&nbsp;<?=$value;?><?
 		}
-		*/?><br />
-	--><?/*endforeach;*/
+		?><br />
+	<?endforeach;
 	echo "<div class=\"fs16px\">";
 	foreach($arResult["DISPLAY_PROPERTIES"] as $pid=>$arProperty):?>
-        <div class="sci-prop">
-		<b class="sci-prop-color-green"><?=$arProperty["NAME"]?>:</b>
-		<?if(is_array($arProperty["DISPLAY_VALUE"])):?>
-			<?=implode("&nbsp;/&nbsp;", $arProperty["DISPLAY_VALUE"]);?>
-		<?else:?>
-			<?=$arProperty["DISPLAY_VALUE"];?>
-		<?endif?>
+		<div class="sci-prop">
+			<b class="sci-prop-color-green"><?=$arProperty["NAME"]?>:</b>
+			<?if(is_array($arProperty["DISPLAY_VALUE"])):?>
+				<?=implode("&nbsp;/&nbsp;", $arProperty["DISPLAY_VALUE"]);?>
+			<?else:?>
+				<?=$arProperty["DISPLAY_VALUE"];?>
+			<?endif?>
 		</div>
 	<?endforeach;
-	echo "</div>";
 	if(array_key_exists("USE_SHARE", $arParams) && $arParams["USE_SHARE"] == "Y")
 	{
 		?>

@@ -10,7 +10,8 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-$this->setFrameMode(true);?>
+$this->setFrameMode(true);
+$i=0;?>
 
 
 <?if($arParams["DISPLAY_TOP_PAGER"]):?>
@@ -24,7 +25,7 @@ $this->setFrameMode(true);?>
 
 
 	<div class="col-md-4 text-center" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
-        <?//test_dump($arit)?>
+        <?$i++;//test_dump($arit)?>
 
         <div class="thumbnail">
             <?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arItem["PREVIEW_PICTURE"])):?>
@@ -57,11 +58,13 @@ $this->setFrameMode(true);?>
             </div>
         </div>
     </div>
-
-
+    <?if ($i%3 == 0):?>
+        <div class="clearfix"></div>
+    <?endif;?>
 <?endforeach;?>
 
 
 <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
 	<br /><?=$arResult["NAV_STRING"]?>
 <?endif;?>
+<div class="clearfix"></div>

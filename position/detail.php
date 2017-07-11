@@ -5,19 +5,19 @@ $APPLICATION->SetTitle("Должность детально");?>
 	$prop["MAIN"] = "Главная";
 	$prop["POSITIONS"] = "Должности";
 	$prop['HEAD'] = "Должность";
-	$prop['HEAD_SMALL'] = "сотрудников";
+	$prop['HEAD_SMALL'] = "";//"сотрудников";
 	$prop["TITLE"] = "TITLE";
 	$prop["SHORT_TITLE"] = "SHORT_TITLE";
-	$prop['SCI_LIST'] = "Список сотрудников";
+	$prop['SCI_LIST'] = "Список сотрудников на этой должности";
 	$prop['FULL_NAME'] = "FULL_NAME";
 } else {
 	$prop["MAIN"] = "Main";
 	$prop["POSITIONS"] = "Positions";
 	$prop['HEAD'] = "Position";
-	$prop['HEAD_SMALL'] = "of scientists";
+	$prop['HEAD_SMALL'] = "";//"of scientists";
 	$prop["TITLE"] = "TITLE_EN";
 	$prop["SHORT_TITLE"] = "SHORT_TITLE_EN";
-	$prop['SCI_LIST'] = "Scientists list";
+	$prop['SCI_LIST'] = "Scientists list on this position";
 	$prop['FULL_NAME'] = "FULL_NAME_EN";
 }
 $arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
@@ -32,7 +32,7 @@ while($ob = $res->GetNextElement())
 	<div class="row">
 		<div class="col-lg-12">
 			<h1 class="page-header">
-				<?echo $prop['HEAD'];?>
+				<?$prop['HEAD'];?>
 				<small><?echo $prop['HEAD_SMALL'];?></small>
 			</h1>
 			<ol class="breadcrumb">
@@ -102,8 +102,10 @@ while($ob = $res->GetNextElement())
     <div class="row">
         <div class="col-lg-12">
             <!-- <h2 class="page-header"> -->
-            <h3 class="text-center">
-                Список сотрудников на этой должности
+            <h3 class="text-center bt-margin15px">
+                <!--Список сотрудников на этой должности-->
+				<?//=$arProp[$prop['TITLE']]['VALUE'];echo $arProp[$prop['TITLE']]['FULL_NAME'];?>
+				<?=$prop['SCI_LIST'];?>
             </h3>
         </div>
 
@@ -119,6 +121,8 @@ while($ob = $res->GetNextElement())
         }
 
         $arFiltR = Array("PROPERTY_RANK" => getCurrentID(7, $_REQUEST["ELEMENT_CODE"]));
+		/*test_dump($arFiltR);
+		test_dump(getCurrentID(7, $_REQUEST["ELEMENT_CODE"]));*/
         $APPLICATION->IncludeComponent(
             "bitrix:news.list",
             "scientistlist",

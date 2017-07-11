@@ -97,13 +97,13 @@ if(SITE_ID == s1) {
 				$arFields1 = $ob1->GetFields();
 				$arProp1 = $ob1->GetProperties();
 				//test_dump($arProp1["NAME"]["VALUE"]);
-				echo "<a href=", $arFields1['DETAIL_PAGE_URL'], ">", $arProp1[$prop['FULL_NAME']]['VALUE'], "</a> ";
+				echo "<a class=\"greeners\"href=", $arFields1['DETAIL_PAGE_URL'], ">", $arProp1[$prop['FULL_NAME']]['VALUE'], "</a> ";
 			}
 		}
 		?>
 	</div>
 	<?if($arProp['UDK']['VALUE'] != null):?>
-	<h3 class="art-udc text-left"><?echo $prop['UDK'], ": ", $arProp['UDK']['VALUE'];?></h3>
+	<h3 class="art-udc text-left journhead"><?echo $prop['UDK'], ": ", $arProp['UDK']['VALUE'];?></h3>
 	<?endif?>
 	<div class="fs16px text-justify">
 		<? echo $arResult["PROPERTIES"][$prop["ANNOTATION"]]["VALUE"]?>
