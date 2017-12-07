@@ -257,3 +257,66 @@
 2016-03-17 11:38:26 -  - exec CUpdateClient::GetHTTPPage
 2016-03-17 11:38:26 -  - TIME GetUpdatesList(request) 0.343 sec
 2016-03-17 11:38:26 -  - exec CUpdateClient::ParseServerData
+2017-12-05 13:28:52 -  - exec CUpdateClient::GetUpdatesList
+2017-12-05 13:28:52 -  - exec CUpdateClient::CollectRequestData
+2017-12-05 13:28:52 -  - LICENSE_KEY=X&lang=ru&SUPD_VER=15.5.1&VERSION=15.5.10&TYPENC=D&SUPD_STS=2&SUPD_URS=0&SUPD_URSA=2&SUPD_DBS=MYSQL&XE=N&CLIENT_SITE=192.168.32.128&CHHB=192.168.32.128%3A80&CSAB=127.0.0.1&CANGZIP=Y&CLIENT_PHPVER=5.6.23&stable=Y&rerere=Y&bitm_main=15.5.10&bitm_bitrixcloud=16.0.0&bitm_clouds=16.0.0&bitm_compression=16.0.0&bitm_fileman=16.0.0&bitm_highloadblock=16.0.0&bitm_iblock=15.5.11&bitm_perfmon=16.0.0&bitm_scale=16.0.0&bitm_search=16.0.0&bitm_seo=15.5.6&bitm_socialservices=15.5.3&bitm_translate=14.0.0&bitl_en=&bitl_ru=&bith_ru=&bith_en=&SUPD_SRS=RU&SUPD_CMP=N&SALE_15=Y
+2017-12-05 13:28:52 -  - exec CUpdateClient::GetHTTPPage
+2017-12-05 13:29:12 - ERRCONN - Error connecting 2 www.bitrixsoft.com: [0] php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+2017-12-05 13:29:12 -  - TIME GetUpdatesList(request) 20.078 sec
+2017-12-05 13:29:12 - GUL02 - Ошибка соединения с сервером обновлений: [0] php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution. Нет соединения с сервером обновлений. 
+2017-12-05 13:30:39 -  - exec CUpdateClient::GetUpdatesList
+2017-12-05 13:30:39 -  - exec CUpdateClient::CollectRequestData
+2017-12-05 13:30:40 -  - LICENSE_KEY=X&lang=ru&SUPD_VER=15.5.1&VERSION=15.5.10&TYPENC=D&SUPD_STS=2&SUPD_URS=0&SUPD_URSA=2&SUPD_DBS=MYSQL&XE=N&CLIENT_SITE=192.168.32.128&CHHB=192.168.32.128%3A80&CSAB=127.0.0.1&CANGZIP=Y&CLIENT_PHPVER=5.6.23&stable=Y&rerere=Y&bitm_main=15.5.10&bitm_bitrixcloud=16.0.0&bitm_clouds=16.0.0&bitm_compression=16.0.0&bitm_fileman=16.0.0&bitm_highloadblock=16.0.0&bitm_iblock=15.5.11&bitm_perfmon=16.0.0&bitm_scale=16.0.0&bitm_search=16.0.0&bitm_seo=15.5.6&bitm_socialservices=15.5.3&bitm_translate=14.0.0&bitl_en=&bitl_ru=&bith_ru=&bith_en=&SUPD_SRS=RU&SUPD_CMP=N&SALE_15=Y
+2017-12-05 13:30:40 -  - exec CUpdateClient::GetHTTPPage
+2017-12-05 13:31:00 - ERRCONN - Error connecting 2 www.bitrixsoft.com: [0] php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+2017-12-05 13:31:00 -  - TIME GetUpdatesList(request) 20.035 sec
+2017-12-05 13:31:00 - GUL02 - Ошибка соединения с сервером обновлений: [0] php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution. Нет соединения с сервером обновлений. 
+2017-12-05 13:31:38 -  - exec CUpdateClient::GetUpdatesList
+2017-12-05 13:31:38 -  - exec CUpdateClient::CollectRequestData
+2017-12-05 13:31:38 -  - LICENSE_KEY=X&lang=ru&SUPD_VER=15.5.1&VERSION=15.5.10&TYPENC=D&SUPD_STS=2&SUPD_URS=0&SUPD_URSA=2&SUPD_DBS=MYSQL&XE=N&CLIENT_SITE=192.168.32.128&CHHB=192.168.32.128%3A80&CSAB=127.0.0.1&CANGZIP=Y&CLIENT_PHPVER=5.6.23&stable=Y&rerere=Y&bitm_main=15.5.10&bitm_bitrixcloud=16.0.0&bitm_clouds=16.0.0&bitm_compression=16.0.0&bitm_fileman=16.0.0&bitm_highloadblock=16.0.0&bitm_iblock=15.5.11&bitm_perfmon=16.0.0&bitm_scale=16.0.0&bitm_search=16.0.0&bitm_seo=15.5.6&bitm_socialservices=15.5.3&bitm_translate=14.0.0&bitl_en=&bitl_ru=&bith_ru=&bith_en=&SUPD_SRS=RU&SUPD_CMP=N&SALE_15=Y
+2017-12-05 13:31:38 -  - exec CUpdateClient::GetHTTPPage
+2017-12-05 13:31:58 - ERRCONN - Error connecting 2 www.bitrixsoft.com: [0] php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+2017-12-05 13:31:58 -  - TIME GetUpdatesList(request) 20.042 sec
+2017-12-05 13:31:58 - GUL02 - Ошибка соединения с сервером обновлений: [0] php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution. Нет соединения с сервером обновлений. 
+2017-12-05 13:39:53 -  - exec CUpdateClient::GetUpdatesList
+2017-12-05 13:39:53 -  - exec CUpdateClient::CollectRequestData
+2017-12-05 13:39:53 -  - LICENSE_KEY=X&lang=ru&SUPD_VER=15.5.1&VERSION=15.5.10&TYPENC=D&SUPD_STS=2&SUPD_URS=0&SUPD_URSA=2&SUPD_DBS=MYSQL&XE=N&CLIENT_SITE=192.168.247.128&CHHB=192.168.247.128%3A80&CSAB=127.0.0.1&CANGZIP=Y&CLIENT_PHPVER=5.6.23&stable=Y&rerere=Y&bitm_main=15.5.10&bitm_bitrixcloud=16.0.0&bitm_clouds=16.0.0&bitm_compression=16.0.0&bitm_fileman=16.0.0&bitm_highloadblock=16.0.0&bitm_iblock=15.5.11&bitm_perfmon=16.0.0&bitm_scale=16.0.0&bitm_search=16.0.0&bitm_seo=15.5.6&bitm_socialservices=15.5.3&bitm_translate=14.0.0&bitl_en=&bitl_ru=&bith_ru=&bith_en=&SUPD_SRS=RU&SUPD_CMP=N&SALE_15=Y
+2017-12-05 13:39:53 -  - exec CUpdateClient::GetHTTPPage
+2017-12-05 13:39:53 -  - TIME GetUpdatesList(request) 0.717 sec
+2017-12-05 13:39:53 -  - exec CUpdateClient::ParseServerData
+2017-12-05 13:40:04 -  - exec CUpdateClient::GetUpdatesList
+2017-12-05 13:40:04 -  - exec CUpdateClient::CollectRequestData
+2017-12-05 13:40:04 -  - LICENSE_KEY=X&lang=ru&SUPD_VER=15.5.1&VERSION=15.5.10&TYPENC=D&SUPD_STS=2&SUPD_URS=0&SUPD_URSA=2&SUPD_DBS=MYSQL&XE=N&CLIENT_SITE=192.168.247.128&CHHB=192.168.247.128%3A80&CSAB=127.0.0.1&CANGZIP=Y&CLIENT_PHPVER=5.6.23&stable=Y&rerere=Y&bitm_main=15.5.10&bitm_bitrixcloud=16.0.0&bitm_clouds=16.0.0&bitm_compression=16.0.0&bitm_fileman=16.0.0&bitm_highloadblock=16.0.0&bitm_iblock=15.5.11&bitm_perfmon=16.0.0&bitm_scale=16.0.0&bitm_search=16.0.0&bitm_seo=15.5.6&bitm_socialservices=15.5.3&bitm_translate=14.0.0&bitl_en=&bitl_ru=&bith_ru=&bith_en=&SUPD_SRS=RU&SUPD_CMP=N&SALE_15=Y
+2017-12-05 13:40:04 -  - exec CUpdateClient::GetHTTPPage
+2017-12-05 13:40:05 -  - TIME GetUpdatesList(request) 0.399 sec
+2017-12-05 13:40:05 -  - exec CUpdateClient::ParseServerData
+2017-12-05 13:44:42 -  - exec CUpdateClient::GetUpdatesList
+2017-12-05 13:44:42 -  - exec CUpdateClient::CollectRequestData
+2017-12-05 13:44:42 -  - LICENSE_KEY=X&lang=ru&SUPD_VER=15.5.1&VERSION=15.5.10&TYPENC=D&SUPD_STS=2&SUPD_URS=0&SUPD_URSA=2&SUPD_DBS=MYSQL&XE=N&CLIENT_SITE=192.168.247.128&CHHB=192.168.247.128%3A80&CSAB=127.0.0.1&CANGZIP=Y&CLIENT_PHPVER=5.6.23&stable=Y&rerere=Y&bitm_main=15.5.10&bitm_bitrixcloud=16.0.0&bitm_clouds=16.0.0&bitm_compression=16.0.0&bitm_fileman=16.0.0&bitm_highloadblock=16.0.0&bitm_iblock=15.5.11&bitm_perfmon=16.0.0&bitm_scale=16.0.0&bitm_search=16.0.0&bitm_seo=15.5.6&bitm_socialservices=15.5.3&bitm_translate=14.0.0&bitl_en=&bitl_ru=&bith_ru=&bith_en=&SUPD_SRS=RU&SUPD_CMP=N&SALE_15=Y
+2017-12-05 13:44:42 -  - exec CUpdateClient::GetHTTPPage
+2017-12-05 13:44:43 -  - TIME GetUpdatesList(request) 0.54 sec
+2017-12-05 13:44:43 -  - exec CUpdateClient::ParseServerData
+2017-12-05 13:46:03 -  - exec CUpdateClient::GetUpdatesList
+2017-12-05 13:46:03 -  - exec CUpdateClient::CollectRequestData
+2017-12-05 13:46:03 -  - LICENSE_KEY=X&lang=ru&SUPD_VER=15.5.1&VERSION=15.5.10&TYPENC=D&SUPD_STS=2&SUPD_URS=0&SUPD_URSA=2&SUPD_DBS=MYSQL&XE=N&CLIENT_SITE=192.168.247.128&CHHB=192.168.247.128%3A80&CSAB=127.0.0.1&CANGZIP=Y&CLIENT_PHPVER=5.6.23&stable=Y&rerere=Y&bitm_main=15.5.10&bitm_bitrixcloud=16.0.0&bitm_clouds=16.0.0&bitm_compression=16.0.0&bitm_fileman=16.0.0&bitm_highloadblock=16.0.0&bitm_iblock=15.5.11&bitm_perfmon=16.0.0&bitm_scale=16.0.0&bitm_search=16.0.0&bitm_seo=15.5.6&bitm_socialservices=15.5.3&bitm_translate=14.0.0&bitl_en=&bitl_ru=&bith_ru=&bith_en=&SUPD_SRS=RU&SUPD_CMP=N&SALE_15=Y
+2017-12-05 13:46:03 -  - exec CUpdateClient::GetHTTPPage
+2017-12-05 13:46:03 -  - TIME GetUpdatesList(request) 0.508 sec
+2017-12-05 13:46:03 -  - exec CUpdateClient::ParseServerData
+2017-12-05 13:46:06 -  - exec CUpdateClient::GetUpdatesList
+2017-12-05 13:46:06 -  - exec CUpdateClient::CollectRequestData
+2017-12-05 13:46:06 -  - LICENSE_KEY=X&lang=ru&SUPD_VER=15.5.1&VERSION=15.5.10&TYPENC=D&SUPD_STS=2&SUPD_URS=0&SUPD_URSA=2&SUPD_DBS=MYSQL&XE=N&CLIENT_SITE=192.168.247.128&CHHB=192.168.247.128%3A80&CSAB=127.0.0.1&CANGZIP=Y&CLIENT_PHPVER=5.6.23&stable=Y&rerere=Y&bitm_main=15.5.10&bitm_bitrixcloud=16.0.0&bitm_clouds=16.0.0&bitm_compression=16.0.0&bitm_fileman=16.0.0&bitm_highloadblock=16.0.0&bitm_iblock=15.5.11&bitm_perfmon=16.0.0&bitm_scale=16.0.0&bitm_search=16.0.0&bitm_seo=15.5.6&bitm_socialservices=15.5.3&bitm_translate=14.0.0&bitl_en=&bitl_ru=&bith_ru=&bith_en=&SUPD_SRS=RU&SUPD_CMP=N&SALE_15=Y
+2017-12-05 13:46:06 -  - exec CUpdateClient::GetHTTPPage
+2017-12-05 13:46:10 -  - TIME GetUpdatesList(request) 4.352 sec
+2017-12-05 13:46:10 -  - exec CUpdateClient::ParseServerData
+2017-12-05 13:46:45 -  - exec CUpdateClient::GetUpdatesList
+2017-12-05 13:46:45 -  - exec CUpdateClient::CollectRequestData
+2017-12-05 13:46:45 -  - LICENSE_KEY=X&lang=ru&SUPD_VER=15.5.1&VERSION=15.5.10&TYPENC=D&SUPD_STS=2&SUPD_URS=0&SUPD_URSA=2&SUPD_DBS=MYSQL&XE=N&CLIENT_SITE=192.168.247.128&CHHB=192.168.247.128%3A80&CSAB=127.0.0.1&CANGZIP=Y&CLIENT_PHPVER=5.6.23&stable=Y&rerere=Y&bitm_main=15.5.10&bitm_bitrixcloud=16.0.0&bitm_clouds=16.0.0&bitm_compression=16.0.0&bitm_fileman=16.0.0&bitm_highloadblock=16.0.0&bitm_iblock=15.5.11&bitm_perfmon=16.0.0&bitm_scale=16.0.0&bitm_search=16.0.0&bitm_seo=15.5.6&bitm_socialservices=15.5.3&bitm_translate=14.0.0&bitl_en=&bitl_ru=&bith_ru=&bith_en=&SUPD_SRS=RU&SUPD_CMP=N&SALE_15=Y
+2017-12-05 13:46:45 -  - exec CUpdateClient::GetHTTPPage
+2017-12-05 13:46:45 -  - TIME GetUpdatesList(request) 0.417 sec
+2017-12-05 13:46:45 -  - exec CUpdateClient::ParseServerData
+2017-12-05 13:46:48 -  - exec CUpdateClient::GetUpdatesList
+2017-12-05 13:46:48 -  - exec CUpdateClient::CollectRequestData
+2017-12-05 13:46:48 -  - LICENSE_KEY=X&lang=ru&SUPD_VER=15.5.1&VERSION=15.5.10&TYPENC=D&SUPD_STS=2&SUPD_URS=0&SUPD_URSA=2&SUPD_DBS=MYSQL&XE=N&CLIENT_SITE=192.168.247.128&CHHB=192.168.247.128%3A80&CSAB=127.0.0.1&CANGZIP=Y&CLIENT_PHPVER=5.6.23&stable=Y&rerere=Y&bitm_main=15.5.10&bitm_bitrixcloud=16.0.0&bitm_clouds=16.0.0&bitm_compression=16.0.0&bitm_fileman=16.0.0&bitm_highloadblock=16.0.0&bitm_iblock=15.5.11&bitm_perfmon=16.0.0&bitm_scale=16.0.0&bitm_search=16.0.0&bitm_seo=15.5.6&bitm_socialservices=15.5.3&bitm_translate=14.0.0&bitl_en=&bitl_ru=&bith_ru=&bith_en=&SUPD_SRS=RU&SUPD_CMP=N&SALE_15=Y
+2017-12-05 13:46:48 -  - exec CUpdateClient::GetHTTPPage
+2017-12-05 13:46:49 -  - TIME GetUpdatesList(request) 1.093 sec
+2017-12-05 13:46:49 -  - exec CUpdateClient::ParseServerData

@@ -39,7 +39,7 @@
 .bt-margin15px
 {margin: 0 0 15px 0;}
 .news-detail
-{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
+{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;text-align: justify;}
 .detail_picture
 {padding: 7px; float: right;}
 div.detail_picture
@@ -95,6 +95,7 @@ h3.journhead
 .bx-filter-section{
     border-radius: 10px;
 }
+.centered{text-align: center;}
 .news-list small {font-size:14px;}
 .news-list p {text-align: justify;}
 .propertyname{color: #4b6d37;font-weight: 700;}

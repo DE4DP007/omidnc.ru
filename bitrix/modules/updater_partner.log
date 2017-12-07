@@ -4,3 +4,15 @@
 2016-03-02 15:35:20 -  - exec CUpdateClientPartner::GetHTTPPage
 2016-03-02 15:35:20 -  - TIME GetUpdatesList(request) 0.441 sec
 2016-03-02 15:35:20 -  - exec CUpdateClientPartner::ParseServerData
+2017-12-05 13:44:44 -  - exec CUpdateClientPartner::GetUpdatesList
+2017-12-05 13:44:44 -  - exec CUpdateClientPartner::__CollectRequestData
+2017-12-05 13:44:44 -  - utf=Y&lang=ru&stable=Y&CANGZIP=Y&SUPD_DBS=MYSQL&XE=N&CLIENT_SITE=192.168.247.128&LICENSE_KEY=X&SUPD_STS=2&SUPD_URS=0&SUPD_URSA=2&TYPENC=D&CLIENT_PHPVER=5.6.23&dbv=5.5.50&instm=main%2C15.5.10%2CY%3Bbitrix.sitecorporate%2C15.0.0%2CN%3Bbitrixcloud%2C16.0.0%2CN%3Bclouds%2C16.0.0%2CN%3Bcompression%2C16.0.0%2CN%3Bfileman%2C16.0.0%2CN%3Bhighloadblock%2C16.0.0%2CN%3Biblock%2C15.5.11%2CN%3Bperfmon%2C16.0.0%2CN%3Bscale%2C16.0.0%2CN%3Bsearch%2C16.0.0%2CN%3Bseo%2C15.5.6%2CN%3Bsocialservices%2C15.5.3%2CN%3Btranslate%2C14.0.0%2CN&reqm=bitrix.sitecorporate&SUPD_SRS=RU&SUPD_CMP=N
+2017-12-05 13:44:44 -  - exec CUpdateClientPartner::GetHTTPPage
+2017-12-05 13:44:45 -  - TIME GetUpdatesList(request) 0.398 sec
+2017-12-05 13:44:45 -  - exec CUpdateClientPartner::ParseServerData
+2017-12-05 13:45:56 -  - exec CUpdateClientPartner::GetUpdatesList
+2017-12-05 13:45:56 -  - exec CUpdateClientPartner::__CollectRequestData
+2017-12-05 13:45:56 -  - utf=Y&lang=ru&stable=Y&CANGZIP=Y&SUPD_DBS=MYSQL&XE=N&CLIENT_SITE=192.168.247.128&LICENSE_KEY=X&SUPD_STS=2&SUPD_URS=0&SUPD_URSA=2&TYPENC=D&CLIENT_PHPVER=5.6.23&dbv=5.5.50&instm=main%2C15.5.10%2CY%3Bbitrix.sitecorporate%2C15.0.0%2CN%3Bbitrixcloud%2C16.0.0%2CN%3Bclouds%2C16.0.0%2CN%3Bcompression%2C16.0.0%2CN%3Bfileman%2C16.0.0%2CN%3Bhighloadblock%2C16.0.0%2CN%3Biblock%2C15.5.11%2CN%3Bperfmon%2C16.0.0%2CN%3Bscale%2C16.0.0%2CN%3Bsearch%2C16.0.0%2CN%3Bseo%2C15.5.6%2CN%3Bsocialservices%2C15.5.3%2CN%3Btranslate%2C14.0.0%2CN&reqm=bitrix.sitecorporate&SUPD_SRS=RU&SUPD_CMP=N
+2017-12-05 13:45:56 -  - exec CUpdateClientPartner::GetHTTPPage
+2017-12-05 13:46:00 -  - TIME GetUpdatesList(request) 3.273 sec
+2017-12-05 13:46:00 -  - exec CUpdateClientPartner::ParseServerData
