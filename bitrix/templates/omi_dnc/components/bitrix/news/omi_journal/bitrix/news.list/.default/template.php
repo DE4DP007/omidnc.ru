@@ -83,9 +83,9 @@ $this->setFrameMode(true);
 			<?$arFilter = array('IBLOCK_ID' => 9, "PROPERTY_JOURNAL" => $arItem['ID']);
 			$res = CIBlockElement::GetList(false, $arFilter, array('IBLOCK_ID', 'PROPERTY_JOURNAL'));?>
 			<?if ($el = $res->Fetch()):?>
-				Количество изданий: <?=$el['CNT']?>
+				<?=GetMessage("ART_COUNT")?>: <?=$el['CNT']?>
 			<?endif;?>
-			<a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="btn-primary sci-details">Показать</a>
+			<a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="btn-primary sci-details"><?=GEtMessage("SHOW")?></a>
 		</p>
 	</div>
 	

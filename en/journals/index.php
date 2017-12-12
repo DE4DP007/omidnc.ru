@@ -76,11 +76,14 @@ if ($el = $res->Fetch())
         <h1 class="page-header">
             <?$APPLICATION->ShowTitle()?>
         </h1>
-		<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "omi_breadcrumb", Array(
-			"COMPONENT_TEMPLATE" => ".default",
-				"PATH" => "",	// Путь, для которого будет построена навигационная цепочка (по умолчанию, текущий путь)
-				"SITE_ID" => "s1",	// Cайт (устанавливается в случае многосайтовой версии, когда DOCUMENT_ROOT у сайтов разный)
-				"START_FROM" => "0",	// Номер пункта, начиная с которого будет построена навигационная цепочка
+		<?$APPLICATION->IncludeComponent(
+			"bitrix:breadcrumb", 
+			"omi_breadcrumb", 
+			array(
+				"COMPONENT_TEMPLATE" => "omi_breadcrumb",
+				"PATH" => "",
+				"SITE_ID" => "s2",
+				"START_FROM" => "0"
 			),
 			false
 		);?>
@@ -116,21 +119,21 @@ if ($el = $res->Fetch())
 		"DETAIL_PAGER_TEMPLATE" => "",
 		"DETAIL_PAGER_TITLE" => "Страница",
 		"DETAIL_PROPERTY_CODE" => array(
-			0 => "TITLE",
-			1 => "DESCRIPTION",
+			0 => "TITLE_EN",
+			1 => "DESCRIPTION_EN",
 			2 => "LINK",
 			3 => "IF_RINC",
 			4 => "IF_SCOPUS",
 			5 => "IF_WOS",
-			6 => "COUNTRY",
+			6 => "COUNTRY_EN",
 			7 => "VAK",
-			8 => "ADDRESS",
+			8 => "ADDRESS_EN",
 			9 => "PHONE",
 			10 => "FAX",
 			11 => "EMAIL",
 			12 => "ISSN",
 			13 => "ISBN",
-			14 => "PUBLISHER",
+			14 => "PUBLISHER_EN",
 			15 => "ZBMATH_LINK",
 			16 => "RINC_LINK",
 			17 => "WOS_LINK",
@@ -154,9 +157,12 @@ if ($el = $res->Fetch())
 			1 => "",
 		),
 		"LIST_PROPERTY_CODE" => array(
-			0 => "TITLE",
-			1 => "DESCRIPTION",
-			2 => "",
+			0 => "TITLE_EN",
+			1 => "DESCRIPTION_EN",
+			2 => "COUNTRY_EN",
+			3 => "ADDRESS_EN",
+			4 => "PUBLISHER_EN",
+			5 => "",
 		),
 		"MESSAGE_404" => "",
 		"META_DESCRIPTION" => "-",
@@ -170,7 +176,7 @@ if ($el = $res->Fetch())
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Новости",
 		"PREVIEW_TRUNCATE_LEN" => "",
-		"SEF_FOLDER" => "/journals/",
+		"SEF_FOLDER" => "/en/journals/",
 		"SEF_MODE" => "Y",
 		"SET_LAST_MODIFIED" => "N",
 		"SET_STATUS_404" => "N",

@@ -13,7 +13,7 @@
 $this->setFrameMode(true);
 ?>
 
-<div class="row">
+<!-- <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
             Список <small>изданий</small> 
@@ -23,7 +23,7 @@ $this->setFrameMode(true);
             <li class="active">Издания</li>
         </ol>
     </div>
-</div>
+</div> -->
 
 <?if($arParams["USE_RSS"]=="Y"):?>
 	<?

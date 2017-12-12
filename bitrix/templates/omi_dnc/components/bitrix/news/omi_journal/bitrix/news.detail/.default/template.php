@@ -13,7 +13,7 @@
 $this->setFrameMode(true);
 ?>
 
-<div class="row">
+<!-- <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
             Издание
@@ -24,7 +24,7 @@ $this->setFrameMode(true);
             <li class="active"><?=$arResult['NAME']?></li>
         </ol>
     </div>
-</div>
+</div> -->
 
 <div class="news-detail">
     <?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arResult["DETAIL_PICTURE"])):?>
