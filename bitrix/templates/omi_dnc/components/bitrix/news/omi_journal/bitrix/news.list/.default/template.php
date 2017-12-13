@@ -53,7 +53,7 @@ $this->setFrameMode(true);
 			<?endif?>
 			<?if($arParams["DISPLAY_NAME"]!="N" && $arItem["NAME"]):?>
 				<?if(!$arParams["HIDE_LINK_WHEN_NO_DETAIL"] || ($arItem["DETAIL_TEXT"] && $arResult["USER_HAVE_ACCESS"])):?>
-					<a href="<?echo $arItem["DETAIL_PAGE_URL"]?>"><b><?echo $arItem["NAME"]?></b></a><br />
+					<a href="<?echo $arItem["DETAIL_PAGE_URL"]?>"><b><?echo $arItem['DISPLAY_PROPERTIES'][GetMessage("TITLE")]['VALUE']?></b></a><br />
 				<?else:?>
 					<b><?echo $arItem["NAME"]?></b><br />
 				<?endif;?>

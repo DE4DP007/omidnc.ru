@@ -65,7 +65,7 @@ $i=0;?>
                 </div>
                 <a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="btn btn-primary sci-details">
                     <span class="glyphicon glyphicon-share-alt"></span>
-                    Подробнее
+                    <?=GetMessage("MORE")?>
                 </a>
             </div>
         </div>

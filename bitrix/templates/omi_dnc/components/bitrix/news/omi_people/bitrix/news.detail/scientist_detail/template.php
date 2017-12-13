@@ -63,21 +63,9 @@ $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10)
 while($ob = $res->GetNextElement())
 {
 	$arProp = $ob->GetProperties();
-	$detail = $arProp[$prop['FULL_NAME']]['VALUE'];
+	$detail = $arProp[GetMessage('FULL_NAME')]['VALUE'];
 }
 ?>
-
-	<!-- <div class="row">
-		<div class="col-lg-12">
-			<h1 class="page-header">
-				<?echo $prop['SCI'];?> </h1>
-			<ol class="breadcrumb">
-				<li><a href="<?echo SITE_DIR;?>"><?echo $prop['MAIN'];?></a></li>
-				<li class="active"><a href="<?echo SITE_DIR;?>scientist/"><?echo $prop['SCIENTIST'];?></a></li>
-				<li class="active"><?echo $detail;?></li>
-			</ol>
-		</div>
-	</div> -->
 
 <div class="news-detail">
 	<?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arResult["DETAIL_PICTURE"])):?>
@@ -114,14 +102,14 @@ while($ob = $res->GetNextElement())
 			$arPropI = $obI->GetProperties();
 			$arFieldsI = $obI->GetFields();
 			//echo $prop['RANK_STRING'], ": <a href=", $arFieldsI['DETAIL_PAGE_URL'], ">", $arPropI[$prop['TITLE']]['VALUE'], "</a><br>";
-			echo "<a href=", $arFieldsI['DETAIL_PAGE_URL'], ">", $arPropI[$prop['TITLE']]['VALUE'], "</a><br>";
+			echo "<a href=", $arFieldsI['DETAIL_PAGE_URL'], ">", $arPropI[GetMessage('TITLE')]['VALUE'], "</a><br>";
 		}
 		$arFilterI = Array("IBLOCK_ID"=>6, "ID" => $arProp['DEGREE']['VALUE']);
 		$resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array("nPageSize"=>10));
 		while($obI = $resI->GetNextElement()) {
 			$arPropI = $obI->GetProperties();
 			$arFieldsI = $obI->GetFields();
-			echo "<a href=", $arFieldsI['DETAIL_PAGE_URL'], ">", $arPropI[$prop['TITLE']]['VALUE'], "</a><br>";
+			echo "<a href=", $arFieldsI['DETAIL_PAGE_URL'], ">", $arPropI[GetMessage('TITLE')]['VALUE'], "</a><br>";
 		}
 	}
 	?>
@@ -133,6 +121,8 @@ while($ob = $res->GetNextElement())
 	{
 		//echo $item1["CODE"],"<br>";
 		//test_dump($item1);echo $i;$i++;
+		print_r($arResult["PROPERTY"]);
+		echo GetMessage($item1["CODE"]), $item1["CODE"];
 		if ($prop[$item1["CODE"]] != null)
 		{
 			echo "<div class=\"sci-prop\"><b class=\"sci-prop-color-green\">",$prop[$item1["CODE"]],":</b> ",$arResult["DISPLAY_PROPERTIES"][$item1["CODE"]]['VALUE'],"</div>";
