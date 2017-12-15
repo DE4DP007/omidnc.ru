@@ -13,50 +13,6 @@
 $this->setFrameMode(true);
 ?>
 <?
-if(SITE_ID == s1) {
-	$prop['SCI'] = "Сотрудник";
-	$prop['FULL_NAME'] = "ФИО";
-	$prop["MAIN"] = "Главная";
-	$prop["SCIENTIST"] = "Сотрудники";
-	$prop["SURNAME"] = "Фамилия";
-	$prop["NAME"] = "Имя";
-	$prop["PATRONIM"] = "Отчество";
-	$prop["DESCRIPTION"] = "Описание";
-	$prop['RANK_STRING'] = "Должность";
-	$prop['TITLE'] = "Заголовок";
-	$prop['DEGREE_STRING'] = "Ученая степень";
-	$prop['PUBL_STR'] = "Публикации";
-	$prop['BIBLIO'] = "BIBLIODATA";
-	$prop['VAK_SPEC']="Специальность ВАК";
-	$prop['DATE_OF_BIRTH']="Дата рождения";
-	$prop['EMAIL']="E-mail";
-	$prop['KEYWORDS']="Ключевые слова";
-	$prop['DATE_OF_BIRTH']="Дата рождения";
-	$prop['UDK']="Коды УДК";
-	$prop['MSC']="Коды MSC";
-	$prop['NIR_SUBJECT']="Основные темы научной работы";
-} else {
-	$prop['SCI'] = "Scientist";
-	$prop["FULL_NAME"] = "FULL_NAME_EN";
-	$prop["MAIN"] = "Main";
-	$prop["SCIENTIST"] = "Scientist";
-	$prop["SURNAME"] = "SURNAME_EN";
-	$prop["NAME"] = "NAME_EN";
-	$prop["PATRONIM"] = "PATRONIM_EN";
-	$prop["DESCRIPTION"] = "DESCRIPTION_EN";
-	$prop['RANK_STRING'] = "Rank";
-	$prop['TITLE'] = "TITLE_EN";
-	$prop['DEGREE_STRING'] = "Academic degree";
-	$prop['PUBL_STR'] = "Publications";
-	$prop['BIBLIO'] = "BIBLIODATAEN";
-	$prop['DATE_OF_BIRTH']="Birth date";
-	$prop['VAK_SPEC_EN']="Speciality";
-	$prop['EMAIL']="E-mail";
-	$prop['KEYWORDS_EN']="Keywords";
-	$prop['UDK']="UDC";
-	$prop['MSC']="MSC";
-	$prop['NIR_SUBJECT_EN']="Subject";
-}
 $arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
 $arFilter = Array("IBLOCK_ID"=>5, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "ID" => getCurrentID(5, $_REQUEST["ELEMENT_CODE"]));
 $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);
@@ -116,19 +72,18 @@ while($ob = $res->GetNextElement())
 	</div>
 	<?//test_dump($arResult["DISPLAY_PROPERTIES"]);?>
 	<?//ВЫВОД СВОЙСТВ?>
-	<?
-	foreach ($arResult["DISPLAY_PROPERTIES"] as $item1)
-	{
-		//echo $item1["CODE"],"<br>";
-		//test_dump($item1);echo $i;$i++;
-		print_r($arResult["PROPERTY"]);
-		echo GetMessage($item1["CODE"]), $item1["CODE"];
-		if ($prop[$item1["CODE"]] != null)
-		{
-			echo "<div class=\"sci-prop\"><b class=\"sci-prop-color-green\">",$prop[$item1["CODE"]],":</b> ",$arResult["DISPLAY_PROPERTIES"][$item1["CODE"]]['VALUE'],"</div>";
-		}
-	}
-	?>
+	<?foreach ($arResult["DISPLAY_PROPERTIES"] as $item1):?>
+		<!-- echo $item1["CODE"],"<br>";
+		test_dump($item1);echo $i;$i++; -->
+		<?if (GetMessage($item1["CODE"]) != null):?>
+			<div class="sci-prop">
+				<b class="sci-prop-color-green">
+					<?=GetMessage($item1["CODE"])?>:
+				</b>
+				<?=$arResult["DISPLAY_PROPERTIES"][$item1["CODE"]]['VALUE']?>
+			</div>
+		<?endif;?>
+	<?endforeach?>
     <?if($arParams["DISPLAY_PREVIEW_TEXT"]!="N" && $arResult["FIELDS"]["PREVIEW_TEXT"]):?>
 		<p><?=$arResult["FIELDS"]["PREVIEW_TEXT"];unset($arResult["FIELDS"]["PREVIEW_TEXT"]);?></p>
 	<?endif;?>
@@ -137,18 +92,22 @@ while($ob = $res->GetNextElement())
 	</p> -->
 	<!-- Краткий текст -->
 	<div class="fs16px col-md-12 text-justify no-padding-l-r top-margin10px">
-	<?if($arResult["NAV_RESULT"]):?>
-		<?if($arParams["DISPLAY_TOP_PAGER"]):?><?=$arResult["NAV_STRING"]?><br /><?endif;?>
-		<?echo $arResult["NAV_TEXT"];?>
-		<?if($arParams["DISPLAY_BOTTOM_PAGER"]):?><br /><?=$arResult["NAV_STRING"]?><?endif;?>
-	<?elseif(strlen($arResult["DETAIL_TEXT"])>0):?>
-		<?echo $arResult["DETAIL_TEXT"];?>
-	<?else:?>
-		<?echo $arResult["PREVIEW_TEXT"];?>
-	<?endif?>
+		<?if($arResult["NAV_RESULT"]):?>
+			<?if($arParams["DISPLAY_TOP_PAGER"]):?>
+				<?=$arResult["NAV_STRING"]?><br/>
+			<?endif;?>
+			<?=$arResult["NAV_TEXT"];?>
+			<?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
+				<br/><?=$arResult["NAV_STRING"]?>
+			<?endif;?>
+		<?elseif(strlen($arResult["DETAIL_TEXT"])>0):?>
+			<?=$arResult["DETAIL_TEXT"];?>
+		<?else:?>
+			<?=$arResult["PREVIEW_TEXT"];?>
+		<?endif?>
 	</div>
 	<div style="clear:both"></div>
-	<br />
+	<br/>
 	<?foreach($arResult["FIELDS"] as $code=>$value):
 		if ('PREVIEW_PICTURE' == $code || 'DETAIL_PICTURE' == $code)
 		{
@@ -209,7 +168,7 @@ while($ob = $res->GetNextElement())
         $arFields = $ob->GetFields();
         $arFilter1 = Array("IBLOCK_ID"=>9, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "PROPERTY_AUTHORS" => $arFields['ID']);
         $res1 = CIBlockElement::GetList(Array(), $arFilter1, false, Array("nPageSize"=>10), $arSelect);
-        echo "<h3 class=\"text-center col-md-12\">", $prop['PUBL_STR'], ":</h3>";
+        echo "<h3 class=\"text-center col-md-12\">", GetMessage('PUBL_STR'), ":</h3>";
 		echo "<div class=\"col-md-12 no-padding-l-r\"><ul class=\"ul-publ\">";
 		//$i = 1;
         while ($ob1 = $res1->GetNextElement())
@@ -219,7 +178,7 @@ while($ob = $res->GetNextElement())
 			//echo "<li type =\"circle\">",$i,"</li>";
 			//$i++;
 //			test_dump($arProp1);
-            echo "<li class=\"li-publ\" type =\"circle\"><a href=", $arFields1['DETAIL_PAGE_URL'], ">", $arProp1[$prop['TITLE']]['VALUE'], " // ",$arProp1[$prop["BIBLIO"]]['VALUE'], "</a></li>";
+            echo "<li class=\"li-publ\" type =\"circle\"><a href=", $arFields1['DETAIL_PAGE_URL'], ">", $arProp1[GetMessage('TITLE')]['VALUE'], " // ",$arProp1[GetMessage("BIBLIO")]['VALUE'], "</a></li>";
         }
         echo "</ul></div>";
     }

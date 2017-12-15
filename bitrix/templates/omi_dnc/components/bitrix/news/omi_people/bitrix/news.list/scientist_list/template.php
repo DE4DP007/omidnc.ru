@@ -35,7 +35,7 @@ $i=0;?>
             <div class="scientist-det-group col-md-12">
                 <b>
                     <a href="<?=$arItem["DETAIL_PAGE_URL"]?>">
-                        <?=$arItem["NAME"]?>
+                        <?=$arItem["PROPERTIES"][GetMessage('NAME')]['VALUE']?>
                     </a>
                 </b>
                 <br/>
@@ -52,7 +52,7 @@ $i=0;?>
                 <?/*<p>< ?=$arItem["PREVIEW_TEXT"];?></p>*/?>
 
             <div class="col-md-12 test-justify">
-                <?=mb_strimwidth($arItem['PROPERTIES']['DESCRIPTION']['VALUE'],0,500, "...")?>
+                <?=mb_strimwidth($arItem['PROPERTIES'][GetMessage('DESCRIPTION')]['VALUE'],0,500, "...")?>
                 <div class="caption">
                     <ul class="list-inline text-center">
                         <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
