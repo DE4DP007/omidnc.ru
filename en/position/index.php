@@ -1,6 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Должность");
+$APPLICATION->SetTitle("Position");
 ?>
 
 <div class="row">
@@ -51,8 +51,8 @@ $APPLICATION->SetTitle("Должность");
 		"DETAIL_PAGER_TEMPLATE" => "",
 		"DETAIL_PAGER_TITLE" => "Страница",
 		"DETAIL_PROPERTY_CODE" => array(
-			0 => "TITLE",
-			1 => "SHORT_TITLE",
+			0 => "TITLE_EN",
+			1 => "SHORT_TITLE_EN",
 			2 => "",
 		),
 		"DETAIL_SET_CANONICAL_URL" => "N",
@@ -72,8 +72,8 @@ $APPLICATION->SetTitle("Должность");
 			1 => "",
 		),
 		"LIST_PROPERTY_CODE" => array(
-			0 => "TITLE",
-			1 => "SHORT_TITLE",
+			0 => "TITLE_EN",
+			1 => "SHORT_TITLE_EN",
 			2 => "",
 		),
 		"MESSAGE_404" => "",
@@ -88,7 +88,7 @@ $APPLICATION->SetTitle("Должность");
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Новости",
 		"PREVIEW_TRUNCATE_LEN" => "",
-		"SEF_FOLDER" => "/position/",
+		"SEF_FOLDER" => "/en/position/",
 		"SEF_MODE" => "Y",
 		"SET_LAST_MODIFIED" => "N",
 		"SET_STATUS_404" => "N",

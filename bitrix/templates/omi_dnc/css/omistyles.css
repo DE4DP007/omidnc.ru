@@ -99,3 +99,11 @@ h3.journhead
 .news-list small {font-size:14px;}
 .news-list p {text-align: justify;}
 .propertyname{color: #4b6d37;font-weight: 700;}
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 4;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 5;
+  }
+}

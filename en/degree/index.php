@@ -1,30 +1,27 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Должность");
+$APPLICATION->SetTitle("Degree");
 ?>
-
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">
 			<?$APPLICATION->ShowTitle()?>
 		</h1>
 		<?$APPLICATION->IncludeComponent(
-			"bitrix:breadcrumb", 
-			"omi_breadcrumb", 
-			array(
+			"bitrix:breadcrumb",
+			"omi_breadcrumb",
+			Array(
 				"COMPONENT_TEMPLATE" => "omi_breadcrumb",
 				"PATH" => "",
-				"SITE_ID" => "s1",
+				"SITE_ID" => "s2",
 				"START_FROM" => "0"
-			),
-			false
+			)
 		);?>
 	</div>
 </div>
-
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news", 
-	"omi_pos", 
+	"omi_deg", 
 	array(
 		"ADD_ELEMENT_CHAIN" => "Y",
 		"ADD_SECTIONS_CHAIN" => "Y",
@@ -39,7 +36,7 @@ $APPLICATION->SetTitle("Должность");
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
 		"CHECK_DATES" => "Y",
-		"COMPONENT_TEMPLATE" => "omi_pos",
+		"COMPONENT_TEMPLATE" => "omi_deg",
 		"DETAIL_ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",
 		"DETAIL_DISPLAY_TOP_PAGER" => "N",
@@ -51,8 +48,8 @@ $APPLICATION->SetTitle("Должность");
 		"DETAIL_PAGER_TEMPLATE" => "",
 		"DETAIL_PAGER_TITLE" => "Страница",
 		"DETAIL_PROPERTY_CODE" => array(
-			0 => "TITLE",
-			1 => "SHORT_TITLE",
+			0 => "TITLE_EN",
+			1 => "SHORT_TITLE_EN",
 			2 => "",
 		),
 		"DETAIL_SET_CANONICAL_URL" => "N",
@@ -63,7 +60,7 @@ $APPLICATION->SetTitle("Должность");
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
-		"IBLOCK_ID" => "7",
+		"IBLOCK_ID" => "6",
 		"IBLOCK_TYPE" => "DEGREE",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
@@ -72,8 +69,8 @@ $APPLICATION->SetTitle("Должность");
 			1 => "",
 		),
 		"LIST_PROPERTY_CODE" => array(
-			0 => "TITLE",
-			1 => "SHORT_TITLE",
+			0 => "TITLE_EN",
+			1 => "SHORT_TITLE_EN",
 			2 => "",
 		),
 		"MESSAGE_404" => "",
@@ -88,15 +85,14 @@ $APPLICATION->SetTitle("Должность");
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Новости",
 		"PREVIEW_TRUNCATE_LEN" => "",
-		"SEF_FOLDER" => "/position/",
 		"SEF_MODE" => "Y",
 		"SET_LAST_MODIFIED" => "N",
 		"SET_STATUS_404" => "N",
 		"SET_TITLE" => "Y",
 		"SHOW_404" => "N",
-		"SORT_BY1" => "ID",
-		"SORT_BY2" => "ACTIVE_FROM",
-		"SORT_ORDER1" => "ASC",
+		"SORT_BY1" => "ACTIVE_FROM",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER1" => "DESC",
 		"SORT_ORDER2" => "ASC",
 		"USE_CATEGORIES" => "N",
 		"USE_FILTER" => "N",
@@ -105,6 +101,7 @@ $APPLICATION->SetTitle("Должность");
 		"USE_RSS" => "N",
 		"USE_SEARCH" => "N",
 		"USE_SHARE" => "N",
+		"SEF_FOLDER" => "/en/degree/",
 		"SEF_URL_TEMPLATES" => array(
 			"news" => "",
 			"section" => "",
