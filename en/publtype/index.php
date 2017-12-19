@@ -49,7 +49,7 @@ $APPLICATION->SetTitle("Типы публикаций");
 		"DETAIL_PAGER_TEMPLATE" => "",
 		"DETAIL_PAGER_TITLE" => "Страница",
 		"DETAIL_PROPERTY_CODE" => array(
-			0 => "TITLE",
+			0 => "TITLE_EN",
 			1 => "",
 		),
 		"DETAIL_SET_CANONICAL_URL" => "N",
@@ -69,7 +69,7 @@ $APPLICATION->SetTitle("Типы публикаций");
 			1 => "",
 		),
 		"LIST_PROPERTY_CODE" => array(
-			0 => "TITLE",
+			0 => "TITLE_EN",
 			1 => "",
 		),
 		"MESSAGE_404" => "",
@@ -84,7 +84,7 @@ $APPLICATION->SetTitle("Типы публикаций");
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Новости",
 		"PREVIEW_TRUNCATE_LEN" => "",
-		"SEF_FOLDER" => "/publtype/",
+		"SEF_FOLDER" => "/en/publtype/",
 		"SEF_MODE" => "Y",
 		"SET_LAST_MODIFIED" => "N",
 		"SET_STATUS_404" => "N",
