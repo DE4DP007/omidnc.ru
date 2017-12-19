@@ -39,7 +39,7 @@
 .bt-margin15px
 {margin: 0 0 15px 0;}
 .news-detail
-{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;text-align: justify;}
+{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;text-align: justify;font-size: 16px;}
 .detail_picture
 {padding: 7px; float: right;}
 div.detail_picture
@@ -96,6 +96,8 @@ h3.journhead
     border-radius: 10px;
 }
 .centered{text-align: center;}
-.news-list small {font-size:14px;}
-.news-list p {text-align: justify;}
+.news-list small {font-size:16px;}
+.news-list p {text-align: justify;line-height: 22px;font-size:16px;}
 .propertyname{color: #4b6d37;font-weight: 700;}
+img.preview_picture
+{margin: 0 4px 6px 0;}
