@@ -99,5 +99,7 @@ h3.journhead
 .news-list small {font-size:16px;}
 .news-list p {text-align: justify;line-height: 22px;font-size:16px;}
 .propertyname{color: #4b6d37;font-weight: 700;}
-img.preview_picture
-{margin: 0 4px 6px 0;}
+.news-list small {font-size:14px;}
+.news-list p {text-align: justify;}
+.propertyname{color: #4b6d37;font-weight: 700;}
+

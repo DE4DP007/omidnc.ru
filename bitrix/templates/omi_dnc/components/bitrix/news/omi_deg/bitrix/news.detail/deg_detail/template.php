@@ -12,20 +12,6 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">
-			Ученая степень
-		</h1>
-		<ol class="breadcrumb">
-			<li><a href=<?echo SITE_DIR;?>>Главная</a></li>
-			<li class="active"><a href="<?echo SITE_DIR;?>degree/">Ученые степени</a></li>
-			<li class="active"><?=$arResult['NAME']?></li>
-		</ol>
-	</div>
-</div>
-
 <div class="news-detail">
 
 	<?if($arParams["DISPLAY_DATE"]!="N" && $arResult["DISPLAY_ACTIVE_FROM"]):?>
@@ -33,7 +19,7 @@ $this->setFrameMode(true);
 	<?endif;?>
 	<?if($arParams["DISPLAY_NAME"]!="N" && $arResult["NAME"]):?>
 		<?//test_dump($arResult)?>
-		<h3 class="bt-margin15px text-center"><?=$arResult["PROPERTIES"]["TITLE"]["VALUE"]//=$arResult["NAME"];?></h3>
+		<h3 class="bt-margin15px text-center"><?=$arResult["PROPERTIES"][GetMessage("TITLE")]["VALUE"]//=$arResult["NAME"];?></h3>
 	<?endif;?>
 <!--	<?/*if($arParams["DISPLAY_PREVIEW_TEXT"]!="N" && $arResult["FIELDS"]["PREVIEW_TEXT"]):*/?>
 		<p><?/*=$arResult["FIELDS"]["PREVIEW_TEXT"];unset($arResult["FIELDS"]["PREVIEW_TEXT"]);*/?></p>
@@ -107,7 +93,7 @@ $this->setFrameMode(true);
 	    <h3 class="text-center bt-margin15px">
 	        <!--Список сотрудников на этой должности-->
 			<?//=$arProp[$prop['TITLE']]['VALUE'];echo $arProp[$prop['TITLE']]['FULL_NAME'];?>
-			Список сотрудников
+			<?=GetMessage('SCI_LIST')?>
 	    </h3>
 	</div>
 
@@ -120,7 +106,7 @@ $this->setFrameMode(true);
 	    "scientistlist",
 	    array(
 	        "ACTIVE_DATE_FORMAT" => "d.m.Y",
-	        "ADD_SECTIONS_CHAIN" => "Y",
+	        "ADD_SECTIONS_CHAIN" => "N",
 	        "AJAX_MODE" => "N",
 	        "AJAX_OPTION_ADDITIONAL" => "",
 	        "AJAX_OPTION_HISTORY" => "N",
@@ -147,7 +133,7 @@ $this->setFrameMode(true);
 	        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
 	        "IBLOCK_ID" => "5",
 	        "IBLOCK_TYPE" => "news",
-	        "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+	        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 	        "INCLUDE_SUBSECTIONS" => "Y",
 	        "MESSAGE_404" => "",
 	        "NEWS_COUNT" => "20",
@@ -157,17 +143,17 @@ $this->setFrameMode(true);
 	        "PAGER_SHOW_ALL" => "N",
 	        "PAGER_SHOW_ALWAYS" => "N",
 	        "PAGER_TEMPLATE" => ".default",
-	        "PAGER_TITLE" => "Сотрудники",
+	        "PAGER_TITLE" => "",
 	        "PARENT_SECTION" => "",
 	        "PARENT_SECTION_CODE" => "",
 	        "PREVIEW_TRUNCATE_LEN" => "",
 	        "PROPERTY_CODE" => array(
-	            0 => "NAME",
-	            1 => "PATRONIM",
-	            2 => "SURNAME",
+	            0 => GetMessage('NAME'),
+	            1 => GetMessage('SURNAME'),
+	            2 => GetMessage('PATRONIM'),
 	            3 => "RANK",
 	            4 => "DEGREE",
-	            5 => "",
+	            5 => "FULL_NAME",
 	        ),
 	        "SET_BROWSER_TITLE" => "N",
 	        "SET_LAST_MODIFIED" => "N",

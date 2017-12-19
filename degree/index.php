@@ -1,48 +1,30 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Должность");
-?><!-- <div class="row">
+$APPLICATION->SetTitle("Ученая степень");
+?>
+<div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">
-		<?echo $prop['POSITIONS'];?> <small><?echo $prop['HEAD_SMALL'];?></small> </h1>
-		<ol class="breadcrumb">
-			<li><?echo SITE_DIR;?></li>
-			<li class="active"><?echo $prop['POSITIONS'];?></li>
-		</ol>
+			<?$APPLICATION->ShowTitle()?>
+		</h1>
+		<?$APPLICATION->IncludeComponent(
+			"bitrix:breadcrumb", 
+			"omi_breadcrumb", 
+			array(
+				"COMPONENT_TEMPLATE" => "omi_breadcrumb",
+				"PATH" => "",
+				"SITE_ID" => "s1",
+				"START_FROM" => "0"
+			),
+			false
+		);?>
 	</div>
 </div>
-<?
-CModule::IncludeModule("iblock");
-$arSelect = Array("ID", "NAME", "DETAIL_PAGE_URL");
-$arFilter = Array("IBLOCK_ID"=>6);
-$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);
-while ($ob = $res->GetNextElement()) {
-	$arFields = $ob->GetFields();
-	$arProp = $ob->GetProperties();
-	echo "<p><b>", "<a href='", $arFields["DETAIL_PAGE_URL"], "'>", $arProp[$prop['TITLE']]['VALUE'], "</a></b><br>";
-	echo $arProp[$prop['SHORT_TITLE']]['NAME'], ": ", $arProp[$prop['SHORT_TITLE']]['VALUE'], "<br>";
-	$arFilterI = Array("IBLOCK_ID"=>5, "PROPERTY_DEGREE" => $arFields['ID']);
-	$resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array("nPageSize"=>10));
-	echo $prop['SCI_LIST'], ":<br>";
-	while($obI = $resI->GetNextElement()) {
-		$arPropI = $obI->GetProperties();
-		$arFieldsI = $obI->GetFields();
-		echo "<a href=", $arFieldsI['DETAIL_PAGE_URL'], ">", $arPropI[$prop['FULL_NAME']]['VALUE'], "</a><br>";
-	}
-	echo "</p>";
-}
-?> -->
-<?
-function getSize($block, $property, $id)
-{
-	return CIBlockElement::GetList(array(), array('IBLOCK_ID' => $block, $property => $id), array(), false, array('ID', 'NAME'));
-}
-?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news", 
 	"omi_deg", 
 	array(
-		"ADD_ELEMENT_CHAIN" => "N",
+		"ADD_ELEMENT_CHAIN" => "Y",
 		"ADD_SECTIONS_CHAIN" => "Y",
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_ADDITIONAL" => "",
@@ -81,7 +63,7 @@ function getSize($block, $property, $id)
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_ID" => "6",
 		"IBLOCK_TYPE" => "DEGREE",
-		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"LIST_FIELD_CODE" => array(
 			0 => "",
@@ -104,7 +86,7 @@ function getSize($block, $property, $id)
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Новости",
 		"PREVIEW_TRUNCATE_LEN" => "",
-		"SEF_MODE" => "N",
+		"SEF_MODE" => "Y",
 		"SET_LAST_MODIFIED" => "N",
 		"SET_STATUS_404" => "N",
 		"SET_TITLE" => "Y",
@@ -120,9 +102,11 @@ function getSize($block, $property, $id)
 		"USE_RSS" => "N",
 		"USE_SEARCH" => "N",
 		"USE_SHARE" => "N",
-		"VARIABLE_ALIASES" => array(
-			"SECTION_ID" => "SECTION_ID",
-			"ELEMENT_ID" => "ELEMENT_ID",
+		"SEF_FOLDER" => "/degree/",
+		"SEF_URL_TEMPLATES" => array(
+			"news" => "",
+			"section" => "",
+			"detail" => "#ELEMENT_CODE#/",
 		)
 	),
 	false

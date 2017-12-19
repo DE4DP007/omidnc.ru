@@ -33,7 +33,7 @@ $i=0;?>
             <?endif;?>
             <div class="caption">
                 <h3><a href="<?=$arItem["DETAIL_PAGE_URL"]?>">
-                    <?=$arItem["NAME"]?>
+                    <?=$arItem["PROPERTIES"][GetMessage("FULL_NAME")]["VALUE"]?>
                     <br>
                     <small>
                         <b><?=$arItem["PROPERTIES"]["RANK_NAME"]?></b>

@@ -1,0 +1,6 @@
+<?
+$sSectionName = "Degrees";
+$arDirProperties = Array(
+
+);
+?>

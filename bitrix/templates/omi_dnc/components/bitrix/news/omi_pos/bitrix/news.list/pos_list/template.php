@@ -13,18 +13,6 @@
 $this->setFrameMode(true);
 $i=0;?>
 
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">
-        Должности <small>сотрудников</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="<?=SITE_DIR?>">Главная</a></li>
-            <li class="active">Должности</li>
-        </ol>
-    </div>
-</div>
-
 <?if($arParams["DISPLAY_TOP_PAGER"]):?>
 	<?=$arResult["NAV_STRING"]?><br />
 <?endif;?>
@@ -37,21 +25,21 @@ $i=0;?>
         <p class="col-md-4 col-sm-6" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
             <?$i++;?>
             <b><a href="<?=$arItem['DETAIL_PAGE_URL']?>">
-                <?=$arItem['NAME']?>
+                <?=$arItem['PROPERTIES'][GetMessage('TITLE')]['VALUE']?>
             </a></b><br/>
-            <?if($arItem['PROPERTIES']['SHORT_TITLE']['VALUE']):?>
-                <?=$arItem['PROPERTIES']['SHORT_TITLE']['NAME']?>: 
-                <?=$arItem['PROPERTIES']['SHORT_TITLE']['VALUE']?>
+            <?if($arItem['PROPERTIES'][GetMessage('SHORT_TITLE')]['VALUE']):?>
+                <b class="sci-prop-color-green"><?=$arItem['PROPERTIES'][GetMessage('SHORT_TITLE')]['NAME']?>:</b> 
+                <?=$arItem['PROPERTIES'][GetMessage('SHORT_TITLE')]['VALUE']?>
                 <br/>
             <?endif;?>
             <?$arFilterI = Array("IBLOCK_ID"=>5, "PROPERTY_RANK" => $arItem['ID']);
             $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array("nPageSize"=>10));?>
-            <?if(getSize(5, "PROPERTY_RANK", $arItem['ID']) != 0):?>
-                Список сотрудников:<br/>
+            <?if(CIBlockElement::GetList(array(), array('IBLOCK_ID' => 5, "PROPERTY_RANK" => $arItem['ID']), array(), false, array('ID', 'NAME')) != 0):?>
+                <b class="sci-prop-color-green"><?=GetMessage('SCI_LIST')?>:</b><br/>
                 <?while($obI = $resI->GetNextElement()):?>
                     <?$arPropI = $obI->GetProperties();
                     $arFieldsI = $obI->GetFields();?>
-                    <a href="<?=$arFieldsI['DETAIL_PAGE_URL']?>"> <?=$arPropI['FULL_NAME']['VALUE']?>
+                    <a href="<?=$arFieldsI['DETAIL_PAGE_URL']?>"> <?=$arPropI[GetMessage('FULL_NAME')]['VALUE']?>
                     </a><br/>
                 <?endwhile;?>
             <?endif;?>

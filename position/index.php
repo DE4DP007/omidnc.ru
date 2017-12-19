@@ -2,60 +2,31 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Должность");
 ?>
-<!-- <div class="row">
+
+<div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">
-		<?echo $prop['POSITIONS'];?> <small><?echo $prop['HEAD_SMALL'];?></small> </h1>
-		<ol class="breadcrumb">
-			<li><?echo SITE_DIR;?></li>
-			<li class="active"><?echo $prop['POSITIONS'];?></li>
-		</ol>
+			<?$APPLICATION->ShowTitle()?>
+		</h1>
+		<?$APPLICATION->IncludeComponent(
+			"bitrix:breadcrumb", 
+			"omi_breadcrumb", 
+			array(
+				"COMPONENT_TEMPLATE" => "omi_breadcrumb",
+				"PATH" => "",
+				"SITE_ID" => "s1",
+				"START_FROM" => "0"
+			),
+			false
+		);?>
 	</div>
-</div> -->
-<!-- <?
-CModule::IncludeModule("iblock");
-$arSelect = Array("ID", "NAME", "DETAIL_PAGE_URL");
-$arFilter = Array("IBLOCK_ID"=>7);
-$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);
-echo "<div class=\"container-fluid\">";
-$i = 0;
-while ($ob = $res->GetNextElement()) {
-	$arFields = $ob->GetFields();
-	$arProp = $ob->GetProperties();
-	echo "<p class=\"col-md-4 col-sm-6\"><b>", "<a href='", $arFields["DETAIL_PAGE_URL"], "'>", $arProp[$prop['TITLE']]['VALUE'], "</a></b><br>";
-	if($arProp[$prop['SHORT_TITLE']]['VALUE'])
-		echo $arProp[$prop['SHORT_TITLE']]['NAME'], ": ", $arProp[$prop['SHORT_TITLE']]['VALUE'], "<br>";
-	$arFilterI = Array("IBLOCK_ID"=>5, "PROPERTY_RANK" => $arFields['ID']);
-	$resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array("nPageSize"=>10));
-	if(getSize(5, "PROPERTY_RANK", $arFields['ID']) != 0)
-	{
-		echo $prop['SCI_LIST'], ":<br>";
-		while($obI = $resI->GetNextElement()) {
-			$arPropI = $obI->GetProperties();
-			$arFieldsI = $obI->GetFields();
-			echo "<a href=", $arFieldsI['DETAIL_PAGE_URL'], ">", $arPropI[$prop['FULL_NAME']]['VALUE'], "</a><br>";
-		}
-	}
-	echo "</p>";
-	$i++;
-	if ($i%3 == 0)
-	{
-		echo "<div class=\"clearfix\"></div>";
-	}
-}
-echo "</div>";
-?> -->
-<?
-function getSize($block, $property, $id)
-{
-	return CIBlockElement::GetList(array(), array('IBLOCK_ID' => $block, $property => $id), array(), false, array('ID', 'NAME'));
-}
-?>
+</div>
+
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news", 
 	"omi_pos", 
 	array(
-		"ADD_ELEMENT_CHAIN" => "N",
+		"ADD_ELEMENT_CHAIN" => "Y",
 		"ADD_SECTIONS_CHAIN" => "Y",
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_ADDITIONAL" => "",
@@ -94,7 +65,7 @@ function getSize($block, $property, $id)
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_ID" => "7",
 		"IBLOCK_TYPE" => "DEGREE",
-		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"LIST_FIELD_CODE" => array(
 			0 => "",
@@ -102,10 +73,8 @@ function getSize($block, $property, $id)
 		),
 		"LIST_PROPERTY_CODE" => array(
 			0 => "TITLE",
-			1 => "TITLE_EN",
-			2 => "SHORT_TITLE",
-			3 => "SHORT_TITLE_EN",
-			4 => "",
+			1 => "SHORT_TITLE",
+			2 => "",
 		),
 		"MESSAGE_404" => "",
 		"META_DESCRIPTION" => "-",
