@@ -75,7 +75,7 @@ $this->setFrameMode(true);
     <?endforeach;
     foreach($arResult["DISPLAY_PROPERTIES"] as $pid=>$arProperty):?>
 
-        <?=$arProperty["NAME"]?>:&nbsp;
+    <b class="sci-prop-color-green"><?=$arProperty["NAME"]?>:&nbsp;</b>
         <?if(is_array($arProperty["DISPLAY_VALUE"])):?>
             <?=implode("&nbsp;/&nbsp;", $arProperty["DISPLAY_VALUE"]);?>
         <?else:?>
@@ -106,7 +106,7 @@ $this->setFrameMode(true);
         <?
     }
     ?>
-    <h4>Список публикаций</h4>
+    <h4 class="centered">Список публикаций</h4>
     <?$arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
     $arFilter = Array("IBLOCK_ID"=>9, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "PROPERTY_JOURNAL" => $arResult['ID']);
     $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);

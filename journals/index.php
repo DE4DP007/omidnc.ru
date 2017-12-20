@@ -48,7 +48,7 @@ $APPLICATION->SetTitle("Журналы");
 		"DETAIL_PAGER_TEMPLATE" => "",
 		"DETAIL_PAGER_TITLE" => "Страница",
 		"DETAIL_PROPERTY_CODE" => array(
-			0 => "TITLE",
+			0 => "", //"TITLE"
 			1 => "DESCRIPTION",
 			2 => "LINK",
 			3 => "IF_RINC",

@@ -96,10 +96,11 @@ h3.journhead
     border-radius: 10px;
 }
 .centered{text-align: center;}
+
 .news-list small {font-size:16px;}
 .news-list p {text-align: justify;line-height: 22px;font-size:16px;}
 .propertyname{color: #4b6d37;font-weight: 700;}
-.news-list small {font-size:14px;}
+.news-list small {font-size:16px;}
 .news-list p {text-align: justify;}
 .propertyname{color: #4b6d37;font-weight: 700;}
 
