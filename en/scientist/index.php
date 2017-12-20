@@ -1,7 +1,4 @@
-<?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Сотрудники");
-?>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");?>
 
 <div class="row">
 	<div class="col-lg-12">
@@ -26,14 +23,14 @@ $APPLICATION->SetTitle("Сотрудники");
 	"bitrix:news", 
 	"omi_people", 
 	array(
-		"ADD_ELEMENT_CHAIN" => "Y",
+		"ADD_ELEMENT_CHAIN" => "N",
 		"ADD_SECTIONS_CHAIN" => "N",
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_ADDITIONAL" => "",
 		"AJAX_OPTION_HISTORY" => "N",
 		"AJAX_OPTION_JUMP" => "N",
 		"AJAX_OPTION_STYLE" => "Y",
-		"BROWSER_TITLE" => "-",
+		"BROWSER_TITLE" => "FULL_NAME_EN",
 		"CACHE_FILTER" => "N",
 		"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "36000000",
@@ -51,34 +48,32 @@ $APPLICATION->SetTitle("Сотрудники");
 		"DETAIL_PAGER_TEMPLATE" => "",
 		"DETAIL_PAGER_TITLE" => "Страница",
 		"DETAIL_PROPERTY_CODE" => array(
-			0 => "FULL_NAME",
-			1 => "FULL_NAME_EN",
-			2 => "EMAIL",
-			3 => "SURNAME",
-			4 => "NAME",
-			5 => "PATRONIM",
-			6 => "DESCRIPTION",
-			7 => "SURNAME_EN",
-			8 => "NAME_EN",
-			9 => "PATRONIM_EN",
-			10 => "DESCRIPTION_EN",
-			11 => "RANK",
-			12 => "DEGREE",
-			13 => "DATE_OF_BIRTH",
-			14 => "VAK_SPEC_EN",
-			15 => "VAK_SPEC",
-			16 => "KEYWORDS",
-			17 => "KEYWORDS_EN",
-			18 => "UDK",
-			19 => "MSC",
-			20 => "NIR_SUBJECT",
-			21 => "NIR_SUBJECT_EN",
-			22 => "",
+			0 => "EMAIL",
+			1 => "SURNAME",
+			2 => "NAME",
+			3 => "PATRONIM",
+			4 => "DESCRIPTION",
+			5 => "SURNAME_EN",
+			6 => "NAME_EN",
+			7 => "PATRONIM_EN",
+			8 => "DESCRIPTION_EN",
+			9 => "RANK",
+			10 => "DEGREE",
+			11 => "DATE_OF_BIRTH",
+			12 => "VAK_SPEC_EN",
+			13 => "VAK_SPEC",
+			14 => "KEYWORDS",
+			15 => "KEYWORDS_EN",
+			16 => "UDK",
+			17 => "MSC",
+			18 => "NIR_SUBJECT",
+			19 => "NIR_SUBJECT_EN",
+			20 => "",
 		),
 		"DETAIL_SET_CANONICAL_URL" => "N",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"DISPLAY_DATE" => "Y",
-		"DISPLAY_NAME" => "Y",
+		"DISPLAY_NAME" => "N",
 		"DISPLAY_PICTURE" => "Y",
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
@@ -154,4 +149,5 @@ $APPLICATION->SetTitle("Сотрудники");
 	false
 );?>
 
+<?$APPLICATION->SetTitle("Scientists");?>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

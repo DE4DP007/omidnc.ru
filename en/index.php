@@ -1,5 +1,5 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Отдел Математики и Информатики ДНЦ РАН");?>
+$APPLICATION->SetTitle("Department of Mathematics and Computer Science DSC RAS");?>
 
 
     <!-- Marketing Icons Section -->

@@ -1,6 +1,7 @@
 <?
 $MESS['SCI'] = "Сотрудник";
 $MESS['FULL_NAME'] = "ФИО";
+$MESS['FULL_NAME_V'] = "FULL_NAME";
 $MESS["MAIN"] = "Главная";
 $MESS["SCIENTIST"] = "Сотрудники";
 $MESS["SURNAME"] = "Фамилия";

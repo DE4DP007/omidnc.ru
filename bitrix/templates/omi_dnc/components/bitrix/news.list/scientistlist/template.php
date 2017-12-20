@@ -34,15 +34,33 @@ $i=0;?>
             <div class="caption">
                 <h3><a href="<?=$arItem["DETAIL_PAGE_URL"]?>">
                     <?=$arItem["PROPERTIES"][GetMessage("FULL_NAME")]["VALUE"]?>
-                    <br>
-                    <small>
-                        <b><?=$arItem["PROPERTIES"]["RANK_NAME"]?></b>
-                    </small>
-                    <br>
-                    <small>
-                        <?=$arItem["PROPERTIES"]["DEGREE_NAME"]?>
-                    </small>
-                    <br>
+                    <br/>
+                    <?
+                        $arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
+                        $arFilter = Array("IBLOCK_ID"=>5, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "ID" => $arItem['ID']);
+                        $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);
+                        while($ob = $res->GetNextElement())
+                        {
+                            $arFields = $ob->GetFields();
+                            $arProp = $ob->GetProperties();
+                            $detail = $arFields['NAME'];
+                            $arFilterI = Array("IBLOCK_ID"=>7, "ID" => $arProp['RANK']['VALUE']);
+                            $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array("nPageSize"=>10));
+                            while($obI = $resI->GetNextElement()) {
+                                $arPropI = $obI->GetProperties();
+                                $arFieldsI = $obI->GetFields();
+                                //echo $prop['RANK_STRING'], ": <a href=", $arFieldsI['DETAIL_PAGE_URL'], ">", $arPropI[$prop['TITLE']]['VALUE'], "</a><br>";
+                                echo "<small><b>", $arPropI[GetMessage('TITLE')]['VALUE'], "</b><br></small>";
+                            }
+                            $arFilterI = Array("IBLOCK_ID"=>6, "ID" => $arProp['DEGREE']['VALUE']);
+                            $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array("nPageSize"=>10));
+                            while($obI = $resI->GetNextElement()) {
+                                $arPropI = $obI->GetProperties();
+                                $arFieldsI = $obI->GetFields();
+                                echo "<small>", $arPropI[GetMessage('TITLE')]['VALUE'], "</small><br>";
+                            }
+                        }
+                        ?>
                 </a></h3>
 
                 <?/*<p>< ?=$arItem["PREVIEW_TEXT"];?></p>*/?>
