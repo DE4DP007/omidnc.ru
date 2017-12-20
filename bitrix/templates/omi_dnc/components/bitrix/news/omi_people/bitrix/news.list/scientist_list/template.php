@@ -39,13 +39,28 @@ $i=0;?>
                         </a>
                     </b>
                     <br/>
-                    <a href="<?=$arItem["PROPERTIES"]["RANK_URL"]?>">
-                        <?=$arItem["PROPERTIES"]["RANK_NAME"]?>
-                    </a>
-                    <br/>
-                    <a href="<?=$arItem["PROPERTIES"]["DEGREE_URL"]?>">
-                        <?=$arItem["PROPERTIES"]["DEGREE_NAME"]?>
-                    </a>
+                    <?$arFilterI = Array("IBLOCK_ID"=>7, "ID" => $arItem['PROPERTIES']['RANK']['VALUE']);
+                    $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array("nPageSize"=>10));?>
+                    <!-- <?print_r($resI);?> -->
+                    <?if($resI != 0):?>
+                        <?while($obI = $resI->GetNextElement()):?>
+                            <?$arPropI = $obI->GetProperties();
+                            $arFieldsI = $obI->GetFields();?>
+                            <a href="<?=$arItem["PROPERTIES"]["RANK_URL"]?>"> <?=$arPropI[GetMessage('TITLE')]['VALUE']?>
+                            </a><br/>
+                        <?endwhile;?>
+                    <?endif;?>
+                    <?$arFilterI = Array("IBLOCK_ID"=>6, "ID" => $arItem['PROPERTIES']['DEGREE']['VALUE']);
+                    $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array("nPageSize"=>10));?>
+                    <!-- <?print_r($resI);?> -->
+                    <?if($resI != 0):?>
+                        <?while($obI = $resI->GetNextElement()):?>
+                            <?$arPropI = $obI->GetProperties();
+                            $arFieldsI = $obI->GetFields();?>
+                            <a href="<?=$arItem["PROPERTIES"]["DEGREE_URL"]?>"> <?=$arPropI[GetMessage('TITLE')]['VALUE']?>
+                            </a><br/>
+                        <?endwhile;?>
+                    <?endif;?>
                     <br/>
                 </div>
 
@@ -94,14 +109,28 @@ $i=0;?>
                     </a>
                 </b>
                 <br/>
-                <a href="<?=$arItem["PROPERTIES"]["RANK_URL"]?>">
-                    <?=$arItem["PROPERTIES"]["RANK_NAME"]?>
-                </a>
-                <br/>
-                <a href="<?=$arItem["PROPERTIES"]["DEGREE_URL"]?>">
-                    <?=$arItem["PROPERTIES"]["DEGREE_NAME"]?>
-                </a>
-                <br/>
+                <?$arFilterI = Array("IBLOCK_ID"=>7, "ID" => $arItem['PROPERTIES']['RANK']['VALUE']);
+                $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array("nPageSize"=>10));?>
+                <!-- <?print_r($resI);?> -->
+                <?if($resI != 0):?>
+                    <?while($obI = $resI->GetNextElement()):?>
+                        <?$arPropI = $obI->GetProperties();
+                        $arFieldsI = $obI->GetFields();?>
+                        <a href="<?=$arItem["PROPERTIES"]["RANK_URL"]?>"> <?=$arPropI[GetMessage('TITLE')]['VALUE']?>
+                        </a><br/>
+                    <?endwhile;?>
+                <?endif;?>
+                <?$arFilterI = Array("IBLOCK_ID"=>6, "ID" => $arItem['PROPERTIES']['DEGREE']['VALUE']);
+                $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array("nPageSize"=>10));?>
+                <!-- <?print_r($resI);?> -->
+                <?if($resI != 0):?>
+                    <?while($obI = $resI->GetNextElement()):?>
+                        <?$arPropI = $obI->GetProperties();
+                        $arFieldsI = $obI->GetFields();?>
+                        <a href="<?=$arItem["PROPERTIES"]["DEGREE_URL"]?>"> <?=$arPropI[GetMessage('TITLE')]['VALUE']?>
+                        </a><br/>
+                    <?endwhile;?>
+                <?endif;?>
             </div>
 
                 <?/*<p>< ?=$arItem["PREVIEW_TEXT"];?></p>*/?>

@@ -14,11 +14,16 @@ $APPLICATION->SetTitle("About the Department of Mathematics and Computer Science
                 );?>
             </h1>
 
-            <ol class="breadcrumb">
-                <li><a href="index.html">Main</a>
-                </li>
-                <li class="active">About Department</li>
-            </ol>
+            <?$APPLICATION->IncludeComponent(
+                "bitrix:breadcrumb",
+                "omi_breadcrumb",
+                Array(
+                    "COMPONENT_TEMPLATE" => "omi_breadcrumb",
+                    "PATH" => "",
+                    "SITE_ID" => "s2",
+                    "START_FROM" => "0"
+                )
+            );?>
 
         </div>
     </div>
@@ -121,7 +126,7 @@ $APPLICATION->SetTitle("About the Department of Mathematics and Computer Science
                 "HIDE_LINK_WHEN_NO_DETAIL" => "N",
                 "IBLOCK_ID" => "5",
                 "IBLOCK_TYPE" => "news",
-                "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+                "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                 "INCLUDE_SUBSECTIONS" => "Y",
                 "MESSAGE_404" => "",
                 "NEWS_COUNT" => "20",
@@ -204,7 +209,7 @@ $APPLICATION->SetTitle("About the Department of Mathematics and Computer Science
                 "HIDE_LINK_WHEN_NO_DETAIL" => "N",
                 "IBLOCK_ID" => "8",
                 "IBLOCK_TYPE" => "organization",
-                "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+                "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                 "INCLUDE_SUBSECTIONS" => "Y",
                 "MESSAGE_404" => "",
                 "NEWS_COUNT" => "20",

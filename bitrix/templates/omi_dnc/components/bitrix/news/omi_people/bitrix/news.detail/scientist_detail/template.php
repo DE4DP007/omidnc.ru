@@ -40,7 +40,7 @@ while($ob = $res->GetNextElement())
 		<span class="news-date-time"><?=$arResult["DISPLAY_ACTIVE_FROM"]?></span>
 	<?endif;?>
 	<?if($arParams["DISPLAY_NAME"]!="N" && $arResult["NAME"]):?>
-		<h3 class="text-center"><?=$arResult["NAME"]?></h3>
+		<h3 class="text-center"><?=$arResult["PROPERTIES"][GetMessage("FULL_NAME_V")]['VALUE']?></h3>
 	<?endif;?>
 	<div class="bt-margin15px text-center">
 	<?
@@ -91,7 +91,7 @@ while($ob = $res->GetNextElement())
 	<!-- <p class="text-justify detail_preview"><?//echo $arResult["PREVIEW_TEXT"];?>
 	</p> -->
 	<!-- Краткий текст -->
-	<div class="fs16px col-md-12 text-justify no-padding-l-r top-margin10px">
+	<!-- <div class="fs16px col-md-12 text-justify no-padding-l-r top-margin10px">
 		<?if($arResult["NAV_RESULT"]):?>
 			<?if($arParams["DISPLAY_TOP_PAGER"]):?>
 				<?=$arResult["NAV_STRING"]?><br/>
@@ -105,7 +105,7 @@ while($ob = $res->GetNextElement())
 		<?else:?>
 			<?=$arResult["PREVIEW_TEXT"];?>
 		<?endif?>
-	</div>
+	</div> -->
 	<div style="clear:both"></div>
 	<br/>
 	<?foreach($arResult["FIELDS"] as $code=>$value):
@@ -196,3 +196,5 @@ function getCurrentID($iblock_id, $code)
 	}
 }
 ?>
+
+<?$APPLICATION->AddChainItem($arResult["PROPERTIES"][GetMessage("FULL_NAME_V")]['VALUE']);?>

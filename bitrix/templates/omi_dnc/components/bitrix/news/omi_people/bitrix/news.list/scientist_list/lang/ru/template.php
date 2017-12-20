@@ -3,4 +3,5 @@ $MESS["CT_BNL_ELEMENT_DELETE_CONFIRM"] = "Будет удалена вся ин�
 $MESS["MORE"] = "Подробнее";
 $MESS['NAME'] = 'FULL_NAME';
 $MESS['DESCRIPTION'] = 'DESCRIPTION';
+$MESS['TITLE'] = 'TITLE';
 ?>
