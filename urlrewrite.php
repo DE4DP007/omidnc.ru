@@ -85,27 +85,21 @@ $arUrlRewrite = array(
 		"PATH" => "/en/position/index.php",
 	),
 	array(
-		"CONDITION" => "#^/en/publtype/#",
-		"RULE" => "",
-		"ID" => "bitrix:news",
-		"PATH" => "/en/publtype/index.php",
-	),
-	array(
 		"CONDITION" => "#^/en/journals/#",
 		"RULE" => "",
 		"ID" => "bitrix:news",
 		"PATH" => "/en/journals/index.php",
 	),
 	array(
+		"CONDITION" => "#^/en/publtype/#",
+		"RULE" => "",
+		"ID" => "bitrix:news",
+		"PATH" => "/en/publtype/index.php",
+	),
+	array(
 		"CONDITION" => "#^/en/authors/#",
 		"ID" => "bitrix:news.list",
 		"PATH" => "/authors/index.php",
-	),
-	array(
-		"CONDITION" => "#^/scientist/#",
-		"RULE" => "",
-		"ID" => "bitrix:news",
-		"PATH" => "/scientist/index.php",
 	),
 	array(
 		"CONDITION" => "#^/en/degree/#",
@@ -114,16 +108,10 @@ $arUrlRewrite = array(
 		"PATH" => "/en/degree/index.php",
 	),
 	array(
-		"CONDITION" => "#^/services/#",
-		"RULE" => "",
-		"ID" => "bitrix:catalog",
-		"PATH" => "/services/index.php",
-	),
-	array(
-		"CONDITION" => "#^/position/#",
+		"CONDITION" => "#^/scientist/#",
 		"RULE" => "",
 		"ID" => "bitrix:news",
-		"PATH" => "/position/index.php",
+		"PATH" => "/scientist/index.php",
 	),
 	array(
 		"CONDITION" => "#^/journals/#",
@@ -136,6 +124,18 @@ $arUrlRewrite = array(
 		"RULE" => "",
 		"ID" => "bitrix:news",
 		"PATH" => "/publtype/index.php",
+	),
+	array(
+		"CONDITION" => "#^/services/#",
+		"RULE" => "",
+		"ID" => "bitrix:catalog",
+		"PATH" => "/services/index.php",
+	),
+	array(
+		"CONDITION" => "#^/position/#",
+		"RULE" => "",
+		"ID" => "bitrix:news",
+		"PATH" => "/position/index.php",
 	),
 	array(
 		"CONDITION" => "#^/products/#",

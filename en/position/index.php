@@ -1,6 +1,5 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Position");
 ?>
 
 <div class="row">
@@ -113,4 +112,5 @@ $APPLICATION->SetTitle("Position");
 	),
 	false
 );?>
+<?$APPLICATION->SetTitle("Position");?>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
