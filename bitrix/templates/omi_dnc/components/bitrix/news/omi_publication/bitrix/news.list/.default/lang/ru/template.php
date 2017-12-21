@@ -3,4 +3,5 @@ $MESS["CT_BNL_ELEMENT_DELETE_CONFIRM"] = "Будет удалена вся ин�
 $MESS["ART_COUNT"] = "Количество статей ОМИ";
 $MESS["SHOW"] = "Показать";
 $MESS["TITLE"] = "TITLE";
+$MESS['AUTHORS_OTHER'] = 'AUTHORS_OTHER';
 ?>

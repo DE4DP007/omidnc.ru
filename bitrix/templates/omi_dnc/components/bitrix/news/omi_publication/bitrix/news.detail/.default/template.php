@@ -141,18 +141,18 @@ $this->setFrameMode(true);
             </div>
         <?endif;?>
     </div>
-    <?if($arProp['FULLTEXT']['VALUE'] != null):?>
-        <div class='sci-prop text-center'>
-            <a href="/issues/Daghestan-Electronic-Mathematical-Reports-Issue-4/" class="btn btn-lg btn-primary">
-                <span class="glyphicon glyphicon-arrow-left"></span>
-                <?=GetMessage("TO_ISSUE")?>
-            </a>
+    <div class='sci-prop text-center'>
+        <a href="<?=$arResult['LIST_PAGE_URL']?>" class="btn btn-lg btn-primary">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <?=GetMessage("TO_ISSUE")?>
+        </a>
+        <?if($arProp['FULLTEXT']['VALUE'] != null):?>
             <a class="btn btn-success btn-lg" href="<?=$arProp['FULLTEXT']['VALUE']?>">
                 <span class="glyphicon glyphicon-book"></span>
                 <?=GetMessage('FULL_TEXT')?>
             </a>
-        </div>
-    <?endif;?>
+        <?endif;?>
+    </div>
         <!-- test_dump($arProp[$prop['BIBDATA']]['NAME']); -->
 
 

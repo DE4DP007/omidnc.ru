@@ -39,7 +39,7 @@ $i=0;?>
                 <?while($obI = $resI->GetNextElement()):?>
                     <?$arPropI = $obI->GetProperties();
                     $arFieldsI = $obI->GetFields();?>
-                    <a href="<?=$arFieldsI['DETAIL_PAGE_URL']?>"> <?=$arPropI['FULL_NAME']['VALUE']?>
+                    <a href="<?=$arFieldsI['DETAIL_PAGE_URL']?>"> <?=$arPropI[GetMessage('FULL_NAME')]['VALUE']?>
                     </a><br/>
                 <?endwhile;?>
             <?endif;?>

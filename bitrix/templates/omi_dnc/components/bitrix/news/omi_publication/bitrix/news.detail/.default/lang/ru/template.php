@@ -17,5 +17,5 @@ $MESS['KEYWORDS'] = "Ключевые слова";
 $MESS['PUBL_DATE'] = "Дата издания";
 $MESS['IS_OMI_STR_VAL'] = "Да";
 $MESS['BIBDATA'] = "BIBLIODATA";
-$MESS['TO_ISSUE'] = "В содержание выпуска";
+$MESS['TO_ISSUE'] = "К списку публикаций";
 ?>

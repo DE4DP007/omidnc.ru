@@ -31,7 +31,7 @@ $APPLICATION->SetTitle("Ученая степень");
 		"AJAX_OPTION_HISTORY" => "N",
 		"AJAX_OPTION_JUMP" => "N",
 		"AJAX_OPTION_STYLE" => "Y",
-		"BROWSER_TITLE" => "-",
+		"BROWSER_TITLE" => "TITLE",
 		"CACHE_FILTER" => "N",
 		"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "36000000",
@@ -49,7 +49,7 @@ $APPLICATION->SetTitle("Ученая степень");
 		"DETAIL_PAGER_TEMPLATE" => "",
 		"DETAIL_PAGER_TITLE" => "Страница",
 		"DETAIL_PROPERTY_CODE" => array(
-			0 => "SHORT_TITLE",
+			0 => "",
 			1 => "",
 		),
 		"DETAIL_SET_CANONICAL_URL" => "N",

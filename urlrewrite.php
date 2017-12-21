@@ -102,16 +102,28 @@ $arUrlRewrite = array(
 		"PATH" => "/authors/index.php",
 	),
 	array(
+		"CONDITION" => "#^/scientist/#",
+		"RULE" => "",
+		"ID" => "bitrix:news",
+		"PATH" => "/scientist/index.php",
+	),
+	array(
 		"CONDITION" => "#^/en/degree/#",
 		"RULE" => "",
 		"ID" => "bitrix:news",
 		"PATH" => "/en/degree/index.php",
 	),
 	array(
-		"CONDITION" => "#^/scientist/#",
+		"CONDITION" => "#^/position/#",
 		"RULE" => "",
 		"ID" => "bitrix:news",
-		"PATH" => "/scientist/index.php",
+		"PATH" => "/position/index.php",
+	),
+	array(
+		"CONDITION" => "#^/services/#",
+		"RULE" => "",
+		"ID" => "bitrix:catalog",
+		"PATH" => "/services/index.php",
 	),
 	array(
 		"CONDITION" => "#^/journals/#",
@@ -124,18 +136,6 @@ $arUrlRewrite = array(
 		"RULE" => "",
 		"ID" => "bitrix:news",
 		"PATH" => "/publtype/index.php",
-	),
-	array(
-		"CONDITION" => "#^/services/#",
-		"RULE" => "",
-		"ID" => "bitrix:catalog",
-		"PATH" => "/services/index.php",
-	),
-	array(
-		"CONDITION" => "#^/position/#",
-		"RULE" => "",
-		"ID" => "bitrix:news",
-		"PATH" => "/position/index.php",
 	),
 	array(
 		"CONDITION" => "#^/products/#",

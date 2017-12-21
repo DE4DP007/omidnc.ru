@@ -3,4 +3,5 @@ $MESS["CT_BNL_ELEMENT_DELETE_CONFIRM"] = "Будет удалена вся ин�
 $MESS['SCI_LIST'] = "Список сотрудников";
 $MESS['TITLE'] = "TITLE";
 $MESS['SHORT_TITLE'] = "SHORT_TITLE";
+$MESS['FULL_NAME'] = "FULL_NAME";
 ?>

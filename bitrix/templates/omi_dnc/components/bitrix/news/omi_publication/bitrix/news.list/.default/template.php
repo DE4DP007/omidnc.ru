@@ -70,8 +70,23 @@ $this->setFrameMode(true);
 			//test_dump($someProps);
 			unset($someProps["TITLE"]);
 			unset($someProps["ANNOTATION"]);
+			unset($someProps['AUTHORS']);
+			unset($someProps[GetMessage('AUTHORS_OTHER')]);
 			//test_dump($someProps["TITLE"]["NAME"]);
 		?>
+		<small>
+			<span class="propertyname"><?=$arItem['PROPERTIES'][GetMessage('AUTHORS_OTHER')]['NAME']?>:</span>&nbsp;
+			<?if (is_array($arItem['DISPLAY_PROPERTIES']['AUTHORS']['DISPLAY_VALUE'])):?>
+				<?=implode(",&nbsp;", $arItem['DISPLAY_PROPERTIES']['AUTHORS']['DISPLAY_VALUE'])?>
+			<?else:?>
+				<?=$arItem['DISPLAY_PROPERTIES']['AUTHORS']['DISPLAY_VALUE']?>
+			<?endif;?>
+			<?if(is_array($arItem['DISPLAY_PROPERTIES'][GetMessage('AUTHORS_OTHER')]['DISPLAY_VALUE'])):?>
+				/ <?=implode(",&nbsp;", $arItem['DISPLAY_PROPERTIES'][GetMessage('AUTHORS_OTHER')]['DISPLAY_VALUE'])?>
+			<?elseif ($arItem['DISPLAY_PROPERTIES'][GetMessage('AUTHORS_OTHER')]['DISPLAY_VALUE']):?>
+				/ <?=$arItem['DISPLAY_PROPERTIES'][GetMessage('AUTHORS_OTHER')]['DISPLAY_VALUE']?>
+			<?endif;?>
+		</small><br/>
 		<?//foreach($arItem["DISPLAY_PROPERTIES"] as $pid=>$arProperty):
 			foreach($someProps as $pid=>$arProperty):
 		?>

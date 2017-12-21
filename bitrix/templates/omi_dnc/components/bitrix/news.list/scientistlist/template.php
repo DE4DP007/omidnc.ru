@@ -60,7 +60,7 @@ $i=0;?>
                                 echo "<small>", $arPropI[GetMessage('TITLE')]['VALUE'], "</small><br>";
                             }
                         }
-                        ?>
+                    ?>
                 </a></h3>
 
                 <?/*<p>< ?=$arItem["PREVIEW_TEXT"];?></p>*/?>
