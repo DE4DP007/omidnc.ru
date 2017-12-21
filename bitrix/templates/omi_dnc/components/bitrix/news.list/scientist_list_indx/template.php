@@ -19,16 +19,6 @@ $i=0;?>
     	<?=$arResult["NAV_STRING"]?><br />
     <?endif;?>
 
-    <div class="col-lg-12">
-        <h2 class="page-header">
-            <?$APPLICATION->IncludeFile(
-                SITE_DIR."include/mainhead3.php",
-                Array(),
-                Array("MODE"=>"text")
-            );?>
-        </h2>
-    </div>
-
     <?foreach($arResult["ITEMS"] as $arItem):?>
     	<?$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
     	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));?>
@@ -43,16 +33,34 @@ $i=0;?>
                 <?endif;?>
                 <div class="caption">
                     <h3><a href="<?=$arItem["DETAIL_PAGE_URL"]?>">
-                        <?=$arItem["NAME"]?>
+                        <?=$arItem["PROPERTIES"][GetMessage("FULL_NAME")]["VALUE"]?>
                         <br>
-                        <small>
-                            <b><?=$arItem["PROPERTIES"]["RANK_NAME"]?></b>
-                        </small>
-                        <br>
-                        <small>
-                            <?=$arItem["PROPERTIES"]["DEGREE_NAME"]?>
-                        </small>
-                        <br>
+                        <?
+                        $arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
+                        $arFilter = Array("IBLOCK_ID"=>5, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "ID" => $arItem['ID']);
+                        $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);
+                        while($ob = $res->GetNextElement())
+                        {
+                            $arFields = $ob->GetFields();
+                            $arProp = $ob->GetProperties();
+                            $detail = $arFields['NAME'];
+                            $arFilterI = Array("IBLOCK_ID"=>7, "ID" => $arProp['RANK']['VALUE']);
+                            $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array("nPageSize"=>10));
+                            while($obI = $resI->GetNextElement()) {
+                                $arPropI = $obI->GetProperties();
+                                $arFieldsI = $obI->GetFields();
+                                //echo $prop['RANK_STRING'], ": <a href=", $arFieldsI['DETAIL_PAGE_URL'], ">", $arPropI[$prop['TITLE']]['VALUE'], "</a><br>";
+                                echo "<small><b>", $arPropI[GetMessage('TITLE')]['VALUE'], "</b><br></small>";
+                            }
+                            $arFilterI = Array("IBLOCK_ID"=>6, "ID" => $arProp['DEGREE']['VALUE']);
+                            $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array("nPageSize"=>10));
+                            while($obI = $resI->GetNextElement()) {
+                                $arPropI = $obI->GetProperties();
+                                $arFieldsI = $obI->GetFields();
+                                echo "<small>", $arPropI[GetMessage('TITLE')]['VALUE'], "</small><br>";
+                            }
+                        }
+                    ?>
                     </a></h3>
 
                     <?/*<p>< ?=$arItem["PREVIEW_TEXT"];?></p>*/?>

@@ -149,6 +149,16 @@ $APPLICATION->SetTitle("Отдел Математики и Информатик�
             </h2>
         </div> -->
 
+    <div class="col-lg-12">
+        <h2 class="page-header">
+            <?$APPLICATION->IncludeFile(
+                SITE_DIR."include/mainhead3.php",
+                Array(),
+                Array("MODE"=>"text")
+            );?>
+        </h2>
+    </div>
+
     <?$APPLICATION->IncludeComponent("bitrix:news.list", "scientist_list_indx", Array(
         "ACTIVE_DATE_FORMAT" => "d.m.Y",	// Формат показа даты
         "ADD_SECTIONS_CHAIN" => "Y",	// Включать раздел в цепочку навигации
