@@ -76,15 +76,25 @@ $this->setFrameMode(true);
 		?>
 		<small>
 			<span class="propertyname"><?=$arItem['PROPERTIES'][GetMessage('AUTHORS_OTHER')]['NAME']?>:</span>&nbsp;
+			<!-- <?$arFilterI = Array("IBLOCK_ID"=>5, "PROPERTY_RANK" => $arItem['ID']);
+            $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array("nPageSize"=>10));?>
+            <?if(CIBlockElement::GetList(array(), array('IBLOCK_ID' => 5, "PROPERTY_RANK" => $arItem['ID']), array(), false, array('ID', 'NAME')) != 0):?>
+                <?while($obI = $resI->GetNextElement()):?>
+                    <?$arPropI = $obI->GetProperties();
+                    $arFieldsI = $obI->GetFields();?>
+                    <a href="<?=$arFieldsI['DETAIL_PAGE_URL']?>"> <?=$arPropI['FULL_NAME']['VALUE']?>
+                    </a><br/>
+                <?endwhile;?>
+            <?endif;?> -->
 			<?if (is_array($arItem['DISPLAY_PROPERTIES']['AUTHORS']['DISPLAY_VALUE'])):?>
 				<?=implode(",&nbsp;", $arItem['DISPLAY_PROPERTIES']['AUTHORS']['DISPLAY_VALUE'])?>
 			<?else:?>
 				<?=$arItem['DISPLAY_PROPERTIES']['AUTHORS']['DISPLAY_VALUE']?>
 			<?endif;?>
 			<?if(is_array($arItem['DISPLAY_PROPERTIES'][GetMessage('AUTHORS_OTHER')]['DISPLAY_VALUE'])):?>
-				/ <?=implode(",&nbsp;", $arItem['DISPLAY_PROPERTIES'][GetMessage('AUTHORS_OTHER')]['DISPLAY_VALUE'])?>
+				, <?=implode(",&nbsp;", $arItem['DISPLAY_PROPERTIES'][GetMessage('AUTHORS_OTHER')]['DISPLAY_VALUE'])?>
 			<?elseif ($arItem['DISPLAY_PROPERTIES'][GetMessage('AUTHORS_OTHER')]['DISPLAY_VALUE']):?>
-				/ <?=$arItem['DISPLAY_PROPERTIES'][GetMessage('AUTHORS_OTHER')]['DISPLAY_VALUE']?>
+				, <?=$arItem['DISPLAY_PROPERTIES'][GetMessage('AUTHORS_OTHER')]['DISPLAY_VALUE']?>
 			<?endif;?>
 		</small><br/>
 		<?//foreach($arItem["DISPLAY_PROPERTIES"] as $pid=>$arProperty):

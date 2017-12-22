@@ -34,16 +34,10 @@ $i=0;?>
             <?endif;?>
             <?$arFilterI = Array("IBLOCK_ID"=>9, "PROPERTY_PUBLTYPE" => $arItem['ID']);
             $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array("nPageSize"=>5));?>
-            <?if(CIBlockElement::GetList(array(), array('IBLOCK_ID' => 9, "PROPERTY_PUBLTYPE" => $arItem['ID']), array(), false, array('ID', 'NAME')) != 0):?>
-                <b class="sci-prop-color-green"><?=GetMessage('PUB_LIST')?>:</b><br/>
-                <?while($obI = $resI->GetNextElement()):?>
-                    <?$arPropI = $obI->GetProperties();
-                    $arFieldsI = $obI->GetFields();?>
-                    <a href="<?=$arFieldsI['DETAIL_PAGE_URL']?>"> <?=$arPropI[GetMessage('TITLE')]['VALUE']?>
-                    </a><br/>
-                <?endwhile;?>
+            <?$count = CIBlockElement::GetList(array(), array('IBLOCK_ID' => 9, "PROPERTY_PUBLTYPE" => $arItem['ID']), array(), false, array('ID', 'NAME'));?>
+            <?if($count != 0):?>
+                <b class="sci-prop-color-green"><?=GetMessage('PUB_LIST')?>: <?=$count?></b><br/>
             <?endif;?>
-            <?$resI->NavPrint($prop['PUB_LIST']);?>
         </p>
 
         <?if ($i%3 == 0):?>

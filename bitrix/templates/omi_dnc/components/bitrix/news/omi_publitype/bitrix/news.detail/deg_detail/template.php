@@ -87,20 +87,21 @@ $this->setFrameMode(true);
 	?>
 </div>
 
-<div class="row">
-	<?if(CIBlockElement::GetList(array(), array('IBLOCK_ID' => 9, 'PROPERTY_PUBLTYPE' => $arResult['ID']), array(), false, array('ID', 'NAME'))):?>
+<?$count = CIBlockElement::GetList(array(), array('IBLOCK_ID' => 9, 'PROPERTY_PUBLTYPE' => $arResult['ID']), array(), false, array('ID', 'NAME'))?>
+<?if($count > 0):?>
+	<div class="row">
 		<div class="col-lg-12">
 		<h4 class="text-center bt-margin15px"><?=GetMessage('PUB_LIST')?></h4>
-		<?$arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");?>
+		<?$arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL", "PROPERTY_BIBLIODATA");?>
 		<?$arFilter = Array("IBLOCK_ID"=>9, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "PROPERTY_PUBLTYPE" => $arResult['ID']);?>
 		<?$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);?>
 		<?$res->NavStart(10);?>
 		<?while($ob = $res->GetNextElement()):?>
 			<?$arFields = $ob->GetFields();?>
 			<?$arProp = $ob->GetProperties();?>
-			<a href="<?=$arFields['DETAIL_PAGE_URL']?>"><?=$arProp[GetMessage('TITLE')]['VALUE']?></a><br/>
+			<a href="<?=$arFields['DETAIL_PAGE_URL']?>"><?=$arProp[GetMessage('BIBLIODATA')]['VALUE']?></a><br/>
 		<?endwhile;?>
 		<?$res->NavPrint($prop['PUB_LIST']);?>
 		</div>
-	<?endif;?>
-</div>
+	</div>
+<?endif;?>

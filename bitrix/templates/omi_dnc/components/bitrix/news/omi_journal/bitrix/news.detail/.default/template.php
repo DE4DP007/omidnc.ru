@@ -106,7 +106,7 @@ $this->setFrameMode(true);
         <?
     }
     ?>
-    <h4 class="centered">Список публикаций</h4>
+    <h4 class="centered"><?=GetMessage('PUB_LIST')?></h4>
     <?$arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
     $arFilter = Array("IBLOCK_ID"=>9, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "PROPERTY_JOURNAL" => $arResult['ID']);
     $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);
@@ -114,7 +114,7 @@ $this->setFrameMode(true);
     <?while($ob = $res->GetNextElement()):?>
         <?$arFields = $ob->GetFields();?>
         <?$arProp = $ob->GetProperties();?>
-        <a href="<?=$arFields['DETAIL_PAGE_URL']?>"><?=$arProp['TITLE']['VALUE']?></a><br/>
+        <a href="<?=$arFields['DETAIL_PAGE_URL']?>"><?=$arProp['BIBLIODATA']['VALUE']?></a><br/>
     <?endwhile;?>
     <?$res->NavPrint("Журналы");?>
 </div>
