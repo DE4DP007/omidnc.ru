@@ -4,4 +4,7 @@ $MESS["ART_COUNT"] = "Количество статей ОМИ";
 $MESS["SHOW"] = "Показать";
 $MESS["TITLE"] = "TITLE";
 $MESS['AUTHORS_OTHER'] = 'AUTHORS_OTHER';
+$MESS['FULL_NAME'] = 'FULL_NAME';
+$MESS['ANNOTATION'] = 'ANNOTATION';
+$MESS['PUBLDATE'] = 'Дата издания';
 ?>

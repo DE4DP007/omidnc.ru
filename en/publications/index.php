@@ -1,24 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Публикации");
-?><?
-if(SITE_ID == s1) {
-	$prop["HEAD"] = "Публикации";
-	$prop['HEAD_SMALL'] = "сотрудников отдела";
-	$prop["MAIN"] = "Главная";
-	$prop["TITLE"] = "TITLE";
-	$prop['ANNOTATION'] = "ANNOTATION";
-	$prop['BIBLIODATA'] = "BIBLIODATA";
-	$prop['LINKS'] = "/publications/";
-} else {
-	$prop["HEAD"] = "Publications";
-	$prop['HEAD_SMALL'] = "of OMI's scientists";
-	$prop["MAIN"] = "Main";
-	$prop["TITLE"] = "ENTITLE";
-	$prop['ANNOTATION'] = "ENANNOTATION";
-	$prop['BIBLIODATA'] = "BIBLIODATAEN";
-	$prop['LINKS'] = "/en/publications/";
-}
 ?>
 <div class="row">
 	<div class="col-lg-12">
