@@ -157,8 +157,22 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 					<div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-6 col-md-4<?else:?>col-lg-12<?endif?> bx-filter-parameters-box <?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>bx-active<?endif?>">
 						<span class="bx-filter-container-modef"></span>
 						<div class="bx-filter-parameters-box-title" onclick="smartFilter.hideFilterProps(this)">
-							<span class="bx-filter-parameters-box-hint"><?=$arItem["NAME"]?>
-								<?print_r($arItem['FACET_VALUE']);?>
+							<?$arFacet = reset($arItem['VALUES'])['FACET_VALUE'];?>
+							<?$arFilterI = array("ID" => $arFacet);
+					        $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array());?>
+					        <?if($resI->SelectedRowsCount() == 1):?>
+								<small>
+					            <?while($obI = $resI->GetNextElement()):?>
+					                <?$arPropI = $obI->GetProperties();
+					                $arFieldsI = $obI->GetFields();?>
+					                <?$arTitl = ($arFieldsI['IBLOCK_ID'] != 12) ? GetMessage('TITLE') : GetMessage('FULL_NAME');?>
+					                <!-- <?$arTitle = $arPropI[GetMessage('TITLE')]['NAME'];?> -->
+					                <?$arResult = $arPropI[$arTitl]?>
+					            <?endwhile;?>
+								</small>
+					        <?endif;?>
+							<span class="bx-filter-parameters-box-hint"><?=$arResult["NAME"]?>
+								
 								<?if ($arItem["FILTER_HINT"] <> ""):?>
 									<i id="item_title_hint_<?echo $arItem["ID"]?>" class="fa fa-question-circle"></i>
 									<script type="text/javascript">
@@ -603,19 +617,15 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 											            <?while($obI = $resI->GetNextElement()):?>
 											                <?$arPropI = $obI->GetProperties();
 											                $arFieldsI = $obI->GetFields();?>
-											                <?$arTitl = ($arFieldsI['IBLOCK_ID'] != 12) ? GetMessage('TITLE') : GetMessage('FULL_NAME');?>
+											                <?$arTitl = ($arFieldsI['IBLOCK_ID'] != 12 && $arFieldsI['IBLOCK_ID'] != 5) ? GetMessage('TITLE') : GetMessage('FULL_NAME');?>
 											                <!-- <?$arTitle = $arPropI[GetMessage('TITLE')]['NAME'];?> -->
-											                <?=$arTitl?>
-											                <?print_r($arFieldsI['IBLOCK_ID']);?>
-											                <span class="propertyname"><?=$arPropI[$arTitl]['NAME']?></span>&nbsp;
-											                <a href="<?=$arFieldsI['DETAIL_PAGE_URL']?>"><?=$arPropI[$arTitl]['VALUE']?></a>
+											                <span class="bx-filter-param-text" title="<?=$ar["VALUE"];?>"><?=$arPropI[$arTitl]["VALUE"];?><?
+															if ($arParams["DISPLAY_ELEMENT_COUNT"] !== "N" && isset($ar["ELEMENT_COUNT"])):
+																?> (<span data-role="count_<?=$ar["CONTROL_ID"]?>"><? echo $ar["ELEMENT_COUNT"]; ?></span>)<?
+															endif;?></span>
 											            <?endwhile;?>
-														</small><br/>
+														</small>
 											        <?endif;?>
-													<span class="bx-filter-param-text" title="<?=$ar["VALUE"];?>"><?=$ar["VALUE"];?><?=$ar['FACET_VALUE']?><?
-													if ($arParams["DISPLAY_ELEMENT_COUNT"] !== "N" && isset($ar["ELEMENT_COUNT"])):
-														?> (<span data-role="count_<?=$ar["CONTROL_ID"]?>"><? echo $ar["ELEMENT_COUNT"]; ?></span>)<?
-													endif;?></span>
 												</span>
 											</label>
 										</div>
