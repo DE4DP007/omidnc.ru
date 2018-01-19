@@ -72,3 +72,5 @@ $this->setFrameMode(true);
 
 
 </div>
+
+<?$APPLICATION->AddChainItem($arResult["PROPERTIES"]['TITLE_EN']['VALUE']);?>

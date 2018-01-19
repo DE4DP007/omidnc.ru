@@ -45,33 +45,30 @@ $this->setFrameMode(true);
 <br />
 <?endif?>
 <?if($arParams["USE_FILTER"]=="Y"):?>
-	<?$APPLICATION->IncludeComponent(
-		"bitrix:catalog.smart.filter",
-		".default",
-		array(
-			"CACHE_GROUPS" => "Y",
-			"CACHE_TIME" => "36000000",
-			"CACHE_TYPE" => "A",
-			"COMPONENT_TEMPLATE" => ".default",
-			"DISPLAY_ELEMENT_COUNT" => "Y",
-			"FILTER_NAME" => "arrFilter",
-			"FILTER_VIEW_MODE" => "horizontal",
-			"IBLOCK_ID" => "9",
-			"IBLOCK_TYPE" => "biblio",
-			"INSTANT_RELOAD" => "N",
-			"PAGER_PARAMS_NAME" => "arrPager",
-			"POPUP_POSITION" => "left",
-			"SAVE_IN_SESSION" => "N",
-			"SECTION_CODE" => "",
-			"SECTION_DESCRIPTION" => "-",
-			"SECTION_ID" => $_REQUEST["SECTION_ID"],
-			"SECTION_TITLE" => "-",
-			"SEF_MODE" => "N",
-			"TEMPLATE_THEME" => "blue",
-			"XML_EXPORT" => "N"
-		),
-		false
-	);?>
+	<?$APPLICATION->IncludeComponent("bitrix:catalog.smart.filter", "omi_smart_filter", Array(
+	"CACHE_GROUPS" => "Y",	// Учитывать права доступа
+		"CACHE_TIME" => "36000000",	// Время кеширования (сек.)
+		"CACHE_TYPE" => "A",	// Тип кеширования
+		"COMPONENT_TEMPLATE" => ".default",
+		"DISPLAY_ELEMENT_COUNT" => "Y",	// Показывать количество
+		"FILTER_NAME" => "arrFilter",	// Имя выходящего массива для фильтрации
+		"FILTER_VIEW_MODE" => "horizontal",	// Вид отображения
+		"IBLOCK_ID" => "9",	// Инфоблок
+		"IBLOCK_TYPE" => "biblio",	// Тип инфоблока
+		"INSTANT_RELOAD" => "N",	// Мгновенная фильтрация при включенном AJAX
+		"PAGER_PARAMS_NAME" => "arrPager",	// Имя массива с переменными для построения ссылок в постраничной навигации
+		"POPUP_POSITION" => "left",
+		"SAVE_IN_SESSION" => "N",	// Сохранять установки фильтра в сессии пользователя
+		"SECTION_CODE" => "",	// Код раздела
+		"SECTION_DESCRIPTION" => "-",	// Описание
+		"SECTION_ID" => $_REQUEST["SECTION_ID"],	// ID раздела инфоблока
+		"SECTION_TITLE" => "-",	// Заголовок
+		"SEF_MODE" => "N",	// Включить поддержку ЧПУ
+		"TEMPLATE_THEME" => "blue",	// Цветовая тема
+		"XML_EXPORT" => "N",	// Включить поддержку Яндекс Островов
+	),
+	false
+);?>
 <br />
 <?endif?>
 <?$APPLICATION->IncludeComponent(

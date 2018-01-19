@@ -1,6 +1,5 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Публикации");
 ?>
 <div class="row">
 	<div class="col-lg-12">
@@ -23,14 +22,14 @@ $APPLICATION->SetTitle("Публикации");
 	"bitrix:news", 
 	"omi_publication", 
 	array(
-		"ADD_ELEMENT_CHAIN" => "Y",
-		"ADD_SECTIONS_CHAIN" => "Y",
+		"ADD_ELEMENT_CHAIN" => "N",
+		"ADD_SECTIONS_CHAIN" => "N",
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_ADDITIONAL" => "",
 		"AJAX_OPTION_HISTORY" => "N",
 		"AJAX_OPTION_JUMP" => "N",
 		"AJAX_OPTION_STYLE" => "Y",
-		"BROWSER_TITLE" => "-",
+		"BROWSER_TITLE" => "TITLE_EN",
 		"CACHE_FILTER" => "N",
 		"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "36000000",
@@ -64,7 +63,7 @@ $APPLICATION->SetTitle("Публикации");
 		"DETAIL_SET_CANONICAL_URL" => "N",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"DISPLAY_DATE" => "Y",
-		"DISPLAY_NAME" => "Y",
+		"DISPLAY_NAME" => "N",
 		"DISPLAY_PICTURE" => "Y",
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
@@ -133,4 +132,5 @@ $APPLICATION->SetTitle("Публикации");
 	),
 	false
 );?>
+<?$APPLICATION->SetTitle("Publications");?>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

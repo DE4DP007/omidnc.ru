@@ -74,6 +74,7 @@ $this->setFrameMode(true);
 			unset($someProps[GetMessage('AUTHORS_OTHER')]);
 			unset($someProps['PUBLTYPE']);
 			unset($someProps['JOURNAL']);
+			unset($someProps['PUBLDATE']);
 			//test_dump($someProps["TITLE"]["NAME"]);
 		?>
 		<small>
@@ -98,32 +99,32 @@ $this->setFrameMode(true);
 				, <?=$arItem['DISPLAY_PROPERTIES'][GetMessage('AUTHORS_OTHER')]['DISPLAY_VALUE']?>
 			<?endif;?>
 		</small><br/>
+		<?$arFilterI = array('BLOCK_ID' => 10, "ID" => $arItem['PROPERTIES']['PUBLTYPE']['VALUE']);
+        $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array());?>
+        <?if($resI->SelectedRowsCount() == 1):?>
+			<small>
+            <?while($obI = $resI->GetNextElement()):?>
+                <?$arPropI = $obI->GetProperties();
+                $arFieldsI = $obI->GetFields();?>
+                <span class="propertyname"><?=$arPropI[GetMessage('TITLE')]['NAME']?></span>&nbsp;
+                <a href="<?=$arFieldsI['DETAIL_PAGE_URL']?>"><?=$arPropI[GetMessage('TITLE')]['VALUE']?></a>
+            <?endwhile;?>
+			</small><br/>
+        <?endif;?>
+		<?$arFilterI = array('BLOCK_ID' => 11, "ID" => $arItem['PROPERTIES']['JOURNAL']['VALUE']);
+        $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array());?>
+        <?if($resI->SelectedRowsCount() == 1):?>
+			<small>
+            <?while($obI = $resI->GetNextElement()):?>
+                <?$arPropI = $obI->GetProperties();
+                $arFieldsI = $obI->GetFields();?>
+                <span class="propertyname"><?=$arPropI[GetMessage('TITLE')]['NAME']?></span>&nbsp;
+                <a href="<?=$arFieldsI['DETAIL_PAGE_URL']?>"><?=$arPropI[GetMessage('TITLE')]['VALUE']?></a>
+            <?endwhile;?>
+			</small><br/>
+        <?endif;?>
 		<small>
-			<?$arFilterI = array('BLOCK_ID' => 10, "ID" => $arItem['PROPERTIES']['PUBLTYPE']['VALUE']);
-            $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array());?>
-            <?if($resI != 0):?>
-                <?while($obI = $resI->GetNextElement()):?>
-                    <?$arPropI = $obI->GetProperties();
-                    $arFieldsI = $obI->GetFields();?>
-                    <span class="propertyname"><?=$arPropI[GetMessage('TITLE')]['NAME']?></span>&nbsp;
-                    <a href="<?=$arFieldsI['DETAIL_PAGE_URL']?>"><?=$arPropI[GetMessage('TITLE')]['VALUE']?></a>
-                <?endwhile;?>
-            <?endif;?>
-		</small><br/>
-		<small>
-			<?$arFilterI = array('BLOCK_ID' => 11, "ID" => $arItem['PROPERTIES']['JOURNAL']['VALUE']);
-            $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array());?>
-            <?if($resI != 0):?>
-                <?while($obI = $resI->GetNextElement()):?>
-                    <?$arPropI = $obI->GetProperties();
-                    $arFieldsI = $obI->GetFields();?>
-                    <span class="propertyname"><?=$arPropI[GetMessage('TITLE')]['NAME']?></span>&nbsp;
-                    <a href="<?=$arFieldsI['DETAIL_PAGE_URL']?>"><?=$arPropI[GetMessage('TITLE')]['VALUE']?></a>
-                <?endwhile;?>
-            <?endif;?>
-		</small><br/>
-		<small>
-            <span class="propertyname"><?=GetMessage('PUBLDATE')?></span>&nbsp;
+            <span class="propertyname"><?=GetMessage('PUBLDATE')?>:</span>&nbsp;
             <?=$arItem['PROPERTIES']['PUBLDATE']['VALUE']?>
 		</small><br/>
 		<?//foreach($arItem["DISPLAY_PROPERTIES"] as $pid=>$arProperty):

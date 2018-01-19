@@ -207,3 +207,5 @@ $this->setFrameMode(true);
     ?>
 
 </div>
+
+<?$APPLICATION->AddChainItem($arResult["PROPERTIES"][GetMessage("TITLE")]['VALUE']);?>
