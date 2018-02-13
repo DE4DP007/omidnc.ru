@@ -104,3 +104,48 @@ h3.journhead
 .news-list p {text-align: justify;}
 .propertyname{color: #4b6d37;font-weight: 700;}
 
+/*Masonry*/
+.grid {
+  max-width: 1200px;
+  /*margin: 0 auto;*/
+}
+
+/* clearfix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- grid-item ---- */
+.grid-sizer,
+.grid-item {
+  width: 100%;
+}
+
+.grid-item--width2 { width: 320px; }
+.grid-item--width3 { width: 480px; }
+.grid-item--width4 { width: 640px; }
+
+.grid-item--height2 { height: 200px; }
+.grid-item--height3 { height: 260px; }
+.grid-item--height4 { height: 360px; }
+
+
+@media screen and (min-width: 768px) {
+  .grid-sizer,
+  .grid-item {
+    width: 50%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .grid-sizer,
+  .grid-item {
+    width: 33.33333%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
