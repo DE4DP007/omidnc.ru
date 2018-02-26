@@ -21,8 +21,8 @@ $i=0;?>
     <?foreach($arResult["ITEMS"] as $arItem):?>
         <?$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
         $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));?>
-
-        <p class="col-md-4 col-sm-6" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
+<div class="col-md-4 col-sm-6">
+        <p class="pos-deg-card" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
             <?$i++;?>
             <b><a href="<?=$arItem['DETAIL_PAGE_URL']?>">
                 <?=$arItem['PROPERTIES'][GetMessage('TITLE')]['VALUE']?>
@@ -44,9 +44,12 @@ $i=0;?>
                 <?endwhile;?>
             <?endif;?>
         </p>
-
+</div>
+        <?if ($i%2 == 0):?>
+            <div class="clearfix visible-sm-block"></div>
+        <?endif;?>
         <?if ($i%3 == 0):?>
-            <div class="clearfix"></div>
+            <div class="clearfix visible-lg-block visible-md-block"></div>
         <?endif;?>
     <?endforeach;?>
 </div>
