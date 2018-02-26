@@ -121,7 +121,7 @@ $APPLICATION->SetTitle("Контакты");
 
 <!-- Contact Form -->
 <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
-<div class="row text-center">
+<div class="row text-center contact-form pos-deg-card">
     <div class="col-md-10 col-sm-12" id="contactform">
         <h3>Связаться с нами</h3>
         <form name="sentMessage" id="contactForm" novalidate>
