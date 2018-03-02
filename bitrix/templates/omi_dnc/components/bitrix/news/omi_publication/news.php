@@ -64,7 +64,7 @@ $this->setFrameMode(true);
 		"SECTION_ID" => $_REQUEST["SECTION_ID"],	// ID раздела инфоблока
 		"SECTION_TITLE" => "-",	// Заголовок
 		"SEF_MODE" => "N",	// Включить поддержку ЧПУ
-		"TEMPLATE_THEME" => "blue",	// Цветовая тема
+		"TEMPLATE_THEME" => "omi_grey",	// Цветовая тема
 		"XML_EXPORT" => "N",	// Включить поддержку Яндекс Островов
 	),
 	false

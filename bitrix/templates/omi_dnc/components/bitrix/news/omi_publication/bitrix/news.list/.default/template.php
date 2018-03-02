@@ -32,7 +32,7 @@ $this->setFrameMode(true);
 						height="<?=$arItem["PREVIEW_PICTURE"]["HEIGHT"]?>"
 						alt="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>"
 						title="<?=$arItem["PREVIEW_PICTURE"]["TITLE"]?>"
-						style="float:left"
+						style="float:left; margin-right: 30px"
 						/></a>
 			<?else:?>
 				<img
@@ -43,7 +43,7 @@ $this->setFrameMode(true);
 					height="<?=$arItem["PREVIEW_PICTURE"]["HEIGHT"]?>"
 					alt="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>"
 					title="<?=$arItem["PREVIEW_PICTURE"]["TITLE"]?>"
-					style="float:left"
+					style="float:left; margin-right: 30px"
 					/>
 			<?endif;?>
 		<?endif?>

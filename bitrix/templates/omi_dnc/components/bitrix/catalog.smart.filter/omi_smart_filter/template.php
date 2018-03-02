@@ -189,6 +189,25 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 								<?endif?>
 								<i data-role="prop_angle" class="fa fa-angle-<?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>up<?else:?>down<?endif?>"></i>
 							</span>
+
+							<div class="container">
+								<div class="row">
+								       <div class="col-lg-12">
+								     <div class="button-group">
+								        <button type="button" class="btn dropdown-toggle pos-deg-card" data-toggle="dropdown"><?=$arResult["NAME"]?> <span class="caret"></span></button>
+
+								<ul class="dropdown-menu card">
+								  <li><a href="#" data-value="option1" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 1</a></li>
+								  <li><a href="#" data-value="option2" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 2</a></li>
+								  <li><a href="#" data-value="option3" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 3</a></li>
+								  <li><a href="#" data-value="option4" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 4</a></li>
+								  <li><a href="#" data-value="option5" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 5</a></li>
+								  <li><a href="#" data-value="option6" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 6</a></li>
+								</ul>
+								  </div>
+								</div>
+								  </div>
+								</div>
 						</div>
 
 						<div class="bx-filter-block" data-role="bx_filter_block">
