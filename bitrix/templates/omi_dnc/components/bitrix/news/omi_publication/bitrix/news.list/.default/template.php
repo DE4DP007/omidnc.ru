@@ -146,6 +146,6 @@ $this->setFrameMode(true);
 	</p>
 <?endforeach;?>
 <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
-	<br /><div class="container centered fs16px"><?=$arResult["NAV_STRING"]?></div>
+	<br /><div class="container-fluid centered"><?=$arResult["NAV_STRING"]?></div>
 <?endif;?>
 </div>

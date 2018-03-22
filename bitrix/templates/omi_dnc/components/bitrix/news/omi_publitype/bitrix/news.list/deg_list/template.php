@@ -14,7 +14,7 @@ $this->setFrameMode(true);
 $i=0;?>
 
 <?if($arParams["DISPLAY_TOP_PAGER"]):?>
-	<?=$arResult["NAV_STRING"]?><br />
+	<div class="container-fluid centered"><?=$arResult["NAV_STRING"]?></div><br />
 <?endif;?>
 
 <div class="container-fluid">
@@ -48,6 +48,6 @@ $i=0;?>
 
 
 <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
-	<br /><?=$arResult["NAV_STRING"]?>
+	<br /><div class="container-fluid centered"><?=$arResult["NAV_STRING"]?></div>
 <?endif;?>
 <div class="clearfix"></div>

@@ -101,7 +101,7 @@ $this->setFrameMode(true);
 			<?$arProp = $ob->GetProperties();?>
 			<a href="<?=$arFields['DETAIL_PAGE_URL']?>"><?=$arProp[GetMessage('BIBLIODATA')]['VALUE']?></a><br/>
 		<?endwhile;?>
-		<?$res->NavPrint($prop['PUB_LIST']);?>
+		<?$res->NavPrint($prop['PUB_LIST'], false, "text", "/bitrix/templates/omi_dnc/pagination/pagination.php");?>
 		</div>
 	</div>
 <?endif;?>

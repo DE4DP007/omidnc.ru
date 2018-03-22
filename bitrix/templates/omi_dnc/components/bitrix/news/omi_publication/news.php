@@ -44,7 +44,9 @@ $this->setFrameMode(true);
 );?>
 <br />
 <?endif?>
-<?if($arParams["USE_FILTER"]=="Y"):?>
+
+<div class="col-md-4 col-md-push-8">
+	<?if($arParams["USE_FILTER"]=="Y"):?>
 	<?$APPLICATION->IncludeComponent("bitrix:catalog.smart.filter", "omi_smart_filter", Array(
 	"CACHE_GROUPS" => "Y",	// Учитывать права доступа
 		"CACHE_TIME" => "36000000",	// Время кеширования (сек.)
@@ -52,7 +54,7 @@ $this->setFrameMode(true);
 		"COMPONENT_TEMPLATE" => ".default",
 		"DISPLAY_ELEMENT_COUNT" => "Y",	// Показывать количество
 		"FILTER_NAME" => "arrFilter",	// Имя выходящего массива для фильтрации
-		"FILTER_VIEW_MODE" => "horizontal",	// Вид отображения
+		"FILTER_VIEW_MODE" => "vertical",	// Вид отображения
 		"IBLOCK_ID" => "9",	// Инфоблок
 		"IBLOCK_TYPE" => "biblio",	// Тип инфоблока
 		"INSTANT_RELOAD" => "N",	// Мгновенная фильтрация при включенном AJAX
@@ -69,8 +71,10 @@ $this->setFrameMode(true);
 	),
 	false
 );?>
-<br />
 <?endif?>
+<br/>
+</div>
+<div class="col-md-8 col-md-pull-4">
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	".default",
@@ -124,3 +128,4 @@ $this->setFrameMode(true);
 	),
 	$component
 );?>
+</div>

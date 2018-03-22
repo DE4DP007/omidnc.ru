@@ -155,6 +155,7 @@ h3.journhead
   background: #f5f5f5;
   padding-top: 15px;
   padding-bottom: 15px;
+  margin: 0px;
 }
 
 /*custom styles*/
@@ -162,6 +163,15 @@ h3.journhead
   /*margin: 10px;*/
   box-shadow: 0px 2px 4px -2px;
   padding: 15px;
-  border: 1px solid #f5f5f5;
+  /*border: 1px solid #f5f5f5;*/
   border-radius: 15px;
+}
+
+.omi-card {
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.omi-card.shadowed {
+  box-shadow: 0px 2px 4px -2px;
 }

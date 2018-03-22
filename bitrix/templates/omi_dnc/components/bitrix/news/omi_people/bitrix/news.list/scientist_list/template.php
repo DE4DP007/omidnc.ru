@@ -15,7 +15,7 @@ $i=0;?>
 
 
 <?if($arParams["DISPLAY_TOP_PAGER"]):?>
-	<?=$arResult["NAV_STRING"]?><br />
+	<div class="container-fluid centered"><?=$arResult["NAV_STRING"]?></div><br />
 <?endif;?>
 
 <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": ".grid-sizer", "percentPosition": true }'>
@@ -142,7 +142,7 @@ $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayB
 <?endforeach;?> -->
 
 <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
-	<br /><?=$arResult["NAV_STRING"]?>
+	<br /><div class="container-fluid centered"><?=$arResult["NAV_STRING"]?></div>
 <?endif;?>
 <div class="clearfix"></div>
 

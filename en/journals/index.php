@@ -1,6 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Журналы");
+$APPLICATION->SetTitle("Journals");
 ?>
 
 <div class="row">
@@ -105,14 +105,14 @@ $APPLICATION->SetTitle("Журналы");
 		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
 		"PAGER_SHOW_ALL" => "N",
 		"PAGER_SHOW_ALWAYS" => "N",
-		"PAGER_TEMPLATE" => ".default",
-		"PAGER_TITLE" => "Новости",
+		"PAGER_TEMPLATE" => "omi-pag",
+		"PAGER_TITLE" => "Journals",
 		"PREVIEW_TRUNCATE_LEN" => "",
 		"SEF_FOLDER" => "/en/journals/",
 		"SEF_MODE" => "Y",
 		"SET_LAST_MODIFIED" => "N",
 		"SET_STATUS_404" => "N",
-		"SET_TITLE" => "Y",
+		"SET_TITLE" => "N",
 		"SHOW_404" => "N",
 		"SORT_BY1" => "ACTIVE_FROM",
 		"SORT_BY2" => "SORT",

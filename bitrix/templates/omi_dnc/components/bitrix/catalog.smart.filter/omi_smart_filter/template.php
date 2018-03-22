@@ -25,7 +25,7 @@ $this->addExternalCss("/bitrix/css/main/bootstrap.css");
 $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 ?>
 <div class="bx-filter <?=$templateData["TEMPLATE_CLASS"]?> <?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL") echo "bx-filter-horizontal"?>">
-	<div class="bx-filter-section container-fluid">
+	<div class="bx-filter-section container-fluid omi-card shadowed">
 		<div class="row"><div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-6 col-md-4<?else:?>col-lg-12<?endif?> bx-filter-title"><?echo GetMessage("CT_BCSF_FILTER_TITLE")?></div></div>
 		<form name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="get" class="smartfilter">
 			<?foreach($arResult["HIDDEN"] as $arItem):?>
@@ -154,9 +154,9 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 					)
 						continue;
 					?>
-					<div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-6 col-md-4<?else:?>col-lg-12<?endif?> bx-filter-parameters-box <?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>bx-active<?endif?>">
+					<div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-6 col-md-4<?else:?>col-lg-12<?endif?> bx-filter-parameters-box <?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>bx-active<?endif?>" style="margin-bottom: 10px;">
 						<span class="bx-filter-container-modef"></span>
-						<div class="bx-filter-parameters-box-title" onclick="smartFilter.hideFilterProps(this)">
+						<div class="bx-filter-parameters-box-title omi-card" style="background-color: #ddd" onclick="smartFilter.hideFilterProps(this)">
 							<?$arFacet = reset($arItem['VALUES'])['FACET_VALUE'];?>
 							<?$arFilterI = array("ID" => $arFacet);
 					        $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array());?>
@@ -171,7 +171,7 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 					            <?endwhile;?>
 								</small>
 					        <?endif;?>
-							<span class="bx-filter-parameters-box-hint"><?=$arResult["NAME"]?>
+							<!-- <span class="bx-filter-parameters-box-hint"><?=$arResult["NAME"]?>
 								
 								<?if ($arItem["FILTER_HINT"] <> ""):?>
 									<i id="item_title_hint_<?echo $arItem["ID"]?>" class="fa fa-question-circle"></i>
@@ -188,30 +188,28 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 									</script>
 								<?endif?>
 								<i data-role="prop_angle" class="fa fa-angle-<?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>up<?else:?>down<?endif?>"></i>
-							</span>
+							</span> -->
 
-							<div class="container">
+							<div class="container-fluid">
 								<div class="row">
 								       <div class="col-lg-12">
-								     <div class="button-group">
-								        <button type="button" class="btn dropdown-toggle pos-deg-card" data-toggle="dropdown"><?=$arResult["NAME"]?> <span class="caret"></span></button>
+								        <?=$arResult["NAME"]?> <span class="caret"></span>
 
-								<ul class="dropdown-menu card">
+								<!-- <ul class="dropdown-menu card">
 								  <li><a href="#" data-value="option1" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 1</a></li>
 								  <li><a href="#" data-value="option2" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 2</a></li>
 								  <li><a href="#" data-value="option3" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 3</a></li>
 								  <li><a href="#" data-value="option4" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 4</a></li>
 								  <li><a href="#" data-value="option5" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 5</a></li>
 								  <li><a href="#" data-value="option6" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 6</a></li>
-								</ul>
-								  </div>
+								</ul> -->
 								</div>
 								  </div>
 								</div>
 						</div>
 
 						<div class="bx-filter-block" data-role="bx_filter_block">
-							<div class="bx-filter-parameters-box-container">
+							<div class="bx-filter-parameters-box-container omi-card" style="background-color: #ddd6; margin-top: 2px">
 							<?
 							$arCur = current($arItem["VALUES"]);
 							switch ($arItem["DISPLAY_TYPE"])
@@ -663,7 +661,7 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 			<div class="row">
 				<div class="col-xs-12 bx-filter-button-box">
 					<div class="bx-filter-block">
-						<div class="bx-filter-parameters-box-container">
+						<div class="bx-filter-parameters-box-container" style="margin-top: 20px">
 							<input
 								class="btn btn-themes"
 								type="submit"
