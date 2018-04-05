@@ -77,9 +77,7 @@
 
 <body>
 <!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="z-index: 100">
-    <!-- Bitrix Panel -->
-    <div id="panel"><?$APPLICATION->ShowPanel();?></div>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="z-index: 1000" id="mainBar">
 
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -90,10 +88,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" id="omilogo" href="<?echo GetMessage("TEXT_HEADER_URL")?>">
+            <a class="navbar-brand hidden-sm hidden-xs" id="omilogo" href="<?echo GetMessage("TEXT_HEADER_URL")?>">
                 <img class="img-responsive" id="omi-logo" src="<?=SITE_TEMPLATE_PATH?>/images/omi-logo.png" alt="Отдел Математики и Информатики" />
-                <?echo GetMessage("TEXT_HEADER_TOP");?>
+                <?=GetMessage("TEXT_HEADER_TOP")?>
                 <br><small><?echo GetMessage("TEXT_HEADER_BOTTOM");?></small>
+            </a>
+            <a class="navbar-brand visible-sm visible-xs" id="omilogo" href="<?echo GetMessage("TEXT_HEADER_URL")?>">
+                <img class="img-responsive" id="omi-logo" src="<?=SITE_TEMPLATE_PATH?>/images/omi-logo.png" alt="Отдел Математики и Информатики" />
             </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -125,6 +126,51 @@
     </div>
     <!-- /.container -->
 </nav>
+
+<?if($GLOBALS["USER"]->IsAuthorized()):?>
+    <div id="panel">
+        <?$APPLICATION->ShowPanel();?>
+        <script>
+            BX.ready(function(){
+              var obShefPanel = BX("mainBar");
+                 if(!!obShefPanel){
+                    var minTop = '40px', maxTop = '147px';
+                    if(BX.admin.panel.isFixed() === true){
+                       if(BX.admin.panel.state.collapsed === true){ 
+                          obShefPanel.style.top = minTop; 
+                       }else{ 
+                          obShefPanel.style.top = maxTop;
+                       }
+                    }else{
+                       obShefPanel.style.top = '0';
+                    }
+                    BX.addCustomEvent('onTopPanelCollapse', BX.delegate(function(data){
+                       if(BX.admin.panel.isFixed() === true){
+                          if(data === true){
+                             obShefPanel.style.top = minTop;
+                          }else{
+                             obShefPanel.style.top = maxTop;
+                          }
+                       }else{
+                          obShefPanel.style.top = '0';
+                       }
+                    }, this));
+                    BX.addCustomEvent('onTopPanelFix', BX.delegate(function(data){
+                       if(data === true){
+                          if(BX.admin.panel.state.collapsed === true){
+                             obShefPanel.style.top = minTop;
+                          }else{
+                             obShefPanel.style.top = maxTop;
+                          }
+                       }else{
+                          obShefPanel.style.top = '0';
+                       }
+                    }, this));
+                 }
+              });
+        </script> 
+    </div>
+<?endif;?>
 
 <!-- ========== MAKE IT ON MAIN PAGE ONLY! =========== -->
 <?if ($APPLICATION->GetCurPage(false) == GetMessage("TEXT_HEADER_URL")):?>

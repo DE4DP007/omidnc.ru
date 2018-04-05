@@ -1,0 +1,3 @@
+<?
+$MESS['FULL_NAME_V'] = "FULL_NAME";
+?>

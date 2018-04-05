@@ -26,7 +26,7 @@ while($ob = $res->GetNextElement())
 <div class="news-detail">
 	<?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arResult["DETAIL_PICTURE"])):?>
 		<div class="detail_picture"><img
-			class="detail_picture thumbnail"
+			class="detail_picture thumbnail img-responsive"
 			border="0"
 			src="<?=$arResult["DETAIL_PICTURE"]["SRC"]?>"
 			width="<?=$arResult["DETAIL_PICTURE"]["WIDTH"]?>"
@@ -196,5 +196,3 @@ function getCurrentID($iblock_id, $code)
 	}
 }
 ?>
-
-<?$APPLICATION->AddChainItem($arResult["PROPERTIES"][GetMessage("FULL_NAME_V")]['VALUE']);?>

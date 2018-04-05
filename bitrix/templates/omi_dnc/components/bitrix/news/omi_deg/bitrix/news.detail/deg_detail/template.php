@@ -174,5 +174,3 @@ $this->setFrameMode(true);
 		);?>
 	</div>
 <?endif;?>
-
-<?$APPLICATION->AddChainItem($arResult["PROPERTIES"][GetMessage("SHORT_TITLE")]['VALUE']);?>

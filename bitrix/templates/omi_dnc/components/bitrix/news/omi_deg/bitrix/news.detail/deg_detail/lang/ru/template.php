@@ -4,5 +4,4 @@ $MESS['SCI_LIST'] = "Сотрудники с этой ученой степен�
 $MESS['NAME'] = "NAME";
 $MESS['PATRONIM'] = "PATRONIM";
 $MESS['SURNAME'] = "SURNAME";
-$MESS['SHORT_TITLE'] = "SHORT_TITLE";
 ?>

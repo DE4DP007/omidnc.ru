@@ -67,16 +67,16 @@ $arUrlRewrite = array(
 		"PATH" => "/en/publications/index.php",
 	),
 	array(
-		"CONDITION" => "#^/en/scientist/#",
-		"RULE" => "",
-		"ID" => "bitrix:news",
-		"PATH" => "/en/scientist/index.php",
-	),
-	array(
 		"CONDITION" => "#^/publications/#",
 		"RULE" => "",
 		"ID" => "bitrix:news",
 		"PATH" => "/publications/index.php",
+	),
+	array(
+		"CONDITION" => "#^/en/scientist/#",
+		"RULE" => "",
+		"ID" => "bitrix:news",
+		"PATH" => "/en/scientist/index.php",
 	),
 	array(
 		"CONDITION" => "#^/en/journals/#",
@@ -85,16 +85,16 @@ $arUrlRewrite = array(
 		"PATH" => "/en/journals/index.php",
 	),
 	array(
-		"CONDITION" => "#^/en/position/#",
-		"RULE" => "",
-		"ID" => "bitrix:news",
-		"PATH" => "/en/position/index.php",
-	),
-	array(
 		"CONDITION" => "#^/en/publtype/#",
 		"RULE" => "",
 		"ID" => "bitrix:news",
 		"PATH" => "/en/publtype/index.php",
+	),
+	array(
+		"CONDITION" => "#^/en/position/#",
+		"RULE" => "",
+		"ID" => "bitrix:news",
+		"PATH" => "/en/position/index.php",
 	),
 	array(
 		"CONDITION" => "#^/en/authors/#",
@@ -114,10 +114,10 @@ $arUrlRewrite = array(
 		"PATH" => "/en/degree/index.php",
 	),
 	array(
-		"CONDITION" => "#^/products/#",
+		"CONDITION" => "#^/publtype/#",
 		"RULE" => "",
-		"ID" => "bitrix:catalog",
-		"PATH" => "/products/index.php",
+		"ID" => "bitrix:news",
+		"PATH" => "/publtype/index.php",
 	),
 	array(
 		"CONDITION" => "#^/journals/#",
@@ -126,10 +126,10 @@ $arUrlRewrite = array(
 		"PATH" => "/journals/index.php",
 	),
 	array(
-		"CONDITION" => "#^/position/#",
+		"CONDITION" => "#^/products/#",
 		"RULE" => "",
-		"ID" => "bitrix:news",
-		"PATH" => "/position/index.php",
+		"ID" => "bitrix:catalog",
+		"PATH" => "/products/index.php",
 	),
 	array(
 		"CONDITION" => "#^/services/#",
@@ -138,10 +138,10 @@ $arUrlRewrite = array(
 		"PATH" => "/services/index.php",
 	),
 	array(
-		"CONDITION" => "#^/publtype/#",
+		"CONDITION" => "#^/position/#",
 		"RULE" => "",
 		"ID" => "bitrix:news",
-		"PATH" => "/publtype/index.php",
+		"PATH" => "/position/index.php",
 	),
 	array(
 		"CONDITION" => "#^/en/news/#",
