@@ -25,7 +25,7 @@ $this->addExternalCss("/bitrix/css/main/bootstrap.css");
 $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 ?>
 <div class="bx-filter <?=$templateData["TEMPLATE_CLASS"]?> <?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL") echo "bx-filter-horizontal"?>">
-	<div class="bx-filter-section container-fluid omi-card shadowed">
+	<div class="bx-filter-section container-fluid omi-card omi-card-shadowed">
 		<div class="row"><div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-6 col-md-4<?else:?>col-lg-12<?endif?> bx-filter-title"><?echo GetMessage("CT_BCSF_FILTER_TITLE")?></div></div>
 		<form name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="get" class="smartfilter">
 			<?foreach($arResult["HIDDEN"] as $arItem):?>
@@ -663,14 +663,14 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 					<div class="bx-filter-block">
 						<div class="bx-filter-parameters-box-container" style="margin-top: 20px">
 							<input
-								class="btn btn-themes"
+								class="btn btn-themes col-sm-8 col-xs-12"
 								type="submit"
 								id="set_filter"
 								name="set_filter"
 								value="<?=GetMessage("CT_BCSF_SET_FILTER")?>"
 							/>
 							<input
-								class="btn btn-link"
+								class="btn btn-link col-sm-4 col-xs-12"
 								type="submit"
 								id="del_filter"
 								name="del_filter"

@@ -23,7 +23,7 @@ $i=0;?>
         $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));?>
 
 <div class="col-md-4 col-sm-6">
-        <p class="pos-deg-card" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
+        <p class="omi-card omi-card-shadowed" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
             <?$i++;?>
             <b><a href="<?=$arItem['DETAIL_PAGE_URL']?>">
                 <?=$arItem['PROPERTIES'][GetMessage('TITLE')]['VALUE']?>

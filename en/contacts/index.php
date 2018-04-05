@@ -121,7 +121,7 @@ $APPLICATION->SetTitle("Contacts");
 
 <!-- Contact Form -->
 <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
-<div class="row text-center contact-form omi-card shadowed">
+<div class="text-center contact-form omi-card omi-card-shadowed">
     <div class="col-md-10 col-sm-12" id="contactform">
         <h3>Contact us</h3>
         <form name="sentMessage" id="contactForm" novalidate>

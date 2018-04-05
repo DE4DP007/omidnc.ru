@@ -159,19 +159,12 @@ h3.journhead
 }
 
 /*custom styles*/
-.pos-deg-card {
-  /*margin: 10px;*/
-  box-shadow: 0px 2px 4px -2px;
-  padding: 15px;
-  /*border: 1px solid #f5f5f5;*/
-  border-radius: 15px;
-}
 
 .omi-card {
   padding: 15px;
   border-radius: 15px;
 }
 
-.omi-card.shadowed {
+.omi-card.omi-card-shadowed {
   box-shadow: 0px 2px 4px -2px;
 }
