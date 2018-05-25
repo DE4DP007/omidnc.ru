@@ -88,39 +88,36 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand hidden-sm hidden-xs" id="omilogo" href="<?echo GetMessage("TEXT_HEADER_URL")?>">
-                <img class="img-responsive" id="omi-logo" src="<?=SITE_TEMPLATE_PATH?>/images/omi-logo.png" alt="Отдел Математики и Информатики" />
-                <?=GetMessage("TEXT_HEADER_TOP")?>
-                <br><small><?echo GetMessage("TEXT_HEADER_BOTTOM");?></small>
-            </a>
-            <a class="navbar-brand visible-sm visible-xs" id="omilogo" href="<?echo GetMessage("TEXT_HEADER_URL")?>">
-                <img class="img-responsive" id="omi-logo" src="<?=SITE_TEMPLATE_PATH?>/images/omi-logo.png" alt="Отдел Математики и Информатики" />
+            <a class="navbar-brand hidden-sm" id="omilogo" href="<?=GetMessage("TEXT_HEADER_URL")?>">
+                <img class="img-responsive" id="omi-logo" src="<?=SITE_TEMPLATE_PATH?>/images/omi-logo.png" alt="<?=GetMessage("TEXT_HEADER_TOP")?>"/>
+                <span class="hidden-xs"><?=GetMessage("TEXT_HEADER_TOP")?></span>
+                <br class="hidden-xs"><small class="hidden-xs"><?=GetMessage("TEXT_HEADER_BOTTOM")?></small>
             </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <?$APPLICATION->IncludeComponent(
-	"bitrix:menu", 
-	"omidnc", 
-	array(
-		"ROOT_MENU_TYPE" => "top",
-		"MAX_LEVEL" => "2",
-		"CHILD_MENU_TYPE" => "left",
-		"USE_EXT" => "Y",
-		"MENU_CACHE_TYPE" => "A",
-		"MENU_CACHE_TIME" => "36000000",
-		"MENU_CACHE_USE_GROUPS" => "Y",
-		"MENU_CACHE_GET_VARS" => array(
-		),
-		"COMPONENT_TEMPLATE" => "omidnc",
-		"DELAY" => "N",
-		"ALLOW_MULTI_SELECT" => "N"
-	),
-	false,
-	array(
-		"ACTIVE_COMPONENT" => "Y"
-	)
-);?>
+            	"bitrix:menu", 
+            	"omidnc", 
+            	array(
+            		"ROOT_MENU_TYPE" => "top",
+            		"MAX_LEVEL" => "2",
+            		"CHILD_MENU_TYPE" => "left",
+            		"USE_EXT" => "Y",
+            		"MENU_CACHE_TYPE" => "A",
+            		"MENU_CACHE_TIME" => "36000000",
+            		"MENU_CACHE_USE_GROUPS" => "Y",
+            		"MENU_CACHE_GET_VARS" => array(
+            		),
+            		"COMPONENT_TEMPLATE" => "omidnc",
+            		"DELAY" => "N",
+            		"ALLOW_MULTI_SELECT" => "N"
+            	),
+            	false,
+            	array(
+            		"ACTIVE_COMPONENT" => "Y"
+            	)
+            );?>
         </div>
         <!-- /.navbar-collapse -->
     </div>
@@ -192,18 +189,18 @@
             </div>
             <div class="item">
                 <div class="fill text-center">
-                    <img src="<?=SITE_TEMPLATE_PATH?>/images/seminavr.jpg" alt="Заседание семинара Отдела">
+                    <img src="<?=SITE_TEMPLATE_PATH?>/images/seminavr.jpg" alt="<?=GetMessage("ZASEDANIE")?>">
                 </div>
                 <div class="carousel-caption">
-                    <h2><?echo GetMessage("ZASEDANIE");?></h2>
+                    <h2><?=GetMessage("ZASEDANIE")?></h2>
                 </div>
             </div>
             <div class="item">
                 <div class="fill text-center">
-                    <img src="<?=SITE_TEMPLATE_PATH?>/images/70year.jpg" alt="70 лет Дагестанскому научному центру РАН">
+                    <img src="<?=SITE_TEMPLATE_PATH?>/images/70year.jpg" alt="<?=GetMessage("70_YEARS");?>">
                 </div>
                 <div class="carousel-caption">
-                    <h2><?echo GetMessage("70_YEARS");?></h2>
+                    <h2><?=GetMessage("70_YEARS");?></h2>
                 </div>
                 <!--<div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>-->
             </div>

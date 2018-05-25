@@ -24,15 +24,15 @@ $i=0;?>
     	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));?>
 
 
-    	<div class="col-md-4 text-center" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
+    	<div class="col-md-4 text-center" style="padding-bottom: 15px; padding-top: 15px;">
             <?$i++;//test_dump($arit)?>
 
-            <div class="thumbnail">
+            <div class="omi-card omi-card-shadowed no-padding" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
                 <?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arItem["PREVIEW_PICTURE"])):?>
-                    <img class="img-responsive img-rounded scientistphoto" src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>" alt="">
+                    <div class="ratio ratio-4-3"><div class="image" style="background-image: url(<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>)"></div></div>
                 <?endif;?>
                 <div class="caption">
-                    <h3><a href="<?=$arItem["DETAIL_PAGE_URL"]?>">
+                    <h3 class="card-title"><a href="<?=$arItem["DETAIL_PAGE_URL"]?>">
                         <?=$arItem["PROPERTIES"][GetMessage("FULL_NAME")]["VALUE"]?>
                         <br>
                         <?
@@ -65,7 +65,7 @@ $i=0;?>
 
                     <?/*<p>< ?=$arItem["PREVIEW_TEXT"];?></p>*/?>
 
-                    <ul class="list-inline">
+                    <ul class="list-inline card-element">
                         <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
                         </li>
                         <li><a href="#"><i class="fa fa-2x fa-linkedin-square"></i></a>

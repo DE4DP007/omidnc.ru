@@ -25,30 +25,33 @@ $this->addExternalCss("/bitrix/css/main/bootstrap.css");
 $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 ?>
 <div class="bx-filter <?=$templateData["TEMPLATE_CLASS"]?> <?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL") echo "bx-filter-horizontal"?>">
-	<div class="bx-filter-section container-fluid omi-card omi-card-shadowed">
-		<div class="row"><div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-6 col-md-4<?else:?>col-lg-12<?endif?> bx-filter-title"><?echo GetMessage("CT_BCSF_FILTER_TITLE")?></div></div>
+	<div class="container-fluid omi-card omi-card-shadowed" style="background-color: #fafafa">
+		<div class="row">
+			<div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-6 col-md-4<?else:?>col-lg-12<?endif?> bx-filter-title"><?echo GetMessage("CT_BCSF_FILTER_TITLE")?></div>
+		</div>
 		<form name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="get" class="smartfilter">
-			<?foreach($arResult["HIDDEN"] as $arItem):?>
+		<?foreach($arResult["HIDDEN"] as $arItem):?>
 			<input type="hidden" name="<?echo $arItem["CONTROL_NAME"]?>" id="<?echo $arItem["CONTROL_ID"]?>" value="<?echo $arItem["HTML_VALUE"]?>" />
-			<?endforeach;?>
+		<?endforeach;?>
 			<div class="row">
-				<?foreach($arResult["ITEMS"] as $key=>$arItem)//prices
-				{
+				<?foreach($arResult["ITEMS"] as $key=>$arItem)://prices
 					$key = $arItem["ENCODED_ID"];
 					if(isset($arItem["PRICE"])):
 						if ($arItem["VALUES"]["MAX"]["VALUE"] - $arItem["VALUES"]["MIN"]["VALUE"] <= 0)
 							continue;
 
 						$precision = 2;
-						if (Bitrix\Main\Loader::includeModule("currency"))
-						{
+						if (Bitrix\Main\Loader::includeModule("currency")):
 							$res = CCurrencyLang::GetFormatDescription($arItem["VALUES"]["MIN"]["CURRENCY"]);
 							$precision = $res['DECIMALS'];
-						}
-						?>
+						endif;?>
 						<div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-6 col-md-4<?else:?>col-lg-12<?endif?> bx-filter-parameters-box bx-active">
 							<span class="bx-filter-container-modef"></span>
-							<div class="bx-filter-parameters-box-title" onclick="smartFilter.hideFilterProps(this)"><span><?=$arItem["NAME"]?> <i data-role="prop_angle" class="fa fa-angle-<?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>up<?else:?>down<?endif?>"></i></span></div>
+							<div class="bx-filter-parameters-box-title" onclick="smartFilter.hideFilterProps(this)">
+								<span><?=$arItem["NAME"]?> 
+									<i data-role="prop_angle" class="fa fa-angle-<?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>up<?else:?>down<?endif?>"></i>
+								</span>
+							</div>
 							<div class="bx-filter-block" data-role="bx_filter_block">
 								<div class="row bx-filter-parameters-box-container">
 									<div class="col-xs-6 bx-filter-parameters-box-container-block bx-left">
@@ -57,9 +60,9 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 											<input
 												class="min-price"
 												type="text"
-												name="<?echo $arItem["VALUES"]["MIN"]["CONTROL_NAME"]?>"
-												id="<?echo $arItem["VALUES"]["MIN"]["CONTROL_ID"]?>"
-												value="<?echo $arItem["VALUES"]["MIN"]["HTML_VALUE"]?>"
+												name="<?=$arItem["VALUES"]["MIN"]["CONTROL_NAME"]?>"
+												id="<?=$arItem["VALUES"]["MIN"]["CONTROL_ID"]?>"
+												value="<?=$arItem["VALUES"]["MIN"]["HTML_VALUE"]?>"
 												size="5"
 												onkeyup="smartFilter.keyup(this)"
 											/>
@@ -71,9 +74,9 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 											<input
 												class="max-price"
 												type="text"
-												name="<?echo $arItem["VALUES"]["MAX"]["CONTROL_NAME"]?>"
-												id="<?echo $arItem["VALUES"]["MAX"]["CONTROL_ID"]?>"
-												value="<?echo $arItem["VALUES"]["MAX"]["HTML_VALUE"]?>"
+												name="<?=$arItem["VALUES"]["MAX"]["CONTROL_NAME"]?>"
+												id="<?=$arItem["VALUES"]["MAX"]["CONTROL_ID"]?>"
+												value="<?=$arItem["VALUES"]["MAX"]["HTML_VALUE"]?>"
 												size="5"
 												onkeyup="smartFilter.keyup(this)"
 											/>
@@ -135,81 +138,43 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 							});
 						</script>
 					<?endif;
-				}
+				endforeach;
 
 				//not prices
-				foreach($arResult["ITEMS"] as $key=>$arItem)
-				{
-					if(
-						empty($arItem["VALUES"])
-						|| isset($arItem["PRICE"])
-					)
+				foreach($arResult["ITEMS"] as $key=>$arItem):
+					if(empty($arItem["VALUES"])	|| isset($arItem["PRICE"]))
 						continue;
 
-					if (
-						$arItem["DISPLAY_TYPE"] == "A"
-						&& (
-							$arItem["VALUES"]["MAX"]["VALUE"] - $arItem["VALUES"]["MIN"]["VALUE"] <= 0
-						)
-					)
+					if ($arItem["DISPLAY_TYPE"] == "A" && ($arItem["VALUES"]["MAX"]["VALUE"] - $arItem["VALUES"]["MIN"]["VALUE"] <= 0))
 						continue;
 					?>
 					<div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-6 col-md-4<?else:?>col-lg-12<?endif?> bx-filter-parameters-box <?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>bx-active<?endif?>" style="margin-bottom: 10px;">
 						<span class="bx-filter-container-modef"></span>
-						<div class="bx-filter-parameters-box-title omi-card" style="background-color: #ddd" onclick="smartFilter.hideFilterProps(this)">
-							<?$arFacet = reset($arItem['VALUES'])['FACET_VALUE'];?>
-							<?$arFilterI = array("ID" => $arFacet);
-					        $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array());?>
-					        <?if($resI->SelectedRowsCount() == 1):?>
+						<div class="bx-filter-parameters-box-title card-title" style="background-color: #f5f5f5; font-weight: 500;" onclick="smartFilter.hideFilterProps(this)">
+							<?$arFacet = reset($arItem['VALUES'])['FACET_VALUE'];
+							$arFilterI = array("ID" => $arFacet);
+					        $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array());
+					        if($resI->SelectedRowsCount() == 1):?>
 								<small>
-					            <?while($obI = $resI->GetNextElement()):?>
-					                <?$arPropI = $obI->GetProperties();
-					                $arFieldsI = $obI->GetFields();?>
-					                <?$arTitl = ($arFieldsI['IBLOCK_ID'] != 12) ? GetMessage('TITLE') : GetMessage('FULL_NAME');?>
-					                <!-- <?$arTitle = $arPropI[GetMessage('TITLE')]['NAME'];?> -->
-					                <?$arResult = $arPropI[$arTitl]?>
-					            <?endwhile;?>
+						            <?while($obI = $resI->GetNextElement()):
+						                $arPropI = $obI->GetProperties();
+						                $arFieldsI = $obI->GetFields();
+						                $arTitl = ($arFieldsI['IBLOCK_ID'] != 12) ? GetMessage('TITLE') : GetMessage('FULL_NAME');
+						                //$arTitle = $arPropI[GetMessage('TITLE')]['NAME'];
+						                $arResult = $arPropI[$arTitl];
+						            endwhile;?>
 								</small>
 					        <?endif;?>
-							<!-- <span class="bx-filter-parameters-box-hint"><?=$arResult["NAME"]?>
-								
-								<?if ($arItem["FILTER_HINT"] <> ""):?>
-									<i id="item_title_hint_<?echo $arItem["ID"]?>" class="fa fa-question-circle"></i>
-									<script type="text/javascript">
-										new top.BX.CHint({
-											parent: top.BX("item_title_hint_<?echo $arItem["ID"]?>"),
-											show_timeout: 10,
-											hide_timeout: 200,
-											dx: 2,
-											preventHide: true,
-											min_width: 250,
-											hint: '<?= CUtil::JSEscape($arItem["FILTER_HINT"])?>'
-										});
-									</script>
-								<?endif?>
-								<i data-role="prop_angle" class="fa fa-angle-<?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>up<?else:?>down<?endif?>"></i>
-							</span> -->
 
 							<div class="container-fluid">
 								<div class="row">
-								       <div class="col-lg-12">
-								        <?=$arResult["NAME"]?> <span class="caret"></span>
-
-								<!-- <ul class="dropdown-menu card">
-								  <li><a href="#" data-value="option1" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 1</a></li>
-								  <li><a href="#" data-value="option2" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 2</a></li>
-								  <li><a href="#" data-value="option3" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 3</a></li>
-								  <li><a href="#" data-value="option4" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 4</a></li>
-								  <li><a href="#" data-value="option5" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 5</a></li>
-								  <li><a href="#" data-value="option6" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 6</a></li>
-								</ul> -->
+									<div class="col-lg-12"><?=$arResult["NAME"]?> <span class="caret"></span></div>
 								</div>
-								  </div>
-								</div>
+							</div>
 						</div>
 
 						<div class="bx-filter-block" data-role="bx_filter_block">
-							<div class="bx-filter-parameters-box-container omi-card" style="background-color: #ddd6; margin-top: 2px">
+							<div class="card-container" style="background-color: #f5f5f5;">
 							<?
 							$arCur = current($arItem["VALUES"]);
 							switch ($arItem["DISPLAY_TYPE"])
@@ -615,11 +580,13 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 									break;
 								default://CHECKBOXES
 									?>
+									<div class="card-element" style="border-top: 1px solid #e0e0e0;"></div>
 									<?foreach($arItem["VALUES"] as $val => $ar):?>
-										<div class="checkbox">
-											<label data-role="label_<?=$ar["CONTROL_ID"]?>" class="bx-filter-param-label <? echo $ar["DISABLED"] ? 'disabled': '' ?>" for="<? echo $ar["CONTROL_ID"] ?>">
+										<div class="checkbox card-element">
+											<label data-role="label_<?=$ar["CONTROL_ID"]?>" class="bx-filter-param-label <? echo $ar["DISABLED"] ? 'disabled': '' ?> omi-label" for="<? echo $ar["CONTROL_ID"] ?>">
 												<span class="bx-filter-input-checkbox">
 													<input
+														class="hide"
 														type="checkbox"
 														value="<? echo $ar["HTML_VALUE"] ?>"
 														name="<? echo $ar["CONTROL_NAME"] ?>"
@@ -627,6 +594,7 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 														<? echo $ar["CHECKED"]? 'checked="checked"': '' ?>
 														onclick="smartFilter.click(this)"
 													/>
+													<span class="checkmark"></span>
 													<?$arFilterI = array("ID" => $ar['FACET_VALUE']);
 											        $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array());?>
 											        <?if($resI->SelectedRowsCount() == 1):?>
@@ -654,9 +622,7 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 							<div style="clear: both"></div>
 						</div>
 					</div>
-				<?
-				}
-				?>
+				<?endforeach;?>
 			</div><!--//row-->
 			<div class="row">
 				<div class="col-xs-12 bx-filter-button-box">
@@ -664,6 +630,7 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 						<div class="bx-filter-parameters-box-container" style="margin-top: 20px">
 							<input
 								class="btn btn-themes col-sm-8 col-xs-12"
+								style="transition: all 0.3s cubic-bezier(.25,.8,.25,1);"
 								type="submit"
 								id="set_filter"
 								name="set_filter"

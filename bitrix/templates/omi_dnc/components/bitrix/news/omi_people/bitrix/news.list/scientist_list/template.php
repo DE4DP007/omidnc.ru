@@ -26,10 +26,10 @@ $i=0;?>
 <?$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
 $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));?>
 
-    <div class="grid-item" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
-        <div class="thumbnail container-fluid">
+    <div class="grid-item">
+        <div class="container-fluid omi-card omi-card-shadowed no-padding" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
             <?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arItem["PREVIEW_PICTURE"])):?>
-                <img class="thumbnail" src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>" alt="">
+                <div class="ratio ratio-16-9"><div class="image" style="background-image: url(<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>)"></div></div>
             <?endif;?>
             
             <div class="scientist-det-group col-md-12">
@@ -59,21 +59,18 @@ $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayB
                         </a><br/>
                     <?endwhile;?>
                 <?endif;?>
-                <br/>
             </div>
 
             <div class="col-md-12 test-justify">
-                <?=mb_strimwidth($arItem['PROPERTIES'][GetMessage('DESCRIPTION')]['VALUE'],0,500, "...")?>
-                <div class="caption">
-                    <ul class="list-inline text-center">
-                        <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-2x fa-linkedin-square"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-2x fa-twitter-square"></i></a>
-                        </li>
-                    </ul>
-                </div>
+                <p class="card-element"><?=mb_strimwidth($arItem['PROPERTIES'][GetMessage('DESCRIPTION')]['VALUE'],0,500, "...")?></p>
+                <ul class="list-inline text-center card-element">
+                    <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-2x fa-linkedin-square"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-2x fa-twitter-square"></i></a>
+                    </li>
+                </ul>
                 <a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="btn btn-primary sci-details">
                     <span class="glyphicon glyphicon-share-alt"></span>
                     <?=GetMessage("MORE")?>

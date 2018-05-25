@@ -24,8 +24,8 @@ $APPLICATION->SetTitle("Отдел Математики и Информатик�
         </div>
 
         <div class="col-md-4">
-            <div class="same-height panel panel-default">
-                <div class="panel-heading">
+            <div class="same-height omi-card no-padding panel-default">
+                <div class="card-title panel-heading">
                     <h4>
                         <?$APPLICATION->IncludeFile(
                             SITE_DIR."include/mainhead1.1.php",
@@ -48,8 +48,8 @@ $APPLICATION->SetTitle("Отдел Математики и Информатик�
         </div>
 
         <div class="col-md-4">
-            <div class="panel panel-default same-height">
-                <div class="panel-heading">
+            <div class="omi-card no-padding panel-default same-height">
+                <div class="card-title panel-heading">
                     <h4>
                         <?$APPLICATION->IncludeFile(
                             SITE_DIR."include/mainhead1.2.php",
@@ -71,8 +71,8 @@ $APPLICATION->SetTitle("Отдел Математики и Информатик�
         </div>
 
         <div class="col-md-4">
-            <div class="panel panel-default same-height">
-                <div class="panel-heading">
+            <div class="omi-card no-padding panel-default same-height">
+                <div class="card-title panel-heading">
                     <h4>
                         <?$APPLICATION->IncludeFile(
                             SITE_DIR."include/mainhead1.3.php",

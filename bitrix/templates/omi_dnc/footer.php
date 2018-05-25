@@ -20,7 +20,7 @@ IncludeTemplateLangFile(__FILE__);?>
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <a class="btn btn-lg btn-default btn-block" href="<?echo SITE_DIR;?>contacts#contactform"><?echo GetMessage("CALL_US");?></a>
+                    <a class="btn btn-lg btn-default btn-block" href="<?=SITE_DIR?>contacts#contactform"><?=GetMessage("CALL_US")?></a>
                 </div>
             </div>
         </div>
