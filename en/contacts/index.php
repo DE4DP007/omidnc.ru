@@ -31,7 +31,7 @@ $APPLICATION->SetTitle("Contacts");
 	"omimap", 
 	array(
 		"KEY" => "ABQIAAAAOSNukcWVjXaGbDo6npRDcxS1yLxjXbTnpHav15fICwCqFS-qhhSby0EyD6rK_qL4vuBSKpeCz5cOjw",
-		"INIT_MAP_TYPE" => "HYBRID",
+		"INIT_MAP_TYPE" => "ROADMAP",
 		"MAP_DATA" => "a:4:{s:10:\"google_lat\";d:42.987339229133;s:10:\"google_lon\";d:47.489977159118;s:12:\"google_scale\";i:15;s:10:\"PLACEMARKS\";a:1:{i:0;a:3:{s:4:\"TEXT\";s:110:\"Department of Mathematics and Computer Science ###RN###Dagestan Scientific Center, Russian Academy of Sciences\";s:3:\"LON\";d:47.489647865295;s:3:\"LAT\";d:42.987823042568;}}}",
 		"MAP_WIDTH" => "600",
 		"MAP_HEIGHT" => "500",

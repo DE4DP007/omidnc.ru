@@ -49,26 +49,23 @@ $this->setFrameMode(true);
 			*/?><?/*=GetMessage("IBLOCK_FIELD_".$code)*/?>:&nbsp;<?/*=$value;*/?><?/*
 		}
 		*/?><br />
-	--><?/*endforeach;*/
-	echo "<div class=\"fs16px\">";
-	foreach($arResult["DISPLAY_PROPERTIES"] as $pid=>$arProperty):?>
-        <div class="sci-prop">
-		<b class="sci-prop-color-green"><?=$arProperty["NAME"]?>:</b>
-		<?if(is_array($arProperty["DISPLAY_VALUE"])):?>
-			<?=implode("&nbsp;/&nbsp;", $arProperty["DISPLAY_VALUE"]);?>
-		<?else:?>
-			<?=$arProperty["DISPLAY_VALUE"];?>
-		<?endif?>
-		</div>
-	<?endforeach;
-	echo "</div>";
-	if(array_key_exists("USE_SHARE", $arParams) && $arParams["USE_SHARE"] == "Y")
-	{
-		?>
+	--><?/*endforeach;*/?>
+	<div class="fs16px">
+		<?foreach($arResult["DISPLAY_PROPERTIES"] as $pid=>$arProperty):?>
+	        <div class="sci-prop">
+				<b class="sci-prop-color-green"><?=$arProperty["NAME"]?>:</b>
+				<?if(is_array($arProperty["DISPLAY_VALUE"])):?>
+					<?=implode("&nbsp;/&nbsp;", $arProperty["DISPLAY_VALUE"]);?>
+				<?else:?>
+					<?=$arProperty["DISPLAY_VALUE"];?>
+				<?endif?>
+			</div>
+		<?endforeach;?>
+	</div>
+	<?if(array_key_exists("USE_SHARE", $arParams) && $arParams["USE_SHARE"] == "Y"):?>
 		<div class="news-detail-share">
 			<noindex>
-			<?
-			$APPLICATION->IncludeComponent("bitrix:main.share", "", array(
+			<?$APPLICATION->IncludeComponent("bitrix:main.share", "", array(
 					"HANDLERS" => $arParams["SHARE_HANDLERS"],
 					"PAGE_URL" => $arResult["~DETAIL_PAGE_URL"],
 					"PAGE_TITLE" => $arResult["~NAME"],
@@ -78,13 +75,10 @@ $this->setFrameMode(true);
 				),
 				$component,
 				array("HIDE_ICONS" => "Y")
-			);
-			?>
+			);?>
 			</noindex>
 		</div>
-		<?
-	}
-	?>
+	<?endif;?>
 </div>
 
 <?$count = CIBlockElement::GetList(array(), array('BLOCK_ID' => 5, "PROPERTY_DEGREE" => $arResult['ID']), array(), false, array())?>

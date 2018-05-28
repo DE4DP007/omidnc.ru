@@ -20,36 +20,26 @@ $this->setFrameMode(true);
 		<h3 class="bt-margin15px text-center"><?=$arResult["NAME"]?></h3>
 	<?endif;?>
 	<?if($arParams["DISPLAY_PREVIEW_TEXT"]!="N" && $arResult["FIELDS"]["PREVIEW_TEXT"]):?>
-		<p><?//=$arResult["FIELDS"]["PREVIEW_TEXT"];unset($arResult["FIELDS"]["PREVIEW_TEXT"]);?></p>
+		<p></p>
 	<?endif;?>
 	<?if($arResult["NAV_RESULT"]):?>
 		<?if($arParams["DISPLAY_TOP_PAGER"]):?><?=$arResult["NAV_STRING"]?><br /><?endif;?>
-		<?//echo $arResult["NAV_TEXT"];?>
 		<?if($arParams["DISPLAY_BOTTOM_PAGER"]):?><br /><?=$arResult["NAV_STRING"]?><?endif;?>
-	<?elseif(strlen($arResult["DETAIL_TEXT"])>0):?>
-		<?//echo $arResult["DETAIL_TEXT"];?>
-	<?else:?>
-		<?//echo $arResult["PREVIEW_TEXT"];?>
 	<?endif?>
 	<div style="clear:both"></div>
 	<br />
 	<?foreach($arResult["FIELDS"] as $code=>$value):
-		if ('PREVIEW_PICTURE' == $code || 'DETAIL_PICTURE' == $code)
-		{
-			?><?=GetMessage("IBLOCK_FIELD_".$code)?>:&nbsp;<?
-			if (!empty($value) && is_array($value))
-			{
-				?><img border="0" src="<?=$value["SRC"]?>" width="<?=$value["WIDTH"]?>" height="<?=$value["HEIGHT"]?>"><?
-			}
-		}
-		else
-		{
-			?><?=GetMessage("IBLOCK_FIELD_".$code)?>:&nbsp;<?=$value;?><?
-		}
-		?><br />
-	<?endforeach;
-	echo "<div class=\"fs16px\">";
-	foreach($arResult["DISPLAY_PROPERTIES"] as $pid=>$arProperty):?>
+		if ('PREVIEW_PICTURE' == $code || 'DETAIL_PICTURE' == $code):?>
+			<?=GetMessage("IBLOCK_FIELD_".$code)?>:&nbsp;<?
+			if (!empty($value) && is_array($value)):?>
+				<img border="0" src="<?=$value["SRC"]?>" width="<?=$value["WIDTH"]?>" height="<?=$value["HEIGHT"]?>">
+			<?endif;
+		else:?>
+			<?=GetMessage("IBLOCK_FIELD_".$code)?>:&nbsp;<?=$value;?>
+		<?endif;?><br />
+	<?endforeach;?>
+	<div class="fs16px">
+	<?foreach($arResult["DISPLAY_PROPERTIES"] as $pid=>$arProperty):?>
 		<div class="sci-prop">
 			<b class="sci-prop-color-green"><?=$arProperty["NAME"]?>:</b>
 			<?if(is_array($arProperty["DISPLAY_VALUE"])):?>
@@ -59,27 +49,21 @@ $this->setFrameMode(true);
 			<?endif?>
 		</div>
 	<?endforeach;
-	if(array_key_exists("USE_SHARE", $arParams) && $arParams["USE_SHARE"] == "Y")
-	{
-		?>
+	if(array_key_exists("USE_SHARE", $arParams) && $arParams["USE_SHARE"] == "Y"):?>
 		<div class="news-detail-share">
 			<noindex>
-			<?
-			$APPLICATION->IncludeComponent("bitrix:main.share", "", array(
-					"HANDLERS" => $arParams["SHARE_HANDLERS"],
-					"PAGE_URL" => $arResult["~DETAIL_PAGE_URL"],
-					"PAGE_TITLE" => $arResult["~NAME"],
-					"SHORTEN_URL_LOGIN" => $arParams["SHARE_SHORTEN_URL_LOGIN"],
-					"SHORTEN_URL_KEY" => $arParams["SHARE_SHORTEN_URL_KEY"],
-					"HIDE" => $arParams["SHARE_HIDE"],
-				),
-				$component,
-				array("HIDE_ICONS" => "Y")
-			);
-			?>
+				<?$APPLICATION->IncludeComponent("bitrix:main.share", "", array(
+						"HANDLERS" => $arParams["SHARE_HANDLERS"],
+						"PAGE_URL" => $arResult["~DETAIL_PAGE_URL"],
+						"PAGE_TITLE" => $arResult["~NAME"],
+						"SHORTEN_URL_LOGIN" => $arParams["SHARE_SHORTEN_URL_LOGIN"],
+						"SHORTEN_URL_KEY" => $arParams["SHARE_SHORTEN_URL_KEY"],
+						"HIDE" => $arParams["SHARE_HIDE"],
+					),
+					$component,
+					array("HIDE_ICONS" => "Y")
+				);?>
 			</noindex>
 		</div>
-		<?
-	}
-	?>
+	<?endif;?>
 </div>

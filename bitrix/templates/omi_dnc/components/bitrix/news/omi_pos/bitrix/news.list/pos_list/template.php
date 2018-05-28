@@ -18,11 +18,11 @@ $i=0;?>
 <?endif;?>
 
 <div class="container-fluid no-padding-l-r">
-    <?foreach($arResult["ITEMS"] as $arItem):?>
-        <?$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
+    <?foreach($arResult["ITEMS"] as $arItem):
+        $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
         $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));?>
 
-<div class="col-md-4 col-sm-6">
+    <div class="col-md-4 col-sm-6">
         <p class="omi-card omi-card-shadowed" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
             <?$i++;?>
             <b><a href="<?=$arItem['DETAIL_PAGE_URL']?>">
@@ -34,18 +34,18 @@ $i=0;?>
                 <br/>
             <?endif;?>
             <?$arFilterI = Array("IBLOCK_ID"=>5, "PROPERTY_RANK" => $arItem['ID']);
-            $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array("nPageSize"=>10));?>
-            <?if(CIBlockElement::GetList(array(), array('IBLOCK_ID' => 5, "PROPERTY_RANK" => $arItem['ID']), array(), false, array('ID', 'NAME')) != 0):?>
+            $resI = CIBlockElement::GetList(Array(), $arFilterI, false, Array("nPageSize"=>10));
+            if(CIBlockElement::GetList(array(), array('IBLOCK_ID' => 5, "PROPERTY_RANK" => $arItem['ID']), array(), false, array('ID', 'NAME')) != 0):?>
                 <b class="sci-prop-color-green"><?=GetMessage('SCI_LIST')?>:</b><br/>
-                <?while($obI = $resI->GetNextElement()):?>
-                    <?$arPropI = $obI->GetProperties();
+                <?while($obI = $resI->GetNextElement()):
+                    $arPropI = $obI->GetProperties();
                     $arFieldsI = $obI->GetFields();?>
                     <a href="<?=$arFieldsI['DETAIL_PAGE_URL']?>"> <?=$arPropI[GetMessage('FULL_NAME')]['VALUE']?>
                     </a><br/>
-                <?endwhile;?>
-            <?endif;?>
+                <?endwhile;
+            endif;?>
         </p>
-</div>
+    </div>
         <?if ($i%2 == 0):?>
             <div class="clearfix visible-sm-block"></div>
         <?endif;?>

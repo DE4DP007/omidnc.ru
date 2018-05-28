@@ -13,19 +13,6 @@
 $this->setFrameMode(true);
 ?>
 
-<!-- <div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">
-            Издание
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="<?=SITE_DIR?>">Главная</a></li>
-            <li class="active"><a href="<?=SITE_DIR?>journals/">Издания</a></li>
-            <li class="active"><?=$arResult['NAME']?></li>
-        </ol>
-    </div>
-</div> -->
-
 <div class="news-detail">
     <?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arResult["DETAIL_PICTURE"])):?>
         <img
@@ -36,7 +23,7 @@ $this->setFrameMode(true);
             height="<?=$arResult["DETAIL_PICTURE"]["HEIGHT"]?>"
             alt="<?=$arResult["DETAIL_PICTURE"]["ALT"]?>"
             title="<?=$arResult["DETAIL_PICTURE"]["TITLE"]?>"
-            />
+        />
     <?endif?>
     <?if($arParams["DISPLAY_DATE"]!="N" && $arResult["DISPLAY_ACTIVE_FROM"]):?>
         <span class="news-date-time"><?=$arResult["DISPLAY_ACTIVE_FROM"]?></span>
@@ -48,34 +35,29 @@ $this->setFrameMode(true);
         <p><?=$arResult["FIELDS"]["PREVIEW_TEXT"];unset($arResult["FIELDS"]["PREVIEW_TEXT"]);?></p>
     <?endif;?>
     <?if($arResult["NAV_RESULT"]):?>
-        <?if($arParams["DISPLAY_TOP_PAGER"]):?><?=$arResult["NAV_STRING"]?><br /><?endif;?>
-        <?echo $arResult["NAV_TEXT"];?>
-        <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?><br /><?=$arResult["NAV_STRING"]?><?endif;?>
+        <?if($arParams["DISPLAY_TOP_PAGER"]):?><?=$arResult["NAV_STRING"]?><br/><?endif;?>
+        <?=$arResult["NAV_TEXT"]?>
+        <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?><br/><?=$arResult["NAV_STRING"]?><?endif;?>
     <?elseif(strlen($arResult["DETAIL_TEXT"])>0):?>
-        <?echo $arResult["DETAIL_TEXT"];?>
+        <?=$arResult["DETAIL_TEXT"]?>
     <?else:?>
-        <?echo $arResult["PREVIEW_TEXT"];?>
+        <?=$arResult["PREVIEW_TEXT"]?>
     <?endif?>
     <div style="clear:both"></div>
-    <br />
+    <br/>
     <?foreach($arResult["FIELDS"] as $code=>$value):
-        if ('PREVIEW_PICTURE' == $code || 'DETAIL_PICTURE' == $code)
-        {
-            ?><?=GetMessage("IBLOCK_FIELD_".$code)?>:&nbsp;<?
-            if (!empty($value) && is_array($value))
-            {
-                ?><img border="0" src="<?=$value["SRC"]?>" width="<?=$value["WIDTH"]?>" height="<?=$value["HEIGHT"]?>"><?
-            }
-        }
-        else
-        {
-            ?><?=GetMessage("IBLOCK_FIELD_".$code)?>:&nbsp;<?=$value;?><?
-        }
-        ?><br />
+        if ('PREVIEW_PICTURE' == $code || 'DETAIL_PICTURE' == $code):?>
+            <?=GetMessage("IBLOCK_FIELD_".$code)?>:&nbsp;
+            <?if (!empty($value) && is_array($value)):?>
+                <img border="0" src="<?=$value["SRC"]?>" width="<?=$value["WIDTH"]?>" height="<?=$value["HEIGHT"]?>">
+            <?endif;
+        else:?>
+            <?=GetMessage("IBLOCK_FIELD_".$code)?>:&nbsp;<?=$value;?>
+        <?endif;?>
+        <br/>
     <?endforeach;
     foreach($arResult["DISPLAY_PROPERTIES"] as $pid=>$arProperty):?>
-
-    <b class="sci-prop-color-green"><?=$arProperty["NAME"]?>:&nbsp;</b>
+        <b class="sci-prop-color-green"><?=$arProperty["NAME"]?>:&nbsp;</b>
         <?if(is_array($arProperty["DISPLAY_VALUE"])):?>
             <?=implode("&nbsp;/&nbsp;", $arProperty["DISPLAY_VALUE"]);?>
         <?else:?>
@@ -83,13 +65,10 @@ $this->setFrameMode(true);
         <?endif?>
         <br />
     <?endforeach;
-    if(array_key_exists("USE_SHARE", $arParams) && $arParams["USE_SHARE"] == "Y")
-    {
-        ?>
+    if(array_key_exists("USE_SHARE", $arParams) && $arParams["USE_SHARE"] == "Y"):?>
         <div class="news-detail-share">
             <noindex>
-            <?
-            $APPLICATION->IncludeComponent("bitrix:main.share", "", array(
+            <?$APPLICATION->IncludeComponent("bitrix:main.share", "", array(
                     "HANDLERS" => $arParams["SHARE_HANDLERS"],
                     "PAGE_URL" => $arResult["~DETAIL_PAGE_URL"],
                     "PAGE_TITLE" => $arResult["~NAME"],
@@ -99,21 +78,18 @@ $this->setFrameMode(true);
                 ),
                 $component,
                 array("HIDE_ICONS" => "Y")
-            );
-            ?>
+            );?>
             </noindex>
         </div>
-        <?
-    }
-    ?>
+    <?endif;?>
     <h4 class="centered"><?=GetMessage('PUB_LIST')?></h4>
     <?$arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
     $arFilter = Array("IBLOCK_ID"=>9, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "PROPERTY_JOURNAL" => $arResult['ID']);
     $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);
-    $res->NavStart(10);?>
-    <?while($ob = $res->GetNextElement()):?>
-        <?$arFields = $ob->GetFields();?>
-        <?$arProp = $ob->GetProperties();?>
+    $res->NavStart(10);
+    while($ob = $res->GetNextElement()):
+        $arFields = $ob->GetFields();
+        $arProp = $ob->GetProperties();?>
         <a href="<?=$arFields['DETAIL_PAGE_URL']?>"><?=$arProp['BIBLIODATA']['VALUE']?></a><br/>
     <?endwhile;?>
     <?$res->NavPrint("Журналы");?>

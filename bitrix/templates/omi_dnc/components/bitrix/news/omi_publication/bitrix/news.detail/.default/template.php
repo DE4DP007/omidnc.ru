@@ -22,7 +22,7 @@ $this->setFrameMode(true);
             height="<?=$arResult["DETAIL_PICTURE"]["HEIGHT"]?>"
             alt="<?=$arResult["DETAIL_PICTURE"]["ALT"]?>"
             title="<?=$arResult["DETAIL_PICTURE"]["TITLE"]?>"
-            />
+        />
     <?endif?>
     <?if($arParams["DISPLAY_DATE"]!="N" && $arResult["DISPLAY_ACTIVE_FROM"]):?>
         <span class="news-date-time"><?=$arResult["DISPLAY_ACTIVE_FROM"]?></span>
@@ -30,35 +30,25 @@ $this->setFrameMode(true);
     <?if($arParams["DISPLAY_NAME"]!="N" && $arResult["NAME"]):?>
         <h3 class="art-header text-center"><?=$arResult["PROPERTIES"][GetMessage('TITLE')]["VALUE"]//=$arResult["NAME"]?></h3>
     <?endif;?>
-    <?
-    //test_dump($arResult["ID"]);
-    $arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
+    <?$arSelect = Array("ID", "NAME", "DATE_ACTIVE_FROM", "DETAIL_PAGE_URL");
     $arFilter = Array("IBLOCK_ID"=>9, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y", "ID" => $arResult["ID"]);
     $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>10), $arSelect);
     $i=0;
     while($ob = $res->GetNextElement()) {
         $arFields = $ob->GetFields();
         $arProp = $ob->GetProperties();
-        ///*авторы*/echo $prop['AUTHOR_STR'], ": ";
-        //test_dump($arProp);
-        //echo "<div>",$i,"</div>";$i++;
-    }
-    ?>
+    }?>
     <div class="text-center authholder fs16px">
-        <?
-        //test_dump($arProp['AUTHORS']);
-        foreach ($arProp['AUTHORS']['VALUE'] as $item) {
+        <?foreach ($arProp['AUTHORS']['VALUE'] as $item):
             $arFilter = Array("IBLOCK_ID" => 12, "ACTIVE_DATE" => "Y", "ACTIVE" => "Y", "ID" => $item);
             $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize" => 10), $arSelect);
 
-            while ($ob1 = $res->GetNextElement()) {
+            while ($ob1 = $res->GetNextElement()):
                 $arFields1 = $ob1->GetFields();
-                $arProp1 = $ob1->GetProperties();
-                //test_dump($arProp1["NAME"]["VALUE"]);
-                echo "<a class=\"greeners\"href=", $arFields1['DETAIL_PAGE_URL'], ">", $arProp1[GetMessage('FULL_NAME')]['VALUE'], "</a> ";
-            }
-        }
-        ?>
+                $arProp1 = $ob1->GetProperties();?>
+                <a class="greeners" href="<?=$arFields1['DETAIL_PAGE_URL']?>"><?=$arProp1[GetMessage('FULL_NAME')]['VALUE']?></a>
+            <?endwhile;
+        endforeach;?>
     </div>
     <?if($arProp['UDK']['VALUE'] != null):?>
         <h3 class="art-udc text-left journhead">
@@ -73,17 +63,18 @@ $this->setFrameMode(true);
     <div class="top-margin15px bt-margin72px">
         <?if($arProp['PUBLTYPE']['VALUE'] != null):?>
             <div class='sci-prop'>
-            <?$arFilter = Array("IBLOCK_ID" => 10, "ACTIVE_DATE" => "Y", "ACTIVE" => "Y", "ID" => $arProp['PUBLTYPE']['VALUE']);?>            <?$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize" => 10), $arSelect);?>
-            <?while($ob2 = $res->GetNextElement()):?>
-                <?$arFields2 = $ob2->GetFields();?>
-                <?$arProp2 = $ob2->GetProperties();?>
-                <b class='sci-prop-color-green'>
-                    <?=GetMessage('PUBLTYPE_STR')?>:
-                </b>
-                <a href="<?=$arFields2['DETAIL_PAGE_URL']?>">
-                    <?=$arProp2[GetMessage('TITLE')]['VALUE']?> 
-                </a>
-            <?endwhile;?>
+                <?$arFilter = Array("IBLOCK_ID" => 10, "ACTIVE_DATE" => "Y", "ACTIVE" => "Y", "ID" => $arProp['PUBLTYPE']['VALUE']);
+                $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize" => 10), $arSelect);
+                while($ob2 = $res->GetNextElement()):
+                    $arFields2 = $ob2->GetFields();
+                    $arProp2 = $ob2->GetProperties();?>
+                    <b class='sci-prop-color-green'>
+                        <?=GetMessage('PUBLTYPE_STR')?>:
+                    </b>
+                    <a href="<?=$arFields2['DETAIL_PAGE_URL']?>">
+                        <?=$arProp2[GetMessage('TITLE')]['VALUE']?> 
+                    </a>
+                <?endwhile;?>
             </div>
         <?endif;?>
         <?if($arProp['isOMI']['VALUE'] != null):?>
@@ -101,9 +92,7 @@ $this->setFrameMode(true);
                 </b>
             <?$i=0;?>
             <?foreach ($arProp['KEYWORDS']['VALUE'] as $item):?>
-                <?if ($i>0):?> 
-                    ,
-                <?endif;?>
+                <?if ($i>0):?>, <?endif;?>
                 <?=$item?>
             <?endforeach;?>
             </div>
@@ -111,9 +100,9 @@ $this->setFrameMode(true);
         <?if($arProp['JOURNAL']['VALUE'] != null):?>
             <div class='sci-prop'>
                 <?$arFilter = Array("IBLOCK_ID" => 11, "ACTIVE_DATE" => "Y", "ACTIVE" => "Y", "ID" => $arProp['JOURNAL']['VALUE']);
-                $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize" => 10), $arSelect);?>
-                <?while ($ob3 = $res->GetNextElement()):?>
-                    <?$arFields3 = $ob3->GetFields();
+                $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize" => 10), $arSelect);
+                while ($ob3 = $res->GetNextElement()):
+                    $arFields3 = $ob3->GetFields();
                     $arProp3 = $ob3->GetProperties();?>
                     <b class='sci-prop-color-green'>
                         <?=GetMessage('JOURNAL')?>:
@@ -153,42 +142,22 @@ $this->setFrameMode(true);
             </a>
         <?endif;?>
     </div>
-        <!-- test_dump($arProp[$prop['BIBDATA']]['NAME']); -->
 
-
-    <br />
+    <br/>
     <?foreach($arResult["FIELDS"] as $code=>$value):
-        if ('PREVIEW_PICTURE' == $code || 'DETAIL_PICTURE' == $code)
-        {
-            ?><?=GetMessage("IBLOCK_FIELD_".$code)?>:&nbsp;<?
-            if (!empty($value) && is_array($value))
-            {
-                ?><img border="0" src="<?=$value["SRC"]?>" width="<?=$value["WIDTH"]?>" height="<?=$value["HEIGHT"]?>"><?
-            }
-        }
-        else
-        {
-            ?><?=GetMessage("IBLOCK_FIELD_".$code)?>:&nbsp;<?=$value;?><?
-        }
-        ?><br />
+        if ('PREVIEW_PICTURE' == $code || 'DETAIL_PICTURE' == $code):?>
+            <?=GetMessage("IBLOCK_FIELD_".$code)?>:&nbsp;<?
+            if (!empty($value) && is_array($value)):?>
+                <img border="0" src="<?=$value["SRC"]?>" width="<?=$value["WIDTH"]?>" height="<?=$value["HEIGHT"]?>">
+            <?endif;
+        else:?>
+            <?=GetMessage("IBLOCK_FIELD_".$code)?>:&nbsp;<?=$value;?>
+        <?endif?><br />
     <?endforeach;
-    /*foreach($arResult["DISPLAY_PROPERTIES"] as $pid=>$arProperty):?>
-
-        <?=$arProperty["NAME"]?>:&nbsp;
-        <?if(is_array($arProperty["DISPLAY_VALUE"])):?>
-            <?=implode("&nbsp;/&nbsp;", $arProperty["DISPLAY_VALUE"]);?>
-        <?else:?>
-            <?=$arProperty["DISPLAY_VALUE"];?>
-        <?endif?>
-        <br />
-    <?endforeach;*/
-    if(array_key_exists("USE_SHARE", $arParams) && $arParams["USE_SHARE"] == "Y")
-    {
-        ?>
+    if(array_key_exists("USE_SHARE", $arParams) && $arParams["USE_SHARE"] == "Y"):?>
         <div class="news-detail-share">
             <noindex>
-            <?
-            $APPLICATION->IncludeComponent("bitrix:main.share", "", array(
+            <?$APPLICATION->IncludeComponent("bitrix:main.share", "", array(
                     "HANDLERS" => $arParams["SHARE_HANDLERS"],
                     "PAGE_URL" => $arResult["~DETAIL_PAGE_URL"],
                     "PAGE_TITLE" => $arResult["~NAME"],
@@ -198,12 +167,8 @@ $this->setFrameMode(true);
                 ),
                 $component,
                 array("HIDE_ICONS" => "Y")
-            );
-            ?>
+            );?>
             </noindex>
         </div>
-        <?
-    }
-    ?>
-
+    <?endif;?>
 </div>

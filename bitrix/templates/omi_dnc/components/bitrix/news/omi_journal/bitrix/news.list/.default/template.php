@@ -29,7 +29,8 @@ $this->setFrameMode(true);
 			<p class="news-item">
 				<?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arItem["PREVIEW_PICTURE"])):?>
 					<?if(!$arParams["HIDE_LINK_WHEN_NO_DETAIL"] || ($arItem["DETAIL_TEXT"] && $arResult["USER_HAVE_ACCESS"])):?>
-						<a href="<?=$arItem["DETAIL_PAGE_URL"]?>"><img
+						<a href="<?=$arItem["DETAIL_PAGE_URL"]?>">
+							<img
 								class="preview_picture"
 								border="0"
 								src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>"
@@ -38,7 +39,8 @@ $this->setFrameMode(true);
 								alt="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>"
 								title="<?=$arItem["PREVIEW_PICTURE"]["TITLE"]?>"
 								style="float:left"
-							/></a>
+							/>
+						</a>
 					<?else:?>
 						<img
 							class="preview_picture"
@@ -53,46 +55,51 @@ $this->setFrameMode(true);
 					<?endif;?>
 				<?endif?>
 				<?if($arParams["DISPLAY_DATE"]!="N" && $arItem["DISPLAY_ACTIVE_FROM"]):?>
-					<span class="news-date-time"><?echo $arItem["DISPLAY_ACTIVE_FROM"]?></span>
+					<span class="news-date-time"><?=$arItem["DISPLAY_ACTIVE_FROM"]?></span>
 				<?endif?>
 				<?if($arParams["DISPLAY_NAME"]!="N" && $arItem["NAME"]):?>
 					<?if(!$arParams["HIDE_LINK_WHEN_NO_DETAIL"] || ($arItem["DETAIL_TEXT"] && $arResult["USER_HAVE_ACCESS"])):?>
-						<b class="sci-prop-color-green"><?=$arItem["PROPERTIES"][GetMessage("TITLE")]["NAME"]?>:&nbsp;</b><a href="<?echo $arItem["DETAIL_PAGE_URL"]?>"><b><?echo $arItem['DISPLAY_PROPERTIES'][GetMessage("TITLE")]['VALUE']?></b></a><br />
+						<b class="sci-prop-color-green"><?=$arItem["PROPERTIES"][GetMessage("TITLE")]["NAME"]?>:&nbsp;</b>
+						<a href="<?=$arItem["DETAIL_PAGE_URL"]?>">
+							<b><?=$arItem['DISPLAY_PROPERTIES'][GetMessage("TITLE")]['VALUE']?></b>
+						</a>
+						<br/>
 					<?else:?>
-						<b><?=$arItem["PROPERTIES"][GetMessage("TITLE")]["NAME"]?></b><br />
+						<b><?=$arItem["PROPERTIES"][GetMessage("TITLE")]["NAME"]?></b><br/>
 					<?endif;?>
 				<?endif;?>
 				<?if($arParams["DISPLAY_PREVIEW_TEXT"]!="N" && $arItem["PREVIEW_TEXT"]):?>
-					<?echo $arItem["PREVIEW_TEXT"];?>
+					<?=$arItem["PREVIEW_TEXT"];?>
 				<?endif;?>
 				<?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arItem["PREVIEW_PICTURE"])):?>
 
-			<?endif?>
-			<?foreach($arItem["FIELDS"] as $code=>$value):?>
-				<small>
-					<?=GetMessage("IBLOCK_FIELD_".$code)?>:&nbsp;<?=$value;?>
-				</small><br />
-			<?endforeach;?>
-			<?foreach($arItem["DISPLAY_PROPERTIES"] as $pid=>$arProperty):?>
-				<?if($arProperty['CODE'] != GetMessage('TITLE')):?>
+				<?endif?>
+				<?foreach($arItem["FIELDS"] as $code=>$value):?>
 					<small>
-						<b class="sci-prop-color-green"><?=$arProperty["NAME"]?>:</b>
-						<?if(is_array($arProperty["DISPLAY_VALUE"])):?>
-							<?//=implode("&nbsp;",$arProperty["DISPLAY_VALUE"]);?>
-						<?else:?>
-							<!— <?=$arProperty["DISPLAY_VALUE"];?> —>
-							<?=mb_strimwidth($arProperty["DISPLAY_VALUE"],0,300, "...")?>
-						<?endif?>
-					</small><br />
-				<?endif;?>
-			<?endforeach;?>
+						<?=GetMessage("IBLOCK_FIELD_".$code)?>:&nbsp;<?=$value;?>
+					</small><br/>
+				<?endforeach;?>
+				<?foreach($arItem["DISPLAY_PROPERTIES"] as $pid=>$arProperty):?>
+					<?if($arProperty['CODE'] != GetMessage('TITLE')):?>
+						<small>
+							<b class="sci-prop-color-green"><?=$arProperty["NAME"]?>:</b>
+							<?if(is_array($arProperty["DISPLAY_VALUE"])):?>
+								<?//=implode("&nbsp;",$arProperty["DISPLAY_VALUE"]);?>
+							<?else:?>
+								<!-- <?=$arProperty["DISPLAY_VALUE"];?> -->
+								<?=mb_strimwidth($arProperty["DISPLAY_VALUE"],0,300, "...")?>
+							<?endif?>
+						</small><br/>
+					<?endif;?>
+				<?endforeach;?>
 
-			<?$arFilter = array('IBLOCK_ID' => 9, "PROPERTY_JOURNAL" => $arItem['ID']);
-			$res = CIBlockElement::GetList(false, $arFilter, array('IBLOCK_ID', 'PROPERTY_JOURNAL'));?>
-			<?if ($el = $res->Fetch()):?>
-			<b class="sci-prop-color-green"><?=GetMessage("ART_COUNT")?>:</b> <?=$el['CNT']?>
-			<?endif;?><div style="clear:both"></div>
-			<a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="btn-primary sci-details"><?=GEtMessage("SHOW")?></a>
+				<?$arFilter = array('IBLOCK_ID' => 9, "PROPERTY_JOURNAL" => $arItem['ID']);
+				$res = CIBlockElement::GetList(false, $arFilter, array('IBLOCK_ID', 'PROPERTY_JOURNAL'));?>
+				<?if ($el = $res->Fetch()):?>
+					<b class="sci-prop-color-green"><?=GetMessage("ART_COUNT")?>:</b> <?=$el['CNT']?>
+				<?endif;?>
+				<div style="clear:both"></div>
+				<a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="btn-primary sci-details"><?=GEtMessage("SHOW")?></a>
 			</p>
 		</div>
 		<?if ($i%2==1):?>
@@ -104,6 +111,6 @@ $this->setFrameMode(true);
 </div>
 <?endif;?>
 <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
-	<br /><div class="container-fluid centered"><?=$arResult["NAV_STRING"]?></div>
+	<br/><div class="container-fluid centered"><?=$arResult["NAV_STRING"]?></div>
 <?endif;?>
 </div>

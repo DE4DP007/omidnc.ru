@@ -22,59 +22,53 @@ if ($arParams['DEV_MODE'] == 'Y')
 ?>
 <div class="bx-yandex-view-layout">
 	<div class="bx-yandex-view-map">
-<?
-
-$APPLICATION->IncludeComponent('bitrix:map.google.system', '.default', $arTransParams, false, array('HIDE_ICONS' => 'Y'));
-?>
+		<?$APPLICATION->IncludeComponent('bitrix:map.google.system', '.default', $arTransParams, false, array('HIDE_ICONS' => 'Y'));?>
 	</div>
 </div>
 <?if (is_array($arResult['POSITION']['PLACEMARKS']) && ($cnt = count($arResult['POSITION']['PLACEMARKS']))):?>
-<script type="text/javascript">
+	<script type="text/javascript">
 
-function BX_SetPlacemarks_<?echo $arParams['MAP_ID']?>()
-{
-<?
-	for($i = 0; $i < $cnt; $i++):
-?>
-	BX_GMapAddPlacemark(<?echo CUtil::PhpToJsObject($arResult['POSITION']['PLACEMARKS'][$i])?>, '<?echo $arParams['MAP_ID']?>');
-<?
-	endfor;
-?>
-}
-
-function BXShowMap_<?echo $arParams['MAP_ID']?>() {
-	if(typeof window["BXWaitForMap_view"] == 'function')
-	{
-		BXWaitForMap_view('<?echo $arParams['MAP_ID']?>');
-	}
-	else
-	{
-		/* If component's result was cached as html,
-		 * script.js will not been loaded next time.
-		 * let's do it manualy.
-		*/
-
-		(function(d, s, id)
+		function BX_SetPlacemarks_<?=$arParams['MAP_ID']?>()
 		{
-			var js, bx_gm = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) return;
-			js = d.createElement(s); js.id = id;
-			js.src = "<?=$templateFolder.'/script.js'?>";
-			bx_gm.parentNode.insertBefore(js, bx_gm);
-		}(document, 'script', 'bx-google-map-js'));
+			<?for($i = 0; $i < $cnt; $i++):?>
+				BX_GMapAddPlacemark(<?=CUtil::PhpToJsObject($arResult['POSITION']['PLACEMARKS'][$i])?>, '<?=$arParams['MAP_ID']?>');
+			<?endfor;?>
+		}
 
-		var gmWaitIntervalId = setInterval( function(){
+		function BXShowMap_<?=$arParams['MAP_ID']?>() 
+		{
+			if(typeof window["BXWaitForMap_view"] == 'function')
+			{
+				BXWaitForMap_view('<?=$arParams['MAP_ID']?>');
+			}
+			else
+			{
+				/* If component's result was cached as html,
+				 * script.js will not been loaded next time.
+				 * let's do it manualy.
+				*/
 
-				if(typeof window["BXWaitForMap_view"] == 'function')
+				(function(d, s, id)
 				{
-					BXWaitForMap_view("<?echo $arParams['MAP_ID']?>");
-					clearInterval(gmWaitIntervalId);
-				}
-			}, 300
-		);
-	}
-}
+					var js, bx_gm = d.getElementsByTagName(s)[0];
+					if (d.getElementById(id)) return;
+					js = d.createElement(s); js.id = id;
+					js.src = "<?=$templateFolder.'/script.js'?>";
+					bx_gm.parentNode.insertBefore(js, bx_gm);
+				}(document, 'script', 'bx-google-map-js'));
 
-BX.ready(BXShowMap_<?echo $arParams['MAP_ID']?>);
-</script>
+				var gmWaitIntervalId = setInterval( function(){
+
+						if(typeof window["BXWaitForMap_view"] == 'function')
+						{
+							BXWaitForMap_view("<?echo $arParams['MAP_ID']?>");
+							clearInterval(gmWaitIntervalId);
+						}
+					}, 300
+				);
+			}
+		}
+
+		BX.ready(BXShowMap_<?echo $arParams['MAP_ID']?>);
+	</script>
 <?endif;?>
